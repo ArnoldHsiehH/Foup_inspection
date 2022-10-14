@@ -33,7 +33,7 @@ namespace new_inspection
             this.btn_setting = new System.Windows.Forms.Button();
             this.btn_exit = new System.Windows.Forms.Button();
             this.pnlNav = new System.Windows.Forms.Panel();
-            this.btn_Opration = new System.Windows.Forms.Button();
+            this.btn_error = new System.Windows.Forms.Button();
             this.btn_About = new System.Windows.Forms.Button();
             this.btn_history = new System.Windows.Forms.Button();
             this.btn_Log = new System.Windows.Forms.Button();
@@ -46,6 +46,7 @@ namespace new_inspection
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -65,7 +66,6 @@ namespace new_inspection
             this.lbl_Title = new System.Windows.Forms.Label();
             this.txt_uptime = new System.Windows.Forms.Label();
             this.pnlFormLoader = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -77,11 +77,11 @@ namespace new_inspection
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.panel1.Controls.Add(this.btn_About);
             this.panel1.Controls.Add(this.btn_setting);
             this.panel1.Controls.Add(this.btn_exit);
             this.panel1.Controls.Add(this.pnlNav);
-            this.panel1.Controls.Add(this.btn_Opration);
-            this.panel1.Controls.Add(this.btn_About);
+            this.panel1.Controls.Add(this.btn_error);
             this.panel1.Controls.Add(this.btn_history);
             this.panel1.Controls.Add(this.btn_Log);
             this.panel1.Controls.Add(this.btn_Manual);
@@ -132,20 +132,20 @@ namespace new_inspection
             this.pnlNav.Size = new System.Drawing.Size(10, 55);
             this.pnlNav.TabIndex = 5;
             // 
-            // btn_Opration
+            // btn_error
             // 
-            this.btn_Opration.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_Opration.FlatAppearance.BorderSize = 0;
-            this.btn_Opration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Opration.Font = new System.Drawing.Font("Microsoft YaHei UI", 18F);
-            this.btn_Opration.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_Opration.Location = new System.Drawing.Point(0, 473);
-            this.btn_Opration.Name = "btn_Opration";
-            this.btn_Opration.Size = new System.Drawing.Size(200, 55);
-            this.btn_Opration.TabIndex = 4;
-            this.btn_Opration.Text = "Operation";
-            this.btn_Opration.UseVisualStyleBackColor = true;
-            this.btn_Opration.Visible = false;
+            this.btn_error.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_error.FlatAppearance.BorderSize = 0;
+            this.btn_error.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_error.Font = new System.Drawing.Font("Microsoft YaHei UI", 18F);
+            this.btn_error.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btn_error.Location = new System.Drawing.Point(0, 418);
+            this.btn_error.Name = "btn_error";
+            this.btn_error.Size = new System.Drawing.Size(200, 55);
+            this.btn_error.TabIndex = 4;
+            this.btn_error.Text = "Error";
+            this.btn_error.UseVisualStyleBackColor = true;
+            this.btn_error.Click += new System.EventHandler(this.btn_error_Click);
             // 
             // btn_About
             // 
@@ -154,7 +154,7 @@ namespace new_inspection
             this.btn_About.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_About.Font = new System.Drawing.Font("Microsoft YaHei UI", 18F);
             this.btn_About.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_About.Location = new System.Drawing.Point(0, 418);
+            this.btn_About.Location = new System.Drawing.Point(0, 473);
             this.btn_About.Name = "btn_About";
             this.btn_About.Size = new System.Drawing.Size(200, 55);
             this.btn_About.TabIndex = 7;
@@ -317,6 +317,16 @@ namespace new_inspection
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1704, 151);
             this.panel4.TabIndex = 5;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(28, 109);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(113, 23);
+            this.button6.TabIndex = 19;
+            this.button6.Text = "button6";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -546,16 +556,6 @@ namespace new_inspection
             this.pnlFormLoader.Size = new System.Drawing.Size(1704, 980);
             this.pnlFormLoader.TabIndex = 6;
             // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(28, 109);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(113, 23);
-            this.button6.TabIndex = 19;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -587,7 +587,7 @@ namespace new_inspection
         private System.Windows.Forms.Button btn_setting;
         private System.Windows.Forms.Button btn_exit;
         private System.Windows.Forms.Panel pnlNav;
-        private System.Windows.Forms.Button btn_Opration;
+        private System.Windows.Forms.Button btn_error;
         private System.Windows.Forms.Button btn_About;
         private System.Windows.Forms.Button btn_history;
         private System.Windows.Forms.Button btn_Log;

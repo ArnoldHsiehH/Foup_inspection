@@ -25,7 +25,7 @@ namespace new_inspection
         public Form1()
         {
             InitializeComponent();
-
+            Error.AlarmTriger += new Error.Alarmflag(errbtn_color);
             logwriter.setLogType = logwriter01.LogDir.System;
             logwriter.setDevice_Name = "Form1";
 
@@ -33,10 +33,20 @@ namespace new_inspection
             pnlNav.Top = btn_Dashbord.Top;
             pnlNav.Left = btn_Dashbord.Left;
             btn_Dashbord.BackColor = System.Drawing.SystemColors.Window;
-           
+
             pnlfromcontrol(frmLog_vrb);
-            
+
         }
+        private void errbtn_color(bool value)
+        {
+            this.Invoke(new MethodInvoker(delegate () { write_errbtn(value); }));
+        }
+        private void write_errbtn(bool value)
+        {
+            btn_error.BackColor = value ? Color.Red : System.Drawing.SystemColors.MenuBar;
+
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             pnlfromcontrol(frmDashboard_vrb);
@@ -84,7 +94,7 @@ namespace new_inspection
 
         private void btn_Dashbord_Click(object sender, EventArgs e)
         {
-           // do_Inspection.BG_process_start();
+            // do_Inspection.BG_process_start();
             setlistbtn();
             setlisttxt("Dashboard", btn_Dashbord);
             StatusTable.now_page = StatusTable.page.Dashboard;
@@ -94,7 +104,7 @@ namespace new_inspection
 
         private void btn_Manual_Click(object sender, EventArgs e)
         {
-           // do_Inspection.BG_process_start();
+            // do_Inspection.BG_process_start();
             setlistbtn();
             setlisttxt("Manual", btn_Manual);
             pnlfromcontrol(Manual_vrb);
@@ -113,7 +123,7 @@ namespace new_inspection
             setlisttxt("About", btn_About);
 
             //    this.pnlFormLoader.Controls.Clear();
-           // pnlfromcontrol(About_vrb);
+            // pnlfromcontrol(About_vrb);
         }
 
         private void btn_history_Click(object sender, EventArgs e)
@@ -126,12 +136,18 @@ namespace new_inspection
         private void button5_Click(object sender, EventArgs e)
         {
             //errfrm.Show();
-            err_write.write_alarmMessage(Error.error_unit.system,"GG");
+            err_write.write_alarmMessage(Error.error_unit.system, "GG");
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             err_write.write_alarmMessage(Error.error_unit.system, 10);
+        }
+
+        private void btn_error_Click(object sender, EventArgs e)
+        {
+            logwriter.write_local_log(string.Format("{0},click", "btn_error"));
+            errfrm.Show();
         }
     }
 }

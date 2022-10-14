@@ -154,6 +154,7 @@ namespace new_inspection
                 #region 異常
                 if (err_write.check_error)//異常產生
                 {
+                    err_write.write_warnMessage(Error.error_unit.system, "please reast error");
                     break;
                 }
                 #endregion

@@ -67,8 +67,9 @@ namespace new_inspection
     public class Error
     {
         logwriter01 logwriter = new logwriter01();
-
+        public delegate void Alarmflag(bool value);
         public delegate void ErrEvent(bool need_update, List<string> Message);
+        public static event Alarmflag AlarmTriger;
         public static event ErrEvent EventErr;
         public static List<string> err_list = new List<string>();
         public static List<MyRow> code_list = new List<MyRow>();
@@ -87,11 +88,12 @@ namespace new_inspection
         public void err_clear()
         {
             Error.err_list.Clear();//異常清除
-
+            AlarmTriger(false);
             err_flag = false;
         }
         public void write_alarmMessage(error_unit errlist, string errMessage)
         {
+            AlarmTriger(true);
             err_flag = true;
             if (first_run)
             {
@@ -112,6 +114,7 @@ namespace new_inspection
         }
         public void write_alarmMessage(error_unit errlist, int code)//搜尋 alarm 內容
         {
+            AlarmTriger(true);
             string message = "";
             err_flag = true;
             if (first_run)
