@@ -33,7 +33,6 @@ namespace new_inspection
             this.btn_mute = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.LB_warn = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btn_reset
@@ -72,17 +71,8 @@ namespace new_inspection
             this.listBox1.ItemHeight = 12;
             this.listBox1.Location = new System.Drawing.Point(27, 12);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(315, 124);
+            this.listBox1.Size = new System.Drawing.Size(315, 256);
             this.listBox1.TabIndex = 2;
-            // 
-            // LB_warn
-            // 
-            this.LB_warn.FormattingEnabled = true;
-            this.LB_warn.ItemHeight = 12;
-            this.LB_warn.Location = new System.Drawing.Point(27, 139);
-            this.LB_warn.Name = "LB_warn";
-            this.LB_warn.Size = new System.Drawing.Size(315, 124);
-            this.LB_warn.TabIndex = 2;
             // 
             // frmError
             // 
@@ -90,7 +80,6 @@ namespace new_inspection
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 349);
             this.ControlBox = false;
-            this.Controls.Add(this.LB_warn);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.btn_mute);
@@ -109,6 +98,5 @@ namespace new_inspection
         private System.Windows.Forms.Button btn_mute;
         private System.Windows.Forms.Button btn_close;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox LB_warn;
     }
 }

@@ -22,7 +22,7 @@ namespace new_inspection
 
         }
 
-        
+
         private void frmError_Load(object sender, EventArgs e)
         {
 
@@ -57,41 +57,37 @@ namespace new_inspection
                 listBox1.Items.Clear();
                 listBox1.Items.AddRange(err_list.ToArray());
             }
-
-
         }
 
         private void btn_close_Click(object sender, EventArgs e)
         {
-         
             this.Hide();
         }
     }
     public class Error
     {
-        public delegate void ErrEvent(bool need_update, List<string> Message);
-        public static event ErrEvent EventErr;
-
-
         logwriter01 logwriter = new logwriter01();
 
+        public delegate void ErrEvent(bool need_update, List<string> Message);
+        public static event ErrEvent EventErr;
+        public static List<string> err_list = new List<string>();
+        public static List<MyRow> code_list = new List<MyRow>();
         public bool check_error
         {
-            get 
+            get
             {
                 return err_flag;
             }
         }
-        public static List<string> err_list = new List<string>();
-        public static List<MyRow> code_list = new List<MyRow>();
 
-        static bool err_flag=false;
+        static bool err_flag = false;
         bool first_run = true;
 
+        #region commend
         public void err_clear()
         {
             Error.err_list.Clear();//異常清除
-         
+
             err_flag = false;
         }
         public void write_alarmMessage(error_unit errlist, string errMessage)
@@ -114,6 +110,39 @@ namespace new_inspection
             else
                 EventErr(false, err_list);
         }
+        public void write_alarmMessage(error_unit errlist, int code)//搜尋 alarm 內容
+        {
+            string message = "";
+            err_flag = true;
+            if (first_run)
+            {
+                Page_Load();
+                first_run = false;
+            }
+            int index = code_list.FindIndex(x => x.code == code.ToString());
+            if (index == -1)
+            {
+                message =string.Format("{0} unknow error", code);
+            }
+            else
+            {
+                message = string.Format("{0} {1}", code, code_list[index].message);
+            }
+            logwriter.setLogType = logwriter01.LogDir.Error;
+            logwriter.setDevice_Name = "Error";
+
+            if (!err_list.Exists(x => x.ToString() == message))
+            {
+                logwriter.write_local_log(message);
+                err_list.Add(message);
+                EventErr(true, err_list);
+            }
+            else
+            {
+                EventErr(false, err_list);
+            }
+
+        }
 
         public void write_warnMessage(error_unit errlist, string errMessage)
         {
@@ -134,10 +163,40 @@ namespace new_inspection
             else
                 EventErr(false, err_list);
         }
-        public void error_code(string err_code)
-        {
 
+        public void write_warnMessage(error_unit errlist, int code) 
+        {
+            string message = "";
+            if (first_run)
+            {
+                Page_Load();
+                first_run = false;
+            }
+            int index = code_list.FindIndex(x => x.code == code.ToString());
+            if (index == -1)
+            {
+                message = string.Format("{0} unknow error", code);
+            }
+            else
+            {
+                message = string.Format("{0} {1}", code, code_list[index].message);
+            }
+            logwriter.setLogType = logwriter01.LogDir.Error;
+            logwriter.setDevice_Name = "Error";
+
+            if (!err_list.Exists(x => x.ToString() == message))
+            {
+                logwriter.write_local_log(message);
+                err_list.Add(message);
+                EventErr(true, err_list);
+            }
+            else
+            {
+                EventErr(false, err_list);
+            }
         }
+
+        #endregion
         protected void Page_Load()//(object sender, EventArgs e)
         {
             Microsoft.Office.Interop.Excel.Application xlApp;
@@ -151,7 +210,7 @@ namespace new_inspection
 
             xlApp = new Microsoft.Office.Interop.Excel.Application();
             //open the excel
-            xlWorkBook = xlApp.Workbooks.Open(@"D:\Desktop\work\ni\new_inspection\new_inspection\bin\Debug\Alarm_codes.xlsx");
+            xlWorkBook = xlApp.Workbooks.Open(@"D:\new_ins\Alarm_codes.xlsx");
             //get the first sheet of the excel
             xlWorkSheet = (Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
@@ -189,7 +248,7 @@ namespace new_inspection
         }
         public enum error_unit
         {
-            system
+            system,
             #region PLC
             #endregion
             #region Robot
@@ -199,6 +258,7 @@ namespace new_inspection
             #region ITRI
             #endregion
             #region other
+            other
             #endregion
         }
 

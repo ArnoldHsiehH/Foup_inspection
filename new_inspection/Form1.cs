@@ -131,7 +131,7 @@ namespace new_inspection
 
         private void button6_Click(object sender, EventArgs e)
         {
-            err_write.write_alarmMessage(Error.error_unit.system, "AA");
+            err_write.write_alarmMessage(Error.error_unit.system, 10);
         }
     }
 }
