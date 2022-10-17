@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -18,6 +19,7 @@ namespace new_inspection
         public frmError()
         {
             InitializeComponent();
+            this.Show();
             Error.EventErr += new Error.ErrEvent(UI_error_update);
 
         }
@@ -25,7 +27,7 @@ namespace new_inspection
 
         private void frmError_Load(object sender, EventArgs e)
         {
-
+          
         }
         private void btn_mute_Click(object sender, EventArgs e)
         {
@@ -41,13 +43,15 @@ namespace new_inspection
 
         private void UI_error_update(bool need_update, List<string> Message)
         {
-            this.Show();
+
+
             this.Invoke(new MethodInvoker(delegate () { write_UI(need_update, Message); }));
+
         }
         public static List<string> err_list = new List<string>();
         private void write_UI(bool need_update, List<string> Message)
         {
-
+            this.Show();
             err_list = new List<string>();
 
             err_list = Message;
@@ -88,12 +92,12 @@ namespace new_inspection
         public void err_clear()
         {
             Error.err_list.Clear();//異常清除
-            AlarmTriger(false);
+                                   AlarmTriger(false);
             err_flag = false;
         }
         public void write_alarmMessage(error_unit errlist, string errMessage)
         {
-            AlarmTriger(true);
+             AlarmTriger(true);
             err_flag = true;
             if (first_run)
             {
@@ -114,7 +118,7 @@ namespace new_inspection
         }
         public void write_alarmMessage(error_unit errlist, int code)//搜尋 alarm 內容
         {
-            AlarmTriger(true);
+             AlarmTriger(true);
             string message = "";
             err_flag = true;
             if (first_run)
@@ -125,7 +129,7 @@ namespace new_inspection
             int index = code_list.FindIndex(x => x.code == code.ToString());
             if (index == -1)
             {
-                message =string.Format("{0} unknow error", code);
+                message = string.Format("{0} unknow error", code);
             }
             else
             {
@@ -167,7 +171,7 @@ namespace new_inspection
                 EventErr(false, err_list);
         }
 
-        public void write_warnMessage(error_unit errlist, int code) 
+        public void write_warnMessage(error_unit errlist, int code)
         {
             string message = "";
             if (first_run)

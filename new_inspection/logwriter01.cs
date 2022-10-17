@@ -55,16 +55,16 @@ namespace new_inspection
         {
 
             log_mail log_data = new log_mail();
-           
+
 
             if (string.IsNullOrEmpty(LogPath)) //已預設
             {
                 return;
             }
 
-            message = string.Format("{0}  [{1}]  {2}",
+            message = string.Format("{0,-20}    {1,-15}{2}",
                                 DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ff"),
-                                Device_Name,
+                                string.Format("[{0}]", Device_Name),
                                 message);
 
             pts = new ParameterizedThreadStart(Threadwrit_Log);
@@ -92,7 +92,7 @@ namespace new_inspection
                 return;
             }
 
-            
+
             mThread = new Thread(pts);
             mThread.Start(log_data);
             Console.WriteLine("send");
@@ -193,6 +193,6 @@ namespace new_inspection
             public string Time;
         }
         #endregion
-    
+
     }
 }
