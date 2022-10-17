@@ -17,7 +17,7 @@ namespace new_inspection
 
         private delegate void inspEvent(MC_commend_pack a);
         private static event inspEvent EventInsp;
-      
+
         static Queue<Interrupt_commend> Q_IC = new Queue<Interrupt_commend>();
         public void initail()
         {
@@ -33,13 +33,15 @@ namespace new_inspection
             EventInsp += new inspEvent(get_commend);
 
         }
-        public void Insp_Load()
+        public void Insp_Load(MC_unit Lpunit)
         {
-            EventInsp(new MC_commend_pack() { commend = MC_commend.load, LPunit = MC_unit.Loadport1 });
+            if (Lpunit == MC_unit.Loadport1 || Lpunit == MC_unit.Loadport2)
+                EventInsp(new MC_commend_pack() { commend = MC_commend.load, LPunit = Lpunit });
         }
-        public void Insp_start()
+        public void Insp_start(MC_unit Lpunit)
         {
-            EventInsp(new MC_commend_pack() { commend = MC_commend.insp_start, LPunit = MC_unit.Loadport1, ID = "123456" });//ID: RFID
+            if (Lpunit == MC_unit.Loadport1 || Lpunit == MC_unit.Loadport2)
+                EventInsp(new MC_commend_pack() { commend = MC_commend.insp_start, LPunit = Lpunit, ID = "123456" });//ID: RFID
         }
         public void Insp_home()
         {
@@ -107,7 +109,7 @@ namespace new_inspection
 
                     break;
                 case MC_commend.insp_start://建立工作項目: 掃描
-                    Creat_ins_jobs(commend_pack,ref job_pack);
+                    Creat_ins_jobs(commend_pack, ref job_pack);
                     break;
                 case MC_commend.clamp:
                     job_pack.Add(new job() { unit = commend_pack.LPunit, Loadport_commend = LP_commend.ORGN });
@@ -187,6 +189,7 @@ namespace new_inspection
                         break;
                 }
                 #endregion
+
                 Thread.Sleep(1);
             }
             #endregion
@@ -229,9 +232,9 @@ namespace new_inspection
             Thread.Sleep(1000);
         }
 
-        private void Creat_ins_jobs(MC_commend_pack commend_pack,ref List<job> job_pack)
+        private void Creat_ins_jobs(MC_commend_pack commend_pack, ref List<job> job_pack)
         {
-            if (commend_pack.LPunit == MC_unit.Loadport1) 
+            if (commend_pack.LPunit == MC_unit.Loadport1)
             { }
             job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.home1 });
             job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.home });
@@ -255,7 +258,7 @@ namespace new_inspection
             public MC_unit LPunit;
             public string ID;
         }
-        enum MC_unit
+        public enum MC_unit
         {
             unknow,
             Robot,
@@ -265,7 +268,6 @@ namespace new_inspection
             RFID2,
             ITRI,
             SCES
-
         }
         class job//for job psck
         {

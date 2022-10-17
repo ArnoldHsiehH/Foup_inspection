@@ -20,6 +20,7 @@ namespace new_inspection
         {
             InitializeComponent();
             this.Show();
+           
             Error.EventErr += new Error.ErrEvent(UI_error_update);
 
         }

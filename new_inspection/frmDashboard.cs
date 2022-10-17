@@ -18,36 +18,44 @@ namespace new_inspection
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        #region pan controll
+        private void btn_Home_Click_1(object sender, EventArgs e)
         {
-            Insp_process.Insp_start();
+            Insp_process.Insp_home();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btn_stop_Click(object sender, EventArgs e)
         {
             Insp_process.Insp_stop();
         }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void btn_pause_Click(object sender, EventArgs e)
         {
             Insp_process.Insp_pause();
         }
-
-        private void button4_Click(object sender, EventArgs e)
+        private void btn_continue_Click(object sender, EventArgs e)
         {
             Insp_process.Insp_continue();
-
         }
 
-        private void btn_Home_Click(object sender, EventArgs e)
-        {
-            Insp_process.Insp_home();
+        #endregion
 
+        private void btn_lp1_start_Click(object sender, EventArgs e)
+        {
+            Insp_process.Insp_start(Main_control.MC_unit.Loadport1);
         }
 
-        private void btn_Load1_Click(object sender, EventArgs e)
+        private void btn_lp2_start_Click(object sender, EventArgs e)
         {
-            Insp_process.Insp_Load();
+            Insp_process.Insp_start(Main_control.MC_unit.Loadport2);
+        }
+
+        private void btn_lp1_load_Click(object sender, EventArgs e)
+        {
+            Insp_process.Insp_Load(Main_control.MC_unit.Loadport1);
+        }
+        private void btn_lp2_load_Click(object sender, EventArgs e)
+        {
+            Insp_process.Insp_Load(Main_control.MC_unit.Loadport2);
         }
     }
 }
