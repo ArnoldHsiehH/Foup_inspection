@@ -16,5 +16,10 @@ namespace new_inspection
         {
             InitializeComponent();
         }
+
+        private void frmManual_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

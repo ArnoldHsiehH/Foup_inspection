@@ -17,6 +17,16 @@ namespace new_inspection
         {
             InitializeComponent();
         }
+        private void frmDashboard_Load(object sender, EventArgs e)
+        {
+            Main_control.percent_update += new Main_control.percent(percent_IU);
+        }
+
+        private void percent_IU(float value)
+        {
+            this.Invoke(new MethodInvoker(delegate () { Progressbar_lp1_c(value); }));
+           
+        }
 
         #region pan controll
         private void btn_Home_Click_1(object sender, EventArgs e)
@@ -57,5 +67,22 @@ namespace new_inspection
         {
             Insp_process.Insp_Load(Main_control.MC_unit.Loadport2);
         }
+
+        private void btn_Progressbar_lp1_Click(object sender, EventArgs e)
+        {
+            Progressbar_lp1_c(0.5f);
+        }
+        public void Progressbar_lp1_c(float value)
+        {
+            if (value > 1.0f)
+                value = 1.0f;
+            else if (value < 0.0f)
+                value = 0.0f;
+
+            btn_Progressbar_lp1.Width = (int)(value * p_Progressbar_lp1.Width) ;
+
+        }
+
+
     }
 }

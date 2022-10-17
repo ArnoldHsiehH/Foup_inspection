@@ -39,18 +39,20 @@ namespace new_inspection
             // trvLog
             // 
             this.trvLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.trvLog.Location = new System.Drawing.Point(31, 121);
+            this.trvLog.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F);
+            this.trvLog.Location = new System.Drawing.Point(29, 140);
             this.trvLog.Name = "trvLog";
-            this.trvLog.Size = new System.Drawing.Size(135, 108);
+            this.trvLog.Size = new System.Drawing.Size(168, 331);
             this.trvLog.TabIndex = 22;
             this.trvLog.DoubleClick += new System.EventHandler(this.trvLog_DoubleClick);
             // 
             // dtpLogStart
             // 
-            this.dtpLogStart.Location = new System.Drawing.Point(31, 33);
+            this.dtpLogStart.CalendarFont = new System.Drawing.Font("Microsoft YaHei UI", 12F);
+            this.dtpLogStart.Location = new System.Drawing.Point(29, 43);
             this.dtpLogStart.MinDate = new System.DateTime(2019, 3, 1, 0, 0, 0, 0);
             this.dtpLogStart.Name = "dtpLogStart";
-            this.dtpLogStart.Size = new System.Drawing.Size(135, 22);
+            this.dtpLogStart.Size = new System.Drawing.Size(168, 22);
             this.dtpLogStart.TabIndex = 1002;
             this.dtpLogStart.Value = new System.DateTime(2019, 3, 25, 16, 13, 9, 0);
             // 
@@ -58,9 +60,9 @@ namespace new_inspection
             // 
             this.btnLogSearch.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
             this.btnLogSearch.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnLogSearch.Location = new System.Drawing.Point(31, 87);
+            this.btnLogSearch.Location = new System.Drawing.Point(29, 106);
             this.btnLogSearch.Name = "btnLogSearch";
-            this.btnLogSearch.Size = new System.Drawing.Size(135, 28);
+            this.btnLogSearch.Size = new System.Drawing.Size(168, 28);
             this.btnLogSearch.TabIndex = 1004;
             this.btnLogSearch.Text = "Search";
             this.btnLogSearch.UseVisualStyleBackColor = true;
@@ -68,18 +70,20 @@ namespace new_inspection
             // 
             // cboDirectory
             // 
+            this.cboDirectory.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.cboDirectory.FormattingEnabled = true;
-            this.cboDirectory.Location = new System.Drawing.Point(31, 61);
+            this.cboDirectory.Location = new System.Drawing.Point(29, 71);
             this.cboDirectory.Name = "cboDirectory";
-            this.cboDirectory.Size = new System.Drawing.Size(135, 20);
+            this.cboDirectory.Size = new System.Drawing.Size(168, 29);
             this.cboDirectory.TabIndex = 1005;
             // 
             // tbctLog
             // 
-            this.tbctLog.Location = new System.Drawing.Point(172, 33);
+            this.tbctLog.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F);
+            this.tbctLog.Location = new System.Drawing.Point(232, 33);
             this.tbctLog.Name = "tbctLog";
             this.tbctLog.SelectedIndex = 0;
-            this.tbctLog.Size = new System.Drawing.Size(764, 540);
+            this.tbctLog.Size = new System.Drawing.Size(1269, 714);
             this.tbctLog.TabIndex = 0;
             // 
             // Log_Read
@@ -93,7 +97,7 @@ namespace new_inspection
             this.Controls.Add(this.trvLog);
             this.Controls.Add(this.tbctLog);
             this.Name = "Log_Read";
-            this.Size = new System.Drawing.Size(982, 619);
+            this.Size = new System.Drawing.Size(1629, 774);
             this.Load += new System.EventHandler(this.Log_Read_Load);
             this.ResumeLayout(false);
 

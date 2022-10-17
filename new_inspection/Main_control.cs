@@ -18,9 +18,13 @@ namespace new_inspection
         private delegate void inspEvent(MC_commend_pack a);
         private static event inspEvent EventInsp;
 
+        public delegate void percent(float value);
+        public static event percent percent_update;
+
         static Queue<Interrupt_commend> Q_IC = new Queue<Interrupt_commend>();
         public void initail()
         {
+
             logwriter.setLogType = logwriter01.LogDir.System;
             logwriter.setDevice_Name = "process";
             logwriter.write_local_log("initail process");
@@ -33,6 +37,8 @@ namespace new_inspection
             EventInsp += new inspEvent(get_commend);
 
         }
+
+        #region commends
         public void Insp_Load(MC_unit Lpunit)
         {
             if (Lpunit == MC_unit.Loadport1 || Lpunit == MC_unit.Loadport2)
@@ -80,6 +86,8 @@ namespace new_inspection
             }
 
         }
+        #endregion
+
         private void Main_process(object Data)//觸發流程啟動
         {
 
@@ -122,7 +130,7 @@ namespace new_inspection
             process_status status = process_status.run;
             job_status job_Status = job_status.free;
             int job_conter = 0;
-
+            percent_update(0);
             #region 執行工作項目
             while (job_conter < job_pack.Count)//執行工作
             {
@@ -176,13 +184,18 @@ namespace new_inspection
                         Motion_thread = new Thread(new ParameterizedThreadStart(Motion_process));
                         Motion_thread.Start(now_job);
                         break;
+
                     case job_status.running://執行中
                         if (!Motion_thread.IsAlive)//確認是否完成
                         {
                             job_Status = job_status.end;
                         }
                         break;
+
                     case job_status.end://指令完成
+                        float F_value = ((float)job_conter + 1) / (float)job_pack.Count;
+                        percent_update(F_value);
+
                         job_conter++;
                         job_Status = job_status.free;
                         //選擇下一則指令
@@ -250,7 +263,6 @@ namespace new_inspection
             job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_CL_Out_L_5 });
             job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_CL_Out_L_6 });
         }
-
 
         class MC_commend_pack// 大的指令
         {

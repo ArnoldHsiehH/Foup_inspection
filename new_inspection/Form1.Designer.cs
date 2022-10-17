@@ -30,11 +30,11 @@ namespace new_inspection
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_About = new System.Windows.Forms.Button();
             this.btn_setting = new System.Windows.Forms.Button();
             this.btn_exit = new System.Windows.Forms.Button();
             this.pnlNav = new System.Windows.Forms.Panel();
             this.btn_error = new System.Windows.Forms.Button();
-            this.btn_About = new System.Windows.Forms.Button();
             this.btn_history = new System.Windows.Forms.Button();
             this.btn_Log = new System.Windows.Forms.Button();
             this.btn_Manual = new System.Windows.Forms.Button();
@@ -94,6 +94,21 @@ namespace new_inspection
             this.panel1.Size = new System.Drawing.Size(200, 1021);
             this.panel1.TabIndex = 3;
             // 
+            // btn_About
+            // 
+            this.btn_About.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_About.FlatAppearance.BorderSize = 0;
+            this.btn_About.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_About.Font = new System.Drawing.Font("Microsoft YaHei UI", 18F);
+            this.btn_About.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btn_About.Location = new System.Drawing.Point(0, 473);
+            this.btn_About.Name = "btn_About";
+            this.btn_About.Size = new System.Drawing.Size(200, 55);
+            this.btn_About.TabIndex = 7;
+            this.btn_About.Text = "About";
+            this.btn_About.UseVisualStyleBackColor = true;
+            this.btn_About.Click += new System.EventHandler(this.btn_About_Click);
+            // 
             // btn_setting
             // 
             this.btn_setting.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -146,21 +161,6 @@ namespace new_inspection
             this.btn_error.Text = "Error";
             this.btn_error.UseVisualStyleBackColor = true;
             this.btn_error.Click += new System.EventHandler(this.btn_error_Click);
-            // 
-            // btn_About
-            // 
-            this.btn_About.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_About.FlatAppearance.BorderSize = 0;
-            this.btn_About.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_About.Font = new System.Drawing.Font("Microsoft YaHei UI", 18F);
-            this.btn_About.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_About.Location = new System.Drawing.Point(0, 473);
-            this.btn_About.Name = "btn_About";
-            this.btn_About.Size = new System.Drawing.Size(200, 55);
-            this.btn_About.TabIndex = 7;
-            this.btn_About.Text = "About";
-            this.btn_About.UseVisualStyleBackColor = true;
-            this.btn_About.Click += new System.EventHandler(this.btn_About_Click);
             // 
             // btn_history
             // 
@@ -320,9 +320,9 @@ namespace new_inspection
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(28, 109);
+            this.button6.Location = new System.Drawing.Point(28, 106);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(113, 23);
+            this.button6.Size = new System.Drawing.Size(113, 29);
             this.button6.TabIndex = 19;
             this.button6.Text = "button6";
             this.button6.UseVisualStyleBackColor = true;

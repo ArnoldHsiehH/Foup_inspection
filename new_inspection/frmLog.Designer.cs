@@ -35,7 +35,7 @@ namespace new_inspection
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 35);
+            this.button1.Location = new System.Drawing.Point(45, 851);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -46,9 +46,9 @@ namespace new_inspection
             // log_Read1
             // 
             this.log_Read1.BackColor = System.Drawing.Color.LightGray;
-            this.log_Read1.Location = new System.Drawing.Point(103, 12);
+            this.log_Read1.Location = new System.Drawing.Point(12, 12);
             this.log_Read1.Name = "log_Read1";
-            this.log_Read1.Size = new System.Drawing.Size(982, 619);
+            this.log_Read1.Size = new System.Drawing.Size(1517, 782);
             this.log_Read1.TabIndex = 1;
             // 
             // frmLog
