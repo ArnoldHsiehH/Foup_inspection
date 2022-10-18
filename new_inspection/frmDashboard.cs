@@ -26,8 +26,16 @@ namespace new_inspection
         #region percent event
         private void percent_IU(float value)
         {
-            this.Invoke(new MethodInvoker(delegate () { Progressbar_lp1_c(value); }));
-           
+            this.Invoke(new MethodInvoker(delegate () { Progressbar_lp1_c(value); }));//百分比
+        }
+        public void Progressbar_lp1_c(float value)
+        {
+            if (value > 1.0f)
+                value = 1.0f;
+            else if (value < 0.0f)
+                value = 0.0f;
+
+            btn_Progressbar_lp1.Width = (int)(value * p_Progressbar_lp1.Width);
         }
         #endregion
 
@@ -56,39 +64,28 @@ namespace new_inspection
 
         private void btn_lp1_start_Click(object sender, EventArgs e)
         {
-            Insp_process.Insp_start(Main_control.MC_unit.Loadport1);
+            Insp_process.Insp_start(Main_control.Loadport.Loadport1);
         }
 
         private void btn_lp2_start_Click(object sender, EventArgs e)
         {
-            Insp_process.Insp_start(Main_control.MC_unit.Loadport2);
+            Insp_process.Insp_start(Main_control.Loadport.Loadport2);
         }
 
         private void btn_lp1_load_Click(object sender, EventArgs e)
         {
-            Insp_process.Insp_Load(Main_control.MC_unit.Loadport1);
+            Insp_process.Insp_Load(Main_control.Loadport.Loadport1);
         }
         private void btn_lp2_load_Click(object sender, EventArgs e)
         {
-            Insp_process.Insp_Load(Main_control.MC_unit.Loadport2);
+            Insp_process.Insp_Load(Main_control.Loadport.Loadport2);
         }
 
         private void btn_Progressbar_lp1_Click(object sender, EventArgs e)
         {
-            Progressbar_lp1_c(0.5f);
+            //Progressbar_lp1_c(0.5f);
         }
         #endregion
-
-        public void Progressbar_lp1_c(float value)
-        {
-            if (value > 1.0f)
-                value = 1.0f;
-            else if (value < 0.0f)
-                value = 0.0f;
-
-            btn_Progressbar_lp1.Width = (int)(value * p_Progressbar_lp1.Width) ;
-        }
-
 
     }
 }

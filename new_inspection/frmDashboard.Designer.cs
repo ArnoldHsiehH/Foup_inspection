@@ -36,6 +36,7 @@ namespace new_inspection
             this.btn_pause = new System.Windows.Forms.Button();
             this.btn_continue = new System.Windows.Forms.Button();
             this.btn_stop = new System.Windows.Forms.Button();
+            this.lbl_LP1_motion = new System.Windows.Forms.Label();
             this.btn_Home = new System.Windows.Forms.Button();
             this.panel_loadport2 = new System.Windows.Forms.Panel();
             this.txt_L2ct = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@ namespace new_inspection
             this.btn_lp1_load = new System.Windows.Forms.Button();
             this.btn_lp1_start = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.lbl_LP1_motion = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
@@ -156,6 +156,17 @@ namespace new_inspection
             this.btn_stop.UseVisualStyleBackColor = true;
             this.btn_stop.Click += new System.EventHandler(this.btn_stop_Click);
             // 
+            // lbl_LP1_motion
+            // 
+            this.lbl_LP1_motion.AutoSize = true;
+            this.lbl_LP1_motion.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_LP1_motion.Location = new System.Drawing.Point(834, 69);
+            this.lbl_LP1_motion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_LP1_motion.Name = "lbl_LP1_motion";
+            this.lbl_LP1_motion.Size = new System.Drawing.Size(85, 28);
+            this.lbl_LP1_motion.TabIndex = 7;
+            this.lbl_LP1_motion.Text = "motion";
+            // 
             // btn_Home
             // 
             this.btn_Home.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -231,7 +242,7 @@ namespace new_inspection
             // txt_L2_foupID
             // 
             this.txt_L2_foupID.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F);
-            this.txt_L2_foupID.Location = new System.Drawing.Point(121, 5);
+            this.txt_L2_foupID.Location = new System.Drawing.Point(109, 5);
             this.txt_L2_foupID.Name = "txt_L2_foupID";
             this.txt_L2_foupID.Size = new System.Drawing.Size(206, 35);
             this.txt_L2_foupID.TabIndex = 8;
@@ -321,7 +332,7 @@ namespace new_inspection
             // txt_L1_foupID
             // 
             this.txt_L1_foupID.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F);
-            this.txt_L1_foupID.Location = new System.Drawing.Point(121, 5);
+            this.txt_L1_foupID.Location = new System.Drawing.Point(109, 5);
             this.txt_L1_foupID.Name = "txt_L1_foupID";
             this.txt_L1_foupID.Size = new System.Drawing.Size(209, 35);
             this.txt_L1_foupID.TabIndex = 5;
@@ -361,17 +372,6 @@ namespace new_inspection
             this.label10.TabIndex = 7;
             this.label10.Text = "Cycle Time:";
             this.label10.Visible = false;
-            // 
-            // lbl_LP1_motion
-            // 
-            this.lbl_LP1_motion.AutoSize = true;
-            this.lbl_LP1_motion.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LP1_motion.Location = new System.Drawing.Point(834, 69);
-            this.lbl_LP1_motion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_LP1_motion.Name = "lbl_LP1_motion";
-            this.lbl_LP1_motion.Size = new System.Drawing.Size(85, 28);
-            this.lbl_LP1_motion.TabIndex = 7;
-            this.lbl_LP1_motion.Text = "motion";
             // 
             // label1
             // 

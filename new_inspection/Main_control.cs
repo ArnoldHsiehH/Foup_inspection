@@ -18,6 +18,9 @@ namespace new_inspection
         private delegate void inspEvent(MC_commend_pack a);
         private static event inspEvent EventInsp;
 
+        private delegate void simpleEvent(job Job);
+        private static event simpleEvent send_simple;
+
         public delegate void percent(float value);
         public static event percent percent_update;
 
@@ -35,24 +38,28 @@ namespace new_inspection
             Motion_thread.IsBackground = true;
 
             EventInsp += new inspEvent(get_commend);
+            send_simple += new simpleEvent(get_sinle_commend);
 
         }
 
         #region commends
-        public void Insp_Load(MC_unit Lpunit)
+        public void Insp_Load(Loadport Lpunit)
         {
-            if (Lpunit == MC_unit.Loadport1 || Lpunit == MC_unit.Loadport2)
-                EventInsp(new MC_commend_pack() { commend = MC_commend.load, LPunit = Lpunit });
+            EventInsp(new MC_commend_pack() { commend = MC_commend.load, LP_unit = Lpunit });
         }
-        public void Insp_start(MC_unit Lpunit)
+        public void Insp_start(Loadport Lpunit)
         {
-            if (Lpunit == MC_unit.Loadport1 || Lpunit == MC_unit.Loadport2)
-                EventInsp(new MC_commend_pack() { commend = MC_commend.insp_start, LPunit = Lpunit, ID = "123456" });//ID: RFID
+            EventInsp(new MC_commend_pack() { commend = MC_commend.insp_start, LP_unit = Lpunit, ID = "123456" });//ID: RFID
         }
         public void Insp_home()
         {
             EventInsp(new MC_commend_pack() { commend = MC_commend.home });
         }
+        public void Insp_cycle()
+        {
+            EventInsp(new MC_commend_pack() { commend = MC_commend.cycle });
+        }
+
         public void Insp_stop()
         {
             if (Main_thread.IsAlive)//如果流程正在進行
@@ -90,21 +97,65 @@ namespace new_inspection
 
         #region 單動 commends
 
-       public void LP_simple(MC_unit loadport,LP_commend commend)
+        public void LP_simple(MC_unit loadport, LP_commend commend)
         {
+            if (Main_thread.IsAlive)
+                return;
+
+
+
             job now_job = new job();
             now_job.unit = loadport;// MC_unit.Loadport1;
             now_job.Loadport_commend = commend;
-            Motion_thread = new Thread(new ParameterizedThreadStart(Motion_process));
-            Motion_thread.Start(now_job);
+            send_simple(now_job);
         }
-        
+        private void get_sinle_commend(job Job)
+        {
+            job new_job = new job();
+            new_job = Job;
+            if (Main_thread.IsAlive)
+            {
+                err_write.write_warnMessage(Error.error_unit.system, "Main_thread is running");
+            }
+            switch (new_job.unit)
+            {
+                case MC_unit.Robot:
+                    break;
+                case MC_unit.Loadport1:
+                    if ((int)new_job.Loadport_commend >= 5)
+                        new_job.Loadport_commend = new_job.Loadport_commend + 0x10;
+                    Motion_thread = new Thread(new ParameterizedThreadStart(Motion_process));
+                    Motion_thread.Start(new_job);
+                    break;
+                case MC_unit.Loadport2:
+                    if ((int)new_job.Loadport_commend >= 5)
+                        new_job.Loadport_commend = (LP_commend)(new_job.Loadport_commend + 0x20);
+                    Motion_thread = new Thread(new ParameterizedThreadStart(Motion_process));
+                    Motion_thread.Start(new_job);
+                    break;
+                case MC_unit.RFID1:
+                    break;
+                case MC_unit.RFID2:
+                    break;
+                case MC_unit.ITRI:
+                    break;
+                case MC_unit.others:
+                    break;
+                case MC_unit.SCES:
+                    break;
+            }
+        }
+
+        private void RB_simple(Main_control.Loadport port, Main_control.RB_commend commend)
+        {
+            EventInsp(new MC_commend_pack() { commend = MC_commend.RBsimple, RB_Commend = commend, LP_unit = port });
+        }
         #endregion
 
         #region 流程控制
         private void Main_process(object Data)//觸發流程啟動
         {
-
+            MC_unit LPunit;
             List<job> job_pack = new List<job>();
 
             MC_commend_pack commend_pack;
@@ -122,21 +173,31 @@ namespace new_inspection
                     job_pack.Add(new job() { unit = MC_unit.Loadport2, Loadport_commend = LP_commend.ORGN });
                     break;
                 case MC_commend.load:     //建立工作項目: Load
-
+                    LPunit = (commend_pack.LP_unit == Loadport.Loadport1) ? MC_unit.Loadport1 : MC_unit.unknow;
+                    LPunit = (commend_pack.LP_unit == Loadport.Loadport2) ? MC_unit.Loadport2 : LPunit;
+                    if (LPunit == MC_unit.unknow)
+                        return;
                     job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.home1 });
                     job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.home });
                     job_pack.Add(new job() { unit = MC_unit.RFID1, RFID_commend = RF_commend.L1_RFID_read });
-                    job_pack.Add(new job() { unit = commend_pack.LPunit, Loadport_commend = LP_commend.ORGN });
-                    job_pack.Add(new job() { unit = commend_pack.LPunit, Loadport_commend = LP_commend.LOAD });
+                    job_pack.Add(new job() { unit = LPunit, Loadport_commend = LP_commend.ORGN });
+                    job_pack.Add(new job() { unit = LPunit, Loadport_commend = LP_commend.LOAD });
 
                     break;
                 case MC_commend.insp_start://建立工作項目: 掃描
                     Creat_ins_jobs(commend_pack, ref job_pack);
                     break;
                 case MC_commend.clamp:
-                    job_pack.Add(new job() { unit = commend_pack.LPunit, Loadport_commend = LP_commend.ORGN });
-                    job_pack.Add(new job() { unit = commend_pack.LPunit, Loadport_commend = LP_commend.L1_Clamp });
-
+                    LPunit = (commend_pack.LP_unit == Loadport.Loadport1) ? MC_unit.Loadport1 : MC_unit.unknow;
+                    LPunit = (commend_pack.LP_unit == Loadport.Loadport2) ? MC_unit.Loadport2 : LPunit;
+                    if (LPunit == MC_unit.unknow)
+                        return;
+                    job_pack.Add(new job() { unit = LPunit, Loadport_commend = LP_commend.ORGN });
+                    job_pack.Add(new job() { unit = LPunit, Loadport_commend = LP_commend.L1_Clamp });
+                    break;
+                case MC_commend.RBsimple:
+                    break;
+                case MC_commend.cycle://cycle
                     break;
             }//建立工作項目
             #endregion
@@ -148,15 +209,22 @@ namespace new_inspection
 
             if (Motion_thread.IsAlive)
             {
-
-                err_write.write_warnMessage(Error.error_unit.system, "Motion busy");
                 //異常:還有動作執行中(單動)
+                err_write.write_warnMessage(Error.error_unit.system, "Motion busy");
                 return;
             }
 
             #region 執行工作項目
             while (job_conter < job_pack.Count)//執行工作
             {
+                #region 異常
+                if (err_write.check_error)//異常產生
+                {
+                    err_write.write_warnMessage(Error.error_unit.system, "please reast error");
+                    break;
+                }
+                #endregion
+
                 #region 外部控制
                 if (Q_IC.Count > 0)
                 {
@@ -172,7 +240,7 @@ namespace new_inspection
                             break;
                         case Interrupt_commend.insp_continue:
                             logwriter.write_local_log("process continue");
-                            status = status = process_status.run;//如果原始為wait(?)                           
+                            status = process_status.run;//如果原始為wait(?)                           
                             break;
                     }
                     Q_IC.Clear();
@@ -185,14 +253,6 @@ namespace new_inspection
 
                 #endregion
 
-                #region 異常
-                if (err_write.check_error)//異常產生
-                {
-                    err_write.write_warnMessage(Error.error_unit.system, "please reast error");
-                    break;
-                }
-                #endregion
-
                 #region 執行
                 job now_job = job_pack[job_conter];
                 switch (job_Status)
@@ -201,7 +261,7 @@ namespace new_inspection
                         if (Motion_thread.IsAlive)
                         {
                             //還有動作執行中
-                           // break;
+                            // break;
                         }
 
                         job_Status = job_status.running;
@@ -272,13 +332,17 @@ namespace new_inspection
         }
         #endregion
 
+
         private void Creat_ins_jobs(MC_commend_pack commend_pack, ref List<job> job_pack)
         {
-            if (commend_pack.LPunit == MC_unit.Loadport1)
-            { }
+            MC_unit LPunit;
+            LPunit = (commend_pack.LP_unit == Loadport.Loadport1) ? MC_unit.Loadport1 : MC_unit.unknow;
+            LPunit = (commend_pack.LP_unit == Loadport.Loadport2) ? MC_unit.Loadport2 : LPunit;
+            if (LPunit == MC_unit.unknow)
+                return;
             job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.home1 });
             job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.home });
-            job_pack.Add(new job() { unit = commend_pack.LPunit, Loadport_commend = LP_commend.LOAD });
+            job_pack.Add(new job() { unit = LPunit, Loadport_commend = LP_commend.LOAD });
             job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_Snorkel_L });
             job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_Snorkel_R });
             job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_Lach_L });
@@ -294,20 +358,11 @@ namespace new_inspection
         class MC_commend_pack// 大的指令
         {
             public MC_commend commend;
-            public MC_unit LPunit;
+            public Loadport LP_unit;
+            public RB_commend RB_Commend;
             public string ID;
         }
-        public enum MC_unit
-        {
-            unknow,
-            Robot,
-            Loadport1,
-            Loadport2,
-            RFID1,
-            RFID2,
-            ITRI,
-            SCES
-        }
+
         class job//for job psck
         {
             public MC_unit unit { get; set; }
@@ -330,6 +385,24 @@ namespace new_inspection
             public string ins { get; set; }
             public int foupType { get; set; }
 
+        }
+        public enum MC_unit
+        {
+            unknow,
+            Robot,
+            Loadport1,
+            Loadport2,
+            RFID1,
+            RFID2,
+            ITRI,
+            others,
+            SCES
+        }
+        public enum Loadport
+        {
+            unknow,
+            Loadport1,
+            Loadport2
         }
         enum RF_commend
         {
@@ -375,6 +448,23 @@ namespace new_inspection
             INSP2,
             INSP3,
 
+            Clamp = 0x100,
+            unClamp,
+            Duck,
+            unDuck,
+            PurgeOn,
+            PurgeOff,
+            VacOn,
+            VacOff,
+            Latch,
+            unLatch,
+            cover_open,//jog
+            cover_close,//jog
+            DoorUp,
+            DoorDn,
+            A300Up,
+            A300Dn,
+
             L1_Clamp = 0x110,
             L1_unClamp,
             L1_Duck,
@@ -412,7 +502,7 @@ namespace new_inspection
         #endregion
 
         #region RB_commend
-        enum RB_commend
+        public enum RB_commend
         {
             none = 0x00,
             /// <summary>
@@ -420,6 +510,7 @@ namespace new_inspection
             /// </summary>
             home = 0x001,
             home1 = 2,
+            select,
 
             RB_L1_Lach_L = 101,
             RB_L1_Lach_R,
@@ -565,7 +656,8 @@ namespace new_inspection
             clamp,
             insp_start,
             insp_stop,
-            simple_commend
+            cycle,
+            RBsimple
         }
     }
 

@@ -122,6 +122,11 @@ namespace new_inspection
             this.label16 = new System.Windows.Forms.Label();
             this.btn_p2_RF_c = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.ckb_uld = new System.Windows.Forms.CheckBox();
+            this.ckb_LP2 = new System.Windows.Forms.CheckBox();
+            this.ckb_rfid = new System.Windows.Forms.CheckBox();
+            this.ckb_Camera = new System.Windows.Forms.CheckBox();
+            this.ckb_LP1 = new System.Windows.Forms.CheckBox();
             this.button3 = new System.Windows.Forms.Button();
             this.btn_cycleStart = new System.Windows.Forms.Button();
             this.txt_conter = new System.Windows.Forms.TextBox();
@@ -137,11 +142,6 @@ namespace new_inspection
             this.panel_control = new System.Windows.Forms.Panel();
             this.btn_stop = new System.Windows.Forms.Button();
             this.btn_Home = new System.Windows.Forms.Button();
-            this.ckb_LP1 = new System.Windows.Forms.CheckBox();
-            this.ckb_LP2 = new System.Windows.Forms.CheckBox();
-            this.ckb_uld = new System.Windows.Forms.CheckBox();
-            this.ckb_Camera = new System.Windows.Forms.CheckBox();
-            this.ckb_rfid = new System.Windows.Forms.CheckBox();
             this.panel7.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -158,9 +158,9 @@ namespace new_inspection
             // 
             this.panel7.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel7.Controls.Add(this.panel2);
-            this.panel7.Location = new System.Drawing.Point(26, 358);
+            this.panel7.Location = new System.Drawing.Point(328, 308);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(816, 476);
+            this.panel7.Size = new System.Drawing.Size(800, 476);
             this.panel7.TabIndex = 22;
             // 
             // panel2
@@ -172,7 +172,7 @@ namespace new_inspection
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(809, 476);
+            this.panel2.Size = new System.Drawing.Size(789, 476);
             this.panel2.TabIndex = 22;
             // 
             // panel4
@@ -184,7 +184,7 @@ namespace new_inspection
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(520, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(282, 476);
+            this.panel4.Size = new System.Drawing.Size(257, 476);
             this.panel4.TabIndex = 5;
             // 
             // btn_port2start
@@ -832,9 +832,9 @@ namespace new_inspection
             this.panel1.Controls.Add(this.btn_Ynegative);
             this.panel1.Controls.Add(this.btn_Zpositive);
             this.panel1.Controls.Add(this.btn_Xnegative);
-            this.panel1.Location = new System.Drawing.Point(1145, 106);
+            this.panel1.Location = new System.Drawing.Point(1134, 96);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(506, 728);
+            this.panel1.Size = new System.Drawing.Size(506, 688);
             this.panel1.TabIndex = 23;
             // 
             // lbl_RBspeed
@@ -879,6 +879,7 @@ namespace new_inspection
             this.btn_robotStart.TabIndex = 5;
             this.btn_robotStart.Text = "Start";
             this.btn_robotStart.UseVisualStyleBackColor = false;
+            this.btn_robotStart.Click += new System.EventHandler(this.btn_robotStart_Click);
             // 
             // btn_disn
             // 
@@ -1376,7 +1377,7 @@ namespace new_inspection
             this.btn_p2_RF_r.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_p2_RF_r.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_p2_RF_r.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_p2_RF_r.Location = new System.Drawing.Point(365, 82);
+            this.btn_p2_RF_r.Location = new System.Drawing.Point(365, 83);
             this.btn_p2_RF_r.Name = "btn_p2_RF_r";
             this.btn_p2_RF_r.Size = new System.Drawing.Size(110, 45);
             this.btn_p2_RF_r.TabIndex = 5;
@@ -1397,7 +1398,7 @@ namespace new_inspection
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(12, 7);
+            this.label15.Location = new System.Drawing.Point(7, 6);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(93, 30);
@@ -1412,7 +1413,7 @@ namespace new_inspection
             this.btn_p1_RF_c.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_p1_RF_c.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_p1_RF_c.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_p1_RF_c.Location = new System.Drawing.Point(17, 84);
+            this.btn_p1_RF_c.Location = new System.Drawing.Point(12, 83);
             this.btn_p1_RF_c.Name = "btn_p1_RF_c";
             this.btn_p1_RF_c.Size = new System.Drawing.Size(110, 45);
             this.btn_p1_RF_c.TabIndex = 5;
@@ -1422,7 +1423,7 @@ namespace new_inspection
             // txt_L1_RF_Console
             // 
             this.txt_L1_RF_Console.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
-            this.txt_L1_RF_Console.Location = new System.Drawing.Point(17, 45);
+            this.txt_L1_RF_Console.Location = new System.Drawing.Point(12, 44);
             this.txt_L1_RF_Console.Multiline = true;
             this.txt_L1_RF_Console.Name = "txt_L1_RF_Console";
             this.txt_L1_RF_Console.ReadOnly = true;
@@ -1437,7 +1438,7 @@ namespace new_inspection
             this.btn_p1_RF_r.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_p1_RF_r.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_p1_RF_r.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_p1_RF_r.Location = new System.Drawing.Point(133, 84);
+            this.btn_p1_RF_r.Location = new System.Drawing.Point(128, 83);
             this.btn_p1_RF_r.Name = "btn_p1_RF_r";
             this.btn_p1_RF_r.Size = new System.Drawing.Size(110, 45);
             this.btn_p1_RF_r.TabIndex = 5;
@@ -1448,7 +1449,7 @@ namespace new_inspection
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(244, 6);
+            this.label16.Location = new System.Drawing.Point(244, 7);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(93, 30);
@@ -1484,14 +1485,74 @@ namespace new_inspection
             this.panel8.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.panel8.Location = new System.Drawing.Point(26, 96);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(296, 195);
+            this.panel8.Size = new System.Drawing.Size(282, 206);
             this.panel8.TabIndex = 43;
+            // 
+            // ckb_uld
+            // 
+            this.ckb_uld.AutoSize = true;
+            this.ckb_uld.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
+            this.ckb_uld.Location = new System.Drawing.Point(55, 99);
+            this.ckb_uld.Name = "ckb_uld";
+            this.ckb_uld.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ckb_uld.Size = new System.Drawing.Size(86, 25);
+            this.ckb_uld.TabIndex = 39;
+            this.ckb_uld.Text = "unLoad";
+            this.ckb_uld.UseVisualStyleBackColor = true;
+            // 
+            // ckb_LP2
+            // 
+            this.ckb_LP2.AutoSize = true;
+            this.ckb_LP2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
+            this.ckb_LP2.Location = new System.Drawing.Point(29, 78);
+            this.ckb_LP2.Name = "ckb_LP2";
+            this.ckb_LP2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ckb_LP2.Size = new System.Drawing.Size(112, 25);
+            this.ckb_LP2.TabIndex = 39;
+            this.ckb_LP2.Text = "Loadport 2";
+            this.ckb_LP2.UseVisualStyleBackColor = true;
+            // 
+            // ckb_rfid
+            // 
+            this.ckb_rfid.AutoSize = true;
+            this.ckb_rfid.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
+            this.ckb_rfid.Location = new System.Drawing.Point(192, 78);
+            this.ckb_rfid.Name = "ckb_rfid";
+            this.ckb_rfid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ckb_rfid.Size = new System.Drawing.Size(65, 25);
+            this.ckb_rfid.TabIndex = 39;
+            this.ckb_rfid.Text = "RFID";
+            this.ckb_rfid.UseVisualStyleBackColor = true;
+            // 
+            // ckb_Camera
+            // 
+            this.ckb_Camera.AutoSize = true;
+            this.ckb_Camera.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
+            this.ckb_Camera.Location = new System.Drawing.Point(169, 53);
+            this.ckb_Camera.Name = "ckb_Camera";
+            this.ckb_Camera.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ckb_Camera.Size = new System.Drawing.Size(88, 25);
+            this.ckb_Camera.TabIndex = 39;
+            this.ckb_Camera.Text = "Camera";
+            this.ckb_Camera.UseVisualStyleBackColor = true;
+            // 
+            // ckb_LP1
+            // 
+            this.ckb_LP1.AutoSize = true;
+            this.ckb_LP1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
+            this.ckb_LP1.Location = new System.Drawing.Point(29, 53);
+            this.ckb_LP1.Name = "ckb_LP1";
+            this.ckb_LP1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ckb_LP1.Size = new System.Drawing.Size(112, 25);
+            this.ckb_LP1.TabIndex = 39;
+            this.ckb_LP1.Text = "Loadport 1";
+            this.ckb_LP1.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button3.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(156, 134);
+            this.button3.Location = new System.Drawing.Point(147, 146);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(110, 50);
             this.button3.TabIndex = 14;
@@ -1503,7 +1564,7 @@ namespace new_inspection
             // 
             this.btn_cycleStart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_cycleStart.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cycleStart.Location = new System.Drawing.Point(31, 134);
+            this.btn_cycleStart.Location = new System.Drawing.Point(31, 146);
             this.btn_cycleStart.Name = "btn_cycleStart";
             this.btn_cycleStart.Size = new System.Drawing.Size(110, 50);
             this.btn_cycleStart.TabIndex = 14;
@@ -1514,7 +1575,7 @@ namespace new_inspection
             // txt_conter
             // 
             this.txt_conter.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
-            this.txt_conter.Location = new System.Drawing.Point(156, 105);
+            this.txt_conter.Location = new System.Drawing.Point(167, 105);
             this.txt_conter.Name = "txt_conter";
             this.txt_conter.Size = new System.Drawing.Size(90, 23);
             this.txt_conter.TabIndex = 38;
@@ -1524,7 +1585,7 @@ namespace new_inspection
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(24, 18);
+            this.label4.Location = new System.Drawing.Point(7, 7);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 30);
@@ -1540,7 +1601,7 @@ namespace new_inspection
             this.panel6.Controls.Add(this.btn_103);
             this.panel6.Controls.Add(this.btn_F100);
             this.panel6.Controls.Add(this.label14);
-            this.panel6.Location = new System.Drawing.Point(862, 358);
+            this.panel6.Location = new System.Drawing.Point(26, 308);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(251, 318);
             this.panel6.TabIndex = 41;
@@ -1548,7 +1609,7 @@ namespace new_inspection
             // txt_camera_Console
             // 
             this.txt_camera_Console.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
-            this.txt_camera_Console.Location = new System.Drawing.Point(9, 45);
+            this.txt_camera_Console.Location = new System.Drawing.Point(12, 59);
             this.txt_camera_Console.Multiline = true;
             this.txt_camera_Console.Name = "txt_camera_Console";
             this.txt_camera_Console.ReadOnly = true;
@@ -1563,7 +1624,7 @@ namespace new_inspection
             this.btn_f101.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_f101.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_f101.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_f101.Location = new System.Drawing.Point(125, 190);
+            this.btn_f101.Location = new System.Drawing.Point(12, 201);
             this.btn_f101.Name = "btn_f101";
             this.btn_f101.Size = new System.Drawing.Size(110, 45);
             this.btn_f101.TabIndex = 5;
@@ -1579,7 +1640,7 @@ namespace new_inspection
             this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button1.Location = new System.Drawing.Point(9, 241);
+            this.button1.Location = new System.Drawing.Point(12, 255);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 45);
             this.button1.TabIndex = 5;
@@ -1595,7 +1656,7 @@ namespace new_inspection
             this.btn_F200.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_F200.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_F200.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_F200.Location = new System.Drawing.Point(9, 190);
+            this.btn_F200.Location = new System.Drawing.Point(128, 153);
             this.btn_F200.Name = "btn_F200";
             this.btn_F200.Size = new System.Drawing.Size(110, 45);
             this.btn_F200.TabIndex = 5;
@@ -1610,7 +1671,7 @@ namespace new_inspection
             this.btn_103.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_103.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_103.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_103.Location = new System.Drawing.Point(9, 139);
+            this.btn_103.Location = new System.Drawing.Point(12, 153);
             this.btn_103.Name = "btn_103";
             this.btn_103.Size = new System.Drawing.Size(110, 45);
             this.btn_103.TabIndex = 5;
@@ -1625,7 +1686,7 @@ namespace new_inspection
             this.btn_F100.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_F100.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_F100.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_F100.Location = new System.Drawing.Point(125, 140);
+            this.btn_F100.Location = new System.Drawing.Point(128, 201);
             this.btn_F100.Name = "btn_F100";
             this.btn_F100.Size = new System.Drawing.Size(110, 45);
             this.btn_F100.TabIndex = 5;
@@ -1637,7 +1698,7 @@ namespace new_inspection
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(4, 7);
+            this.label14.Location = new System.Drawing.Point(7, 14);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(93, 30);
@@ -1678,66 +1739,6 @@ namespace new_inspection
             this.btn_Home.Text = "Home";
             this.btn_Home.UseVisualStyleBackColor = true;
             this.btn_Home.Click += new System.EventHandler(this.btn_Home_Click);
-            // 
-            // ckb_LP1
-            // 
-            this.ckb_LP1.AutoSize = true;
-            this.ckb_LP1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.ckb_LP1.Location = new System.Drawing.Point(29, 53);
-            this.ckb_LP1.Name = "ckb_LP1";
-            this.ckb_LP1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ckb_LP1.Size = new System.Drawing.Size(112, 25);
-            this.ckb_LP1.TabIndex = 39;
-            this.ckb_LP1.Text = "Loadport 1";
-            this.ckb_LP1.UseVisualStyleBackColor = true;
-            // 
-            // ckb_LP2
-            // 
-            this.ckb_LP2.AutoSize = true;
-            this.ckb_LP2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.ckb_LP2.Location = new System.Drawing.Point(29, 78);
-            this.ckb_LP2.Name = "ckb_LP2";
-            this.ckb_LP2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ckb_LP2.Size = new System.Drawing.Size(112, 25);
-            this.ckb_LP2.TabIndex = 39;
-            this.ckb_LP2.Text = "Loadport 2";
-            this.ckb_LP2.UseVisualStyleBackColor = true;
-            // 
-            // ckb_uld
-            // 
-            this.ckb_uld.AutoSize = true;
-            this.ckb_uld.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.ckb_uld.Location = new System.Drawing.Point(55, 99);
-            this.ckb_uld.Name = "ckb_uld";
-            this.ckb_uld.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ckb_uld.Size = new System.Drawing.Size(86, 25);
-            this.ckb_uld.TabIndex = 39;
-            this.ckb_uld.Text = "unLoad";
-            this.ckb_uld.UseVisualStyleBackColor = true;
-            // 
-            // ckb_Camera
-            // 
-            this.ckb_Camera.AutoSize = true;
-            this.ckb_Camera.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.ckb_Camera.Location = new System.Drawing.Point(156, 53);
-            this.ckb_Camera.Name = "ckb_Camera";
-            this.ckb_Camera.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ckb_Camera.Size = new System.Drawing.Size(88, 25);
-            this.ckb_Camera.TabIndex = 39;
-            this.ckb_Camera.Text = "Camera";
-            this.ckb_Camera.UseVisualStyleBackColor = true;
-            // 
-            // ckb_rfid
-            // 
-            this.ckb_rfid.AutoSize = true;
-            this.ckb_rfid.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.ckb_rfid.Location = new System.Drawing.Point(179, 78);
-            this.ckb_rfid.Name = "ckb_rfid";
-            this.ckb_rfid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ckb_rfid.Size = new System.Drawing.Size(65, 25);
-            this.ckb_rfid.TabIndex = 39;
-            this.ckb_rfid.Text = "RFID";
-            this.ckb_rfid.UseVisualStyleBackColor = true;
             // 
             // frmManual
             // 
