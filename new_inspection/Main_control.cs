@@ -9,7 +9,7 @@ namespace new_inspection
 {
     class Main_control
     {
-        logwriter01 logwriter = new logwriter01();
+        static logwriter01 logwriter = new logwriter01();
         Error err_write = new Error();
 
         private static Thread Main_thread;
@@ -88,6 +88,20 @@ namespace new_inspection
         }
         #endregion
 
+        #region 單動 commends
+
+       public void LP_simple(MC_unit loadport,LP_commend commend)
+        {
+            job now_job = new job();
+            now_job.unit = loadport;// MC_unit.Loadport1;
+            now_job.Loadport_commend = commend;
+            Motion_thread = new Thread(new ParameterizedThreadStart(Motion_process));
+            Motion_thread.Start(now_job);
+        }
+        
+        #endregion
+
+        #region 流程控制
         private void Main_process(object Data)//觸發流程啟動
         {
 
@@ -131,6 +145,15 @@ namespace new_inspection
             job_status job_Status = job_status.free;
             int job_conter = 0;
             percent_update(0);
+
+            if (Motion_thread.IsAlive)
+            {
+
+                err_write.write_warnMessage(Error.error_unit.system, "Motion busy");
+                //異常:還有動作執行中(單動)
+                return;
+            }
+
             #region 執行工作項目
             while (job_conter < job_pack.Count)//執行工作
             {
@@ -152,6 +175,7 @@ namespace new_inspection
                             status = status = process_status.run;//如果原始為wait(?)                           
                             break;
                     }
+                    Q_IC.Clear();
                 }
 
                 if (status == process_status.stop)
@@ -176,8 +200,8 @@ namespace new_inspection
                     case job_status.free://下達命令
                         if (Motion_thread.IsAlive)
                         {
-                            //異常:還有動作執行中
-                            break;
+                            //還有動作執行中
+                           // break;
                         }
 
                         job_Status = job_status.running;
@@ -212,7 +236,9 @@ namespace new_inspection
             #endregion
 
         }
+        #endregion
 
+        #region 單動控制
         private void Motion_process(object Data)
         {
             job now_job = (job)Data;
@@ -244,6 +270,7 @@ namespace new_inspection
 
             Thread.Sleep(1000);
         }
+        #endregion
 
         private void Creat_ins_jobs(MC_commend_pack commend_pack, ref List<job> job_pack)
         {
@@ -339,7 +366,7 @@ namespace new_inspection
         }
 
         #region Loadport_commend
-        enum LP_commend
+        public enum LP_commend
         {
             none = 0x00,
             ORGN = 0x01,
