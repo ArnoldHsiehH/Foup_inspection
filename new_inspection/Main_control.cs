@@ -96,15 +96,47 @@ namespace new_inspection
 
         #region 單動 commends
 
+        public void RF_check(Loadport port)
+        {
+            job now_job = new job();
+            switch (port)
+            {
+                case Loadport.Loadport1:
+                    now_job.unit = MC_unit.RFID1;
+                    now_job.RFID_commend = RF_commend.L1_RFIDcheck;
+                    break;
+
+                case Loadport.Loadport2:
+                    now_job.unit = MC_unit.RFID2;
+                    now_job.RFID_commend = RF_commend.L2_RFIDcheck;
+                    break;
+            }
+            send_simple(now_job);
+
+        }
+        public void RF_read(Loadport port)
+        {
+            job now_job = new job();
+            switch (port)
+            {
+                case Loadport.Loadport1:
+                    now_job.unit = MC_unit.RFID1;
+                    now_job.RFID_commend = RF_commend.L1_RFID_read;
+                    break;
+
+                case Loadport.Loadport2:
+                    now_job.unit = MC_unit.RFID2;
+                    now_job.RFID_commend = RF_commend.L2_RFID_read;
+                    break;
+            }
+            send_simple(now_job);
+
+        }
         public void LP_simple(MC_unit loadport, LP_commend commend)
         {
-            if (Main_thread.IsAlive)
-                return;
-
-
 
             job now_job = new job();
-            now_job.unit = loadport;// MC_unit.Loadport1;
+            now_job.unit = loadport;        // MC_unit.Loadport1;
             now_job.Loadport_commend = commend;
             send_simple(now_job);
         }
@@ -115,26 +147,28 @@ namespace new_inspection
             if (Main_thread.IsAlive)
             {
                 err_write.write_warnMessage(Error.error_unit.system, "Main_thread is running");
+                return;
             }
             switch (new_job.unit)
             {
                 case MC_unit.Robot:
                     break;
                 case MC_unit.Loadport1:
-                    if ((int)new_job.Loadport_commend >= 5)
+                    if ((int)new_job.Loadport_commend > 5)
                         new_job.Loadport_commend = new_job.Loadport_commend + 0x10;
                     Motion_thread = new Thread(new ParameterizedThreadStart(Motion_process));
                     Motion_thread.Start(new_job);
                     break;
                 case MC_unit.Loadport2:
-                    if ((int)new_job.Loadport_commend >= 5)
+                    if ((int)new_job.Loadport_commend > 5)
                         new_job.Loadport_commend = (LP_commend)(new_job.Loadport_commend + 0x20);
                     Motion_thread = new Thread(new ParameterizedThreadStart(Motion_process));
                     Motion_thread.Start(new_job);
                     break;
                 case MC_unit.RFID1:
-                    break;
                 case MC_unit.RFID2:
+                    Motion_thread = new Thread(new ParameterizedThreadStart(Motion_process));
+                    Motion_thread.Start(new_job);
                     break;
                 case MC_unit.ITRI:
                     break;
@@ -152,10 +186,11 @@ namespace new_inspection
         #endregion
 
         #region 流程控制
+
         private void Main_process(object Data)//觸發流程啟動
         {
 
-            MC_unit LPunit;
+            MC_unit LPunit = MC_unit.unknow;
             List<job> job_pack = new List<job>();
 
             MC_commend_pack commend_pack;
@@ -187,7 +222,7 @@ namespace new_inspection
                     Creat_ins_jobs(commend_pack, ref job_pack);
                     break;
                 case MC_commend.clamp:
-                    LPunit = (commend_pack.LP_unit == Loadport.Loadport1) ? MC_unit.Loadport1 : MC_unit.unknow;
+                    LPunit = (commend_pack.LP_unit == Loadport.Loadport1) ? MC_unit.Loadport1 : LPunit;
                     LPunit = (commend_pack.LP_unit == Loadport.Loadport2) ? MC_unit.Loadport2 : LPunit;
                     if (LPunit == MC_unit.unknow)
                         return;
@@ -296,6 +331,30 @@ namespace new_inspection
             #endregion
 
         }
+
+        private void Creat_ins_jobs(MC_commend_pack commend_pack, ref List<job> job_pack)
+        {
+            MC_unit LPunit;
+            LPunit = (commend_pack.LP_unit == Loadport.Loadport1) ? MC_unit.Loadport1 : MC_unit.unknow;
+            LPunit = (commend_pack.LP_unit == Loadport.Loadport2) ? MC_unit.Loadport2 : LPunit;
+            if (LPunit == MC_unit.unknow)
+                return;
+            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.home1 });
+            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.home });
+            job_pack.Add(new job() { unit = LPunit, Loadport_commend = LP_commend.LOAD });
+            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_Snorkel_L });
+            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_Snorkel_R });
+            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_Lach_L });
+            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_Lach_R });
+            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_CL_Out_L_1 });
+            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_CL_Out_L_2 });
+            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_CL_Out_L_3 });
+            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_CL_Out_L_4 });
+            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_CL_Out_L_5 });
+            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_CL_Out_L_6 });
+        }
+
+
         #endregion
 
         #region 單動控制
@@ -333,27 +392,6 @@ namespace new_inspection
         #endregion
 
 
-        private void Creat_ins_jobs(MC_commend_pack commend_pack, ref List<job> job_pack)
-        {
-            MC_unit LPunit;
-            LPunit = (commend_pack.LP_unit == Loadport.Loadport1) ? MC_unit.Loadport1 : MC_unit.unknow;
-            LPunit = (commend_pack.LP_unit == Loadport.Loadport2) ? MC_unit.Loadport2 : LPunit;
-            if (LPunit == MC_unit.unknow)
-                return;
-            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.home1 });
-            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.home });
-            job_pack.Add(new job() { unit = LPunit, Loadport_commend = LP_commend.LOAD });
-            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_Snorkel_L });
-            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_Snorkel_R });
-            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_Lach_L });
-            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_Lach_R });
-            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_CL_Out_L_1 });
-            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_CL_Out_L_2 });
-            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_CL_Out_L_3 });
-            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_CL_Out_L_4 });
-            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_CL_Out_L_5 });
-            job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = RB_commend.RB_L1_CL_Out_L_6 });
-        }
 
         class MC_commend_pack// 大的指令
         {

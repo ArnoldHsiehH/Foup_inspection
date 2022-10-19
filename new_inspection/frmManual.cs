@@ -73,7 +73,7 @@ namespace new_inspection
 
         private void btn_cycleStart_Click(object sender, EventArgs e)
         {
-
+            Insp_process.Insp_start(Main_control.Loadport.Loadport1);
         }
 
         #region Loadport
@@ -94,13 +94,14 @@ namespace new_inspection
 
         private void btn_port1start_Click_1(object sender, EventArgs e)
         {
-            LP_simple(Main_control.MC_unit.Loadport1, lsb_portmotion.SelectedItem.ToString());
-
+            if (lsb_portmotion.SelectedItems.Count == 1)
+                LP_simple(Main_control.MC_unit.Loadport1, lsb_portmotion.SelectedItem.ToString());
         }
 
         private void btn_port2start_Click(object sender, EventArgs e)
         {
-            LP_simple(Main_control.MC_unit.Loadport2, lsb_portmotion.SelectedItem.ToString());
+            if (lsb_portmotion.SelectedItems.Count == 1)
+                LP_simple(Main_control.MC_unit.Loadport2, lsb_portmotion.SelectedItem.ToString());
         }
 
         void LP_simple(Main_control.MC_unit unit, string txt)
@@ -177,8 +178,11 @@ namespace new_inspection
         #endregion
 
         #region Robot
+
         private void btn_robotStart_Click(object sender, EventArgs e)
         {
+            if (lsb_rbmotion.SelectedItems.Count != 1 && lsb_port.SelectedItems.Count != 1)
+                return;
             int shift = 0;
             Main_control.Loadport port = Main_control.Loadport.unknow;
             Main_control.RB_commend commend = Main_control.RB_commend.none;
@@ -187,7 +191,7 @@ namespace new_inspection
             else if (lsb_port.SelectedItem.ToString() == "port2")
             {
                 port = Main_control.Loadport.Loadport2;
-                shift =900;
+                shift = 900;
             }
             else
                 return;
@@ -362,5 +366,30 @@ namespace new_inspection
 
         }
         #endregion
+
+        #region RFID
+
+        private void btn_p1_RF_r_Click(object sender, EventArgs e)
+        {
+            Insp_process.RF_read(Main_control.Loadport.Loadport1);
+        }
+
+        private void btn_p1_RF_c_Click(object sender, EventArgs e)
+        {
+            Insp_process.RF_check(Main_control.Loadport.Loadport1);
+        }
+
+        private void btn_p2_RF_r_Click(object sender, EventArgs e)
+        {
+            Insp_process.RF_read(Main_control.Loadport.Loadport2);
+        }
+
+        private void btn_p2_RF_c_Click(object sender, EventArgs e)
+        {
+            Insp_process.RF_check(Main_control.Loadport.Loadport2);
+        }
+
+        #endregion
+
     }
 }

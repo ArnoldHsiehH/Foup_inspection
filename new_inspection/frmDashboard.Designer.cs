@@ -190,7 +190,7 @@ namespace new_inspection
             this.panel_loadport2.Location = new System.Drawing.Point(385, 0);
             this.panel_loadport2.Margin = new System.Windows.Forms.Padding(0);
             this.panel_loadport2.Name = "panel_loadport2";
-            this.panel_loadport2.Size = new System.Drawing.Size(385, 276);
+            this.panel_loadport2.Size = new System.Drawing.Size(385, 243);
             this.panel_loadport2.TabIndex = 40;
             // 
             // txt_L2ct
@@ -292,7 +292,7 @@ namespace new_inspection
             this.panel_loadport1.Location = new System.Drawing.Point(0, 0);
             this.panel_loadport1.Margin = new System.Windows.Forms.Padding(0);
             this.panel_loadport1.Name = "panel_loadport1";
-            this.panel_loadport1.Size = new System.Drawing.Size(385, 276);
+            this.panel_loadport1.Size = new System.Drawing.Size(385, 243);
             this.panel_loadport1.TabIndex = 39;
             // 
             // txt_L1ct
@@ -423,9 +423,9 @@ namespace new_inspection
             this.LB_ins_result.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.LB_ins_result.FormattingEnabled = true;
             this.LB_ins_result.ItemHeight = 21;
-            this.LB_ins_result.Location = new System.Drawing.Point(14, 286);
+            this.LB_ins_result.Location = new System.Drawing.Point(14, 265);
             this.LB_ins_result.Name = "LB_ins_result";
-            this.LB_ins_result.Size = new System.Drawing.Size(732, 424);
+            this.LB_ins_result.Size = new System.Drawing.Size(732, 445);
             this.LB_ins_result.TabIndex = 41;
             // 
             // frmDashboard

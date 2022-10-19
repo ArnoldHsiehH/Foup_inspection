@@ -834,7 +834,7 @@ namespace new_inspection
             this.panel1.Controls.Add(this.btn_Xnegative);
             this.panel1.Location = new System.Drawing.Point(1134, 96);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(506, 688);
+            this.panel1.Size = new System.Drawing.Size(419, 688);
             this.panel1.TabIndex = 23;
             // 
             // lbl_RBspeed
@@ -858,7 +858,7 @@ namespace new_inspection
             this.btn_Cnegative.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cnegative.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_Cnegative.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_Cnegative.Location = new System.Drawing.Point(326, 532);
+            this.btn_Cnegative.Location = new System.Drawing.Point(292, 532);
             this.btn_Cnegative.Name = "btn_Cnegative";
             this.btn_Cnegative.Size = new System.Drawing.Size(110, 45);
             this.btn_Cnegative.TabIndex = 4;
@@ -919,7 +919,7 @@ namespace new_inspection
             this.btn_rb_setpos.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_rb_setpos.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_rb_setpos.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_rb_setpos.Location = new System.Drawing.Point(324, 276);
+            this.btn_rb_setpos.Location = new System.Drawing.Point(292, 281);
             this.btn_rb_setpos.Name = "btn_rb_setpos";
             this.btn_rb_setpos.Size = new System.Drawing.Size(110, 45);
             this.btn_rb_setpos.TabIndex = 5;
@@ -934,7 +934,7 @@ namespace new_inspection
             this.btn_Snegative.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Snegative.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_Snegative.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_Snegative.Location = new System.Drawing.Point(326, 635);
+            this.btn_Snegative.Location = new System.Drawing.Point(292, 635);
             this.btn_Snegative.Name = "btn_Snegative";
             this.btn_Snegative.Size = new System.Drawing.Size(110, 45);
             this.btn_Snegative.TabIndex = 4;
@@ -950,7 +950,7 @@ namespace new_inspection
             this.btn_Spositive.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Spositive.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_Spositive.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_Spositive.Location = new System.Drawing.Point(210, 635);
+            this.btn_Spositive.Location = new System.Drawing.Point(176, 635);
             this.btn_Spositive.Name = "btn_Spositive";
             this.btn_Spositive.Size = new System.Drawing.Size(110, 45);
             this.btn_Spositive.TabIndex = 4;
@@ -966,7 +966,7 @@ namespace new_inspection
             this.btn_Wnegative.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Wnegative.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_Wnegative.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_Wnegative.Location = new System.Drawing.Point(326, 483);
+            this.btn_Wnegative.Location = new System.Drawing.Point(292, 483);
             this.btn_Wnegative.Name = "btn_Wnegative";
             this.btn_Wnegative.Size = new System.Drawing.Size(110, 45);
             this.btn_Wnegative.TabIndex = 4;
@@ -987,7 +987,7 @@ namespace new_inspection
             // txt_setS
             // 
             this.txt_setS.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_setS.Location = new System.Drawing.Point(324, 242);
+            this.txt_setS.Location = new System.Drawing.Point(290, 242);
             this.txt_setS.Name = "txt_setS";
             this.txt_setS.Size = new System.Drawing.Size(108, 28);
             this.txt_setS.TabIndex = 15;
@@ -995,7 +995,7 @@ namespace new_inspection
             // txt_setC
             // 
             this.txt_setC.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_setC.Location = new System.Drawing.Point(324, 210);
+            this.txt_setC.Location = new System.Drawing.Point(290, 210);
             this.txt_setC.Name = "txt_setC";
             this.txt_setC.Size = new System.Drawing.Size(108, 28);
             this.txt_setC.TabIndex = 15;
@@ -1003,7 +1003,7 @@ namespace new_inspection
             // txt_Spos
             // 
             this.txt_Spos.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Spos.Location = new System.Drawing.Point(210, 242);
+            this.txt_Spos.Location = new System.Drawing.Point(176, 242);
             this.txt_Spos.Name = "txt_Spos";
             this.txt_Spos.Size = new System.Drawing.Size(108, 28);
             this.txt_Spos.TabIndex = 15;
@@ -1011,7 +1011,7 @@ namespace new_inspection
             // txt_setR
             // 
             this.txt_setR.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_setR.Location = new System.Drawing.Point(324, 178);
+            this.txt_setR.Location = new System.Drawing.Point(290, 178);
             this.txt_setR.Name = "txt_setR";
             this.txt_setR.Size = new System.Drawing.Size(108, 28);
             this.txt_setR.TabIndex = 15;
@@ -1019,7 +1019,7 @@ namespace new_inspection
             // txt_Cpos
             // 
             this.txt_Cpos.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Cpos.Location = new System.Drawing.Point(210, 210);
+            this.txt_Cpos.Location = new System.Drawing.Point(176, 210);
             this.txt_Cpos.Name = "txt_Cpos";
             this.txt_Cpos.Size = new System.Drawing.Size(108, 28);
             this.txt_Cpos.TabIndex = 15;
@@ -1027,7 +1027,7 @@ namespace new_inspection
             // txt_setZ
             // 
             this.txt_setZ.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_setZ.Location = new System.Drawing.Point(324, 114);
+            this.txt_setZ.Location = new System.Drawing.Point(290, 114);
             this.txt_setZ.Name = "txt_setZ";
             this.txt_setZ.Size = new System.Drawing.Size(108, 28);
             this.txt_setZ.TabIndex = 15;
@@ -1035,7 +1035,7 @@ namespace new_inspection
             // txt_Rpos
             // 
             this.txt_Rpos.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Rpos.Location = new System.Drawing.Point(210, 178);
+            this.txt_Rpos.Location = new System.Drawing.Point(176, 178);
             this.txt_Rpos.Name = "txt_Rpos";
             this.txt_Rpos.Size = new System.Drawing.Size(108, 28);
             this.txt_Rpos.TabIndex = 15;
@@ -1043,7 +1043,7 @@ namespace new_inspection
             // txt_setW
             // 
             this.txt_setW.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_setW.Location = new System.Drawing.Point(324, 146);
+            this.txt_setW.Location = new System.Drawing.Point(290, 146);
             this.txt_setW.Name = "txt_setW";
             this.txt_setW.Size = new System.Drawing.Size(108, 28);
             this.txt_setW.TabIndex = 15;
@@ -1051,7 +1051,7 @@ namespace new_inspection
             // txt_Zpos
             // 
             this.txt_Zpos.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Zpos.Location = new System.Drawing.Point(210, 114);
+            this.txt_Zpos.Location = new System.Drawing.Point(176, 114);
             this.txt_Zpos.Name = "txt_Zpos";
             this.txt_Zpos.Size = new System.Drawing.Size(108, 28);
             this.txt_Zpos.TabIndex = 15;
@@ -1059,7 +1059,7 @@ namespace new_inspection
             // txt_setY
             // 
             this.txt_setY.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_setY.Location = new System.Drawing.Point(324, 82);
+            this.txt_setY.Location = new System.Drawing.Point(290, 82);
             this.txt_setY.Name = "txt_setY";
             this.txt_setY.Size = new System.Drawing.Size(108, 28);
             this.txt_setY.TabIndex = 15;
@@ -1067,7 +1067,7 @@ namespace new_inspection
             // txt_Wpos
             // 
             this.txt_Wpos.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Wpos.Location = new System.Drawing.Point(210, 146);
+            this.txt_Wpos.Location = new System.Drawing.Point(176, 146);
             this.txt_Wpos.Name = "txt_Wpos";
             this.txt_Wpos.Size = new System.Drawing.Size(108, 28);
             this.txt_Wpos.TabIndex = 15;
@@ -1075,7 +1075,7 @@ namespace new_inspection
             // txt_setX
             // 
             this.txt_setX.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_setX.Location = new System.Drawing.Point(324, 49);
+            this.txt_setX.Location = new System.Drawing.Point(290, 49);
             this.txt_setX.Name = "txt_setX";
             this.txt_setX.Size = new System.Drawing.Size(108, 28);
             this.txt_setX.TabIndex = 15;
@@ -1083,7 +1083,7 @@ namespace new_inspection
             // txt_Ypos
             // 
             this.txt_Ypos.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Ypos.Location = new System.Drawing.Point(210, 82);
+            this.txt_Ypos.Location = new System.Drawing.Point(176, 82);
             this.txt_Ypos.Name = "txt_Ypos";
             this.txt_Ypos.Size = new System.Drawing.Size(108, 28);
             this.txt_Ypos.TabIndex = 15;
@@ -1091,7 +1091,7 @@ namespace new_inspection
             // txt_Xpos
             // 
             this.txt_Xpos.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Xpos.Location = new System.Drawing.Point(210, 49);
+            this.txt_Xpos.Location = new System.Drawing.Point(176, 49);
             this.txt_Xpos.Name = "txt_Xpos";
             this.txt_Xpos.Size = new System.Drawing.Size(108, 28);
             this.txt_Xpos.TabIndex = 15;
@@ -1120,7 +1120,7 @@ namespace new_inspection
             this.btn_Cpositive.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cpositive.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_Cpositive.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_Cpositive.Location = new System.Drawing.Point(210, 532);
+            this.btn_Cpositive.Location = new System.Drawing.Point(176, 532);
             this.btn_Cpositive.Name = "btn_Cpositive";
             this.btn_Cpositive.Size = new System.Drawing.Size(110, 45);
             this.btn_Cpositive.TabIndex = 4;
@@ -1135,7 +1135,7 @@ namespace new_inspection
             this.btn_Rnegative.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Rnegative.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_Rnegative.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_Rnegative.Location = new System.Drawing.Point(326, 583);
+            this.btn_Rnegative.Location = new System.Drawing.Point(292, 583);
             this.btn_Rnegative.Name = "btn_Rnegative";
             this.btn_Rnegative.Size = new System.Drawing.Size(110, 45);
             this.btn_Rnegative.TabIndex = 4;
@@ -1152,7 +1152,7 @@ namespace new_inspection
             "port2"});
             this.lsb_port.Location = new System.Drawing.Point(46, 336);
             this.lsb_port.Name = "lsb_port";
-            this.lsb_port.Size = new System.Drawing.Size(158, 46);
+            this.lsb_port.Size = new System.Drawing.Size(124, 46);
             this.lsb_port.TabIndex = 15;
             // 
             // btn_Znegative
@@ -1163,7 +1163,7 @@ namespace new_inspection
             this.btn_Znegative.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Znegative.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_Znegative.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_Znegative.Location = new System.Drawing.Point(326, 434);
+            this.btn_Znegative.Location = new System.Drawing.Point(292, 434);
             this.btn_Znegative.Name = "btn_Znegative";
             this.btn_Znegative.Size = new System.Drawing.Size(110, 45);
             this.btn_Znegative.TabIndex = 4;
@@ -1178,7 +1178,7 @@ namespace new_inspection
             this.btn_Wpositive.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Wpositive.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_Wpositive.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_Wpositive.Location = new System.Drawing.Point(210, 483);
+            this.btn_Wpositive.Location = new System.Drawing.Point(176, 483);
             this.btn_Wpositive.Name = "btn_Wpositive";
             this.btn_Wpositive.Size = new System.Drawing.Size(110, 45);
             this.btn_Wpositive.TabIndex = 4;
@@ -1208,7 +1208,7 @@ namespace new_inspection
             this.btn_Xpositive.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Xpositive.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_Xpositive.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_Xpositive.Location = new System.Drawing.Point(210, 336);
+            this.btn_Xpositive.Location = new System.Drawing.Point(176, 336);
             this.btn_Xpositive.Name = "btn_Xpositive";
             this.btn_Xpositive.Size = new System.Drawing.Size(110, 45);
             this.btn_Xpositive.TabIndex = 4;
@@ -1223,7 +1223,7 @@ namespace new_inspection
             this.btn_Rpositive.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Rpositive.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_Rpositive.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_Rpositive.Location = new System.Drawing.Point(210, 583);
+            this.btn_Rpositive.Location = new System.Drawing.Point(176, 583);
             this.btn_Rpositive.Name = "btn_Rpositive";
             this.btn_Rpositive.Size = new System.Drawing.Size(110, 45);
             this.btn_Rpositive.TabIndex = 4;
@@ -1291,7 +1291,7 @@ namespace new_inspection
             "Bottom_11"});
             this.lsb_rbmotion.Location = new System.Drawing.Point(46, 49);
             this.lsb_rbmotion.Name = "lsb_rbmotion";
-            this.lsb_rbmotion.Size = new System.Drawing.Size(158, 277);
+            this.lsb_rbmotion.Size = new System.Drawing.Size(124, 277);
             this.lsb_rbmotion.TabIndex = 15;
             // 
             // btn_Ypositive
@@ -1302,7 +1302,7 @@ namespace new_inspection
             this.btn_Ypositive.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Ypositive.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_Ypositive.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_Ypositive.Location = new System.Drawing.Point(210, 385);
+            this.btn_Ypositive.Location = new System.Drawing.Point(176, 385);
             this.btn_Ypositive.Name = "btn_Ypositive";
             this.btn_Ypositive.Size = new System.Drawing.Size(110, 45);
             this.btn_Ypositive.TabIndex = 4;
@@ -1317,7 +1317,7 @@ namespace new_inspection
             this.btn_Ynegative.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Ynegative.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_Ynegative.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_Ynegative.Location = new System.Drawing.Point(326, 385);
+            this.btn_Ynegative.Location = new System.Drawing.Point(292, 385);
             this.btn_Ynegative.Name = "btn_Ynegative";
             this.btn_Ynegative.Size = new System.Drawing.Size(110, 45);
             this.btn_Ynegative.TabIndex = 4;
@@ -1332,7 +1332,7 @@ namespace new_inspection
             this.btn_Zpositive.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Zpositive.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_Zpositive.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_Zpositive.Location = new System.Drawing.Point(210, 434);
+            this.btn_Zpositive.Location = new System.Drawing.Point(176, 434);
             this.btn_Zpositive.Name = "btn_Zpositive";
             this.btn_Zpositive.Size = new System.Drawing.Size(110, 45);
             this.btn_Zpositive.TabIndex = 4;
@@ -1347,7 +1347,7 @@ namespace new_inspection
             this.btn_Xnegative.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Xnegative.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_Xnegative.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_Xnegative.Location = new System.Drawing.Point(326, 336);
+            this.btn_Xnegative.Location = new System.Drawing.Point(292, 336);
             this.btn_Xnegative.Name = "btn_Xnegative";
             this.btn_Xnegative.Size = new System.Drawing.Size(110, 45);
             this.btn_Xnegative.TabIndex = 4;
@@ -1383,6 +1383,7 @@ namespace new_inspection
             this.btn_p2_RF_r.TabIndex = 5;
             this.btn_p2_RF_r.Text = "read";
             this.btn_p2_RF_r.UseVisualStyleBackColor = false;
+            this.btn_p2_RF_r.Click += new System.EventHandler(this.btn_p2_RF_r_Click);
             // 
             // txt_L2_RF_Console
             // 
@@ -1419,6 +1420,7 @@ namespace new_inspection
             this.btn_p1_RF_c.TabIndex = 5;
             this.btn_p1_RF_c.Text = "check";
             this.btn_p1_RF_c.UseVisualStyleBackColor = false;
+            this.btn_p1_RF_c.Click += new System.EventHandler(this.btn_p1_RF_c_Click);
             // 
             // txt_L1_RF_Console
             // 
@@ -1444,6 +1446,7 @@ namespace new_inspection
             this.btn_p1_RF_r.TabIndex = 5;
             this.btn_p1_RF_r.Text = "read";
             this.btn_p1_RF_r.UseVisualStyleBackColor = false;
+            this.btn_p1_RF_r.Click += new System.EventHandler(this.btn_p1_RF_r_Click);
             // 
             // label16
             // 
@@ -1470,6 +1473,7 @@ namespace new_inspection
             this.btn_p2_RF_c.TabIndex = 5;
             this.btn_p2_RF_c.Text = "check";
             this.btn_p2_RF_c.UseVisualStyleBackColor = false;
+            this.btn_p2_RF_c.Click += new System.EventHandler(this.btn_p2_RF_c_Click);
             // 
             // panel8
             // 
