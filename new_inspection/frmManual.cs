@@ -179,19 +179,22 @@ namespace new_inspection
         #region Robot
         private void btn_robotStart_Click(object sender, EventArgs e)
         {
-            Main_control.MC_unit unit = Main_control.MC_unit.Robot;
+            int shift = 0;
             Main_control.Loadport port = Main_control.Loadport.unknow;
             Main_control.RB_commend commend = Main_control.RB_commend.none;
             if (lsb_port.SelectedItem.ToString() == "port1")
                 port = Main_control.Loadport.Loadport1;
-            if (lsb_port.SelectedItem.ToString() == "port2")
+            else if (lsb_port.SelectedItem.ToString() == "port2")
+            {
                 port = Main_control.Loadport.Loadport2;
+                shift =900;
+            }
             else
                 return;
             switch (lsb_rbmotion.SelectedItem.ToString())
             {
                 case "Select":
-                    commend = Main_control.RB_commend.select;
+                    commend = (Main_control.RB_commend)Main_control.RB_commend.select;
                     break;
                 case "Home":
                     commend = Main_control.RB_commend.home;
@@ -200,157 +203,157 @@ namespace new_inspection
                     commend = Main_control.RB_commend.home1;
                     break;
                 case "Lach_L":
-                    commend = Main_control.RB_commend.RB_L1_Lach_L;
+                    commend = Main_control.RB_commend.RB_L1_Lach_L + shift;
                     break;
                 case "Lach_R":
-                    commend = Main_control.RB_commend.RB_L1_Lach_R;
+                    commend = Main_control.RB_commend.RB_L1_Lach_R + shift;
                     break;
                 case "code":
-                    commend = Main_control.RB_commend.RB_L1_code;
+                    commend = Main_control.RB_commend.RB_L1_code + shift;
                     break;
                 case "TE_Out_L":
-                    commend = Main_control.RB_commend.RB_L1_TE_Out_L;
+                    commend = Main_control.RB_commend.RB_L1_TE_Out_L + shift;
                     break;
                 case "TE_Out_R":
-                    commend = Main_control.RB_commend.RB_L1_TE_Out_R;
+                    commend = Main_control.RB_commend.RB_L1_TE_Out_R + shift;
                     break;
                 case "BT_Out_L":
-                    commend = Main_control.RB_commend.RB_L1_BT_Out_L;
+                    commend = Main_control.RB_commend.RB_L1_BT_Out_L + shift;
                     break;
                 case "BT_Out_R":
-                    commend = Main_control.RB_commend.RB_L1_BT_Out_R;
+                    commend = Main_control.RB_commend.RB_L1_BT_Out_R + shift;
                     break;
                 case "FT_Out_L":
-                    commend = Main_control.RB_commend.RB_L1_FT_Out_L;
+                    commend = Main_control.RB_commend.RB_L1_FT_Out_L + shift;
                     break;
                 case "FT_Out_R":
-                    commend = Main_control.RB_commend.RB_L1_FT_Out_R;
+                    commend = Main_control.RB_commend.RB_L1_FT_Out_R + shift;
                     break;
                 case "Snorkel_L":
-                    commend = Main_control.RB_commend.RB_L1_Snorkel_L;
+                    commend = Main_control.RB_commend.RB_L1_Snorkel_L + shift;
                     break;
                 case "Snorkel_R":
-                    commend = Main_control.RB_commend.RB_L1_Snorkel_R;
+                    commend = Main_control.RB_commend.RB_L1_Snorkel_R + shift;
                     break;
                 case "CL_Out_L_1":
-                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_1;
+                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_1 + shift;
                     break;
                 case "CL_Out_L_2":
-                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_2;
+                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_2 + shift;
                     break;
                 case "CL_Out_L_3":
-                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_3;
+                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_3 + shift;
                     break;
                 case "CL_Out_L_4":
-                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_4;
+                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_4 + shift;
                     break;
                 case "CL_Out_L_5":
-                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_5;
+                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_5 + shift;
                     break;
                 case "CL_Out_L_6":
-                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_6;
+                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_6 + shift;
                     break;
                 case "CL_Out_L_7":
-                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_7;
+                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_7 + shift;
                     break;
                 case "CL_Out_R_1":
-                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_1;
+                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_1 + shift;
                     break;
                 case "CL_Out_R_2":
-                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_2;
+                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_2 + shift;
                     break;
                 case "CL_Out_R_3":
-                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_3;
+                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_3 + shift;
                     break;
                 case "CL_Out_R_4":
-                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_4;
+                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_4 + shift;
                     break;
                 case "CL_Out_R_5":
-                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_5;
+                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_5 + shift;
                     break;
                 case "CL_Out_R_6":
-                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_6;
+                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_6 + shift;
                     break;
                 case "CL_Out_R_7":
-                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_7;
+                    commend = Main_control.RB_commend.RB_L1_CL_Out_L_7 + shift;
                     break;
                 case "IC_L_1":
-                    commend = Main_control.RB_commend.RB_L1_IC_L_1;
+                    commend = Main_control.RB_commend.RB_L1_IC_L_1 + shift;
                     break;
                 case "IC_L_2":
-                    commend = Main_control.RB_commend.RB_L1_IC_L_2;
+                    commend = Main_control.RB_commend.RB_L1_IC_L_2 + shift;
                     break;
                 case "IC_L_3":
-                    commend = Main_control.RB_commend.RB_L1_IC_L_3;
+                    commend = Main_control.RB_commend.RB_L1_IC_L_3 + shift;
                     break;
                 case "IC_L_4":
-                    commend = Main_control.RB_commend.RB_L1_IC_L_4;
+                    commend = Main_control.RB_commend.RB_L1_IC_L_4 + shift;
                     break;
                 case "IC_L_5":
-                    commend = Main_control.RB_commend.RB_L1_IC_L_5;
+                    commend = Main_control.RB_commend.RB_L1_IC_L_5 + shift;
                     break;
                 case "IC_L_6":
-                    commend = Main_control.RB_commend.RB_L1_IC_L_6;
+                    commend = Main_control.RB_commend.RB_L1_IC_L_6 + shift;
                     break;
                 case "IC_L_7":
-                    commend = Main_control.RB_commend.RB_L1_IC_L_7;
+                    commend = Main_control.RB_commend.RB_L1_IC_L_7 + shift;
                     break;
                 case "IC_R_1":
-                    commend = Main_control.RB_commend.RB_L1_IC_R_1;
+                    commend = Main_control.RB_commend.RB_L1_IC_R_1 + shift;
                     break;
                 case "IC_R_2":
-                    commend = Main_control.RB_commend.RB_L1_IC_R_2;
-                    break;                    
+                    commend = Main_control.RB_commend.RB_L1_IC_R_2 + shift;
+                    break;
                 case "IC_R_3":
-                    commend = Main_control.RB_commend.RB_L1_IC_R_3;
+                    commend = Main_control.RB_commend.RB_L1_IC_R_3 + shift;
                     break;
                 case "IC_R_4":
-                    commend = Main_control.RB_commend.RB_L1_IC_R_4;
+                    commend = Main_control.RB_commend.RB_L1_IC_R_4 + shift;
                     break;
                 case "IC_R_5":
-                    commend = Main_control.RB_commend.RB_L1_IC_R_5;
+                    commend = Main_control.RB_commend.RB_L1_IC_R_5 + shift;
                     break;
                 case "IC_R_6":
-                    commend = Main_control.RB_commend.RB_L1_IC_R_6;
+                    commend = Main_control.RB_commend.RB_L1_IC_R_6 + shift;
                     break;
                 case "IC_R_7":
-                    commend = Main_control.RB_commend.RB_L1_IC_R_7;
+                    commend = Main_control.RB_commend.RB_L1_IC_R_7 + shift;
                     break;
                 case "Bottom_1":
-                    commend = Main_control.RB_commend.RB_L1_Bottom_1;
+                    commend = Main_control.RB_commend.RB_L1_Bottom_1 + shift;
                     break;
                 case "Bottom_2":
-                    commend = Main_control.RB_commend.RB_L1_Bottom_2;
+                    commend = Main_control.RB_commend.RB_L1_Bottom_2 + shift;
                     break;
                 case "Bottom_3":
-                    commend = Main_control.RB_commend.RB_L1_Bottom_3;
+                    commend = Main_control.RB_commend.RB_L1_Bottom_3 + shift;
                     break;
                 case "Bottom_4":
-                    commend = Main_control.RB_commend.RB_L1_Bottom_4;
+                    commend = Main_control.RB_commend.RB_L1_Bottom_4 + shift;
                     break;
                 case "Bottom_5":
-                    commend = Main_control.RB_commend.RB_L1_Bottom_5;
+                    commend = Main_control.RB_commend.RB_L1_Bottom_5 + shift;
                     break;
                 case "Bottom_6":
-                    commend = Main_control.RB_commend.RB_L1_Bottom_6;
+                    commend = Main_control.RB_commend.RB_L1_Bottom_6 + shift;
                     break;
                 case "Bottom_7":
-                    commend = Main_control.RB_commend.RB_L1_Bottom_7;
+                    commend = Main_control.RB_commend.RB_L1_Bottom_7 + shift;
                     break;
                 case "Bottom_8":
-                    commend = Main_control.RB_commend.RB_L1_Bottom_8;
+                    commend = Main_control.RB_commend.RB_L1_Bottom_8 + shift;
                     break;
                 case "Bottom_9":
-                    commend = Main_control.RB_commend.RB_L1_Bottom_9;
+                    commend = Main_control.RB_commend.RB_L1_Bottom_9 + shift;
                     break;
                 case "Bottom_10":
-                    commend = Main_control.RB_commend.RB_L1_Bottom_10;
+                    commend = Main_control.RB_commend.RB_L1_Bottom_10 + shift;
                     break;
                 case "Bottom_11":
-                    commend = Main_control.RB_commend.RB_L1_Bottom_11;
+                    commend = Main_control.RB_commend.RB_L1_Bottom_11 + shift;
                     break;
             }
-
+            Insp_process.RB_simple(port, commend);
 
 
         }

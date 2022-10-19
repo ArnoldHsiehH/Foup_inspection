@@ -27,7 +27,6 @@ namespace new_inspection
         static Queue<Interrupt_commend> Q_IC = new Queue<Interrupt_commend>();
         public void initail()
         {
-
             logwriter.setLogType = logwriter01.LogDir.System;
             logwriter.setDevice_Name = "process";
             logwriter.write_local_log("initail process");
@@ -146,7 +145,7 @@ namespace new_inspection
             }
         }
 
-        private void RB_simple(Main_control.Loadport port, Main_control.RB_commend commend)
+        public void RB_simple(Main_control.Loadport port, Main_control.RB_commend commend)
         {
             EventInsp(new MC_commend_pack() { commend = MC_commend.RBsimple, RB_Commend = commend, LP_unit = port });
         }
@@ -155,6 +154,7 @@ namespace new_inspection
         #region 流程控制
         private void Main_process(object Data)//觸發流程啟動
         {
+
             MC_unit LPunit;
             List<job> job_pack = new List<job>();
 
@@ -182,7 +182,6 @@ namespace new_inspection
                     job_pack.Add(new job() { unit = MC_unit.RFID1, RFID_commend = RF_commend.L1_RFID_read });
                     job_pack.Add(new job() { unit = LPunit, Loadport_commend = LP_commend.ORGN });
                     job_pack.Add(new job() { unit = LPunit, Loadport_commend = LP_commend.LOAD });
-
                     break;
                 case MC_commend.insp_start://建立工作項目: 掃描
                     Creat_ins_jobs(commend_pack, ref job_pack);
@@ -196,6 +195,7 @@ namespace new_inspection
                     job_pack.Add(new job() { unit = LPunit, Loadport_commend = LP_commend.L1_Clamp });
                     break;
                 case MC_commend.RBsimple:
+                    job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = commend_pack.RB_Commend });
                     break;
                 case MC_commend.cycle://cycle
                     break;
