@@ -19,9 +19,10 @@ namespace new_inspection
         logwriter01 logwriter = new logwriter01();
         Main_control Insp_process = new Main_control();
 
-        frmDashboard frmDashboard_vrb = new frmDashboard() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-        frmManual Manual_vrb = new frmManual() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; //Manual_vrb
-        frmLog frmLog_vrb = new frmLog() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+        frmDashboard frmDashboard_vrb = new frmDashboard()  { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+        frmManual Manual_vrb = new frmManual()              { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; //Manual_vrb
+        frmLog frmLog_vrb = new frmLog()                    { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+        frmResult frmResult_vrb = new frmResult()           { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
         public Form1()
         {
             InitializeComponent();
@@ -129,8 +130,8 @@ namespace new_inspection
         private void btn_history_Click(object sender, EventArgs e)
         {
             setlistbtn();
-            setlisttxt("Result", btn_history);
-            //pnlfromcontrol(frmResult_vrb);
+            setlisttxt("Result", btn_Result);
+            pnlfromcontrol(frmResult_vrb);
         }
 
         private void button5_Click(object sender, EventArgs e)

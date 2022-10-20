@@ -1498,7 +1498,7 @@ namespace new_inspection
             // 
             this.ckb_uld.AutoSize = true;
             this.ckb_uld.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.ckb_uld.Location = new System.Drawing.Point(55, 99);
+            this.ckb_uld.Location = new System.Drawing.Point(55, 114);
             this.ckb_uld.Name = "ckb_uld";
             this.ckb_uld.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ckb_uld.Size = new System.Drawing.Size(86, 25);
@@ -1510,7 +1510,7 @@ namespace new_inspection
             // 
             this.ckb_LP2.AutoSize = true;
             this.ckb_LP2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.ckb_LP2.Location = new System.Drawing.Point(29, 78);
+            this.ckb_LP2.Location = new System.Drawing.Point(29, 84);
             this.ckb_LP2.Name = "ckb_LP2";
             this.ckb_LP2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ckb_LP2.Size = new System.Drawing.Size(112, 25);
@@ -1522,7 +1522,7 @@ namespace new_inspection
             // 
             this.ckb_rfid.AutoSize = true;
             this.ckb_rfid.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.ckb_rfid.Location = new System.Drawing.Point(192, 78);
+            this.ckb_rfid.Location = new System.Drawing.Point(192, 84);
             this.ckb_rfid.Name = "ckb_rfid";
             this.ckb_rfid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ckb_rfid.Size = new System.Drawing.Size(65, 25);
@@ -1569,7 +1569,7 @@ namespace new_inspection
             // txt_conter
             // 
             this.txt_conter.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
-            this.txt_conter.Location = new System.Drawing.Point(167, 105);
+            this.txt_conter.Location = new System.Drawing.Point(167, 116);
             this.txt_conter.Name = "txt_conter";
             this.txt_conter.Size = new System.Drawing.Size(90, 23);
             this.txt_conter.TabIndex = 38;
@@ -1603,11 +1603,11 @@ namespace new_inspection
             // txt_camera_Console
             // 
             this.txt_camera_Console.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
-            this.txt_camera_Console.Location = new System.Drawing.Point(12, 59);
+            this.txt_camera_Console.Location = new System.Drawing.Point(12, 47);
             this.txt_camera_Console.Multiline = true;
             this.txt_camera_Console.Name = "txt_camera_Console";
             this.txt_camera_Console.ReadOnly = true;
-            this.txt_camera_Console.Size = new System.Drawing.Size(226, 91);
+            this.txt_camera_Console.Size = new System.Drawing.Size(226, 100);
             this.txt_camera_Console.TabIndex = 10;
             // 
             // btn_f101
@@ -1618,7 +1618,7 @@ namespace new_inspection
             this.btn_f101.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_f101.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_f101.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_f101.Location = new System.Drawing.Point(12, 201);
+            this.btn_f101.Location = new System.Drawing.Point(12, 204);
             this.btn_f101.Name = "btn_f101";
             this.btn_f101.Size = new System.Drawing.Size(110, 45);
             this.btn_f101.TabIndex = 5;
@@ -1680,7 +1680,7 @@ namespace new_inspection
             this.btn_F100.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_F100.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_F100.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_F100.Location = new System.Drawing.Point(128, 201);
+            this.btn_F100.Location = new System.Drawing.Point(128, 204);
             this.btn_F100.Name = "btn_F100";
             this.btn_F100.Size = new System.Drawing.Size(110, 45);
             this.btn_F100.TabIndex = 5;

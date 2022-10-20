@@ -38,7 +38,6 @@ namespace new_inspection
 
             EventInsp += new inspEvent(get_commend);
             send_simple += new simpleEvent(get_sinle_commend);
-
         }
 
         #region commends
@@ -434,8 +433,6 @@ namespace new_inspection
         }
         #endregion
 
-
-
         class MC_commend_pack// 大的指令
         {
             public MC_commend commend;
@@ -443,7 +440,6 @@ namespace new_inspection
             public RB_commend RB_Commend;
             public string ID;
         }
-
         class job//for job psck
         {
             public MC_unit unit { get; set; }
@@ -468,25 +464,6 @@ namespace new_inspection
             public string ins { get; set; }
             public int foupType { get; set; }
 
-        }
-        public enum MC_unit
-        {
-            unknow,
-            Robot,
-            RB_jog,
-            Loadport1,
-            Loadport2,
-            RFID1,
-            RFID2,
-            ITRI, 
-            others,
-            SCES
-        }
-        public enum Loadport
-        {
-            unknow,
-            Loadport1,
-            Loadport2
         }
         enum RF_commend
         {
@@ -523,6 +500,12 @@ namespace new_inspection
         }
 
         #region Loadport_commend
+        public enum Loadport
+        {
+            unknow,
+            Loadport1,
+            Loadport2
+        }
         public enum LP_commend
         {
             none = 0x00,
@@ -583,6 +566,7 @@ namespace new_inspection
             L2_A300Up,
             L2_A300Dn
         }
+        
         #endregion
 
         #region RB_commend
@@ -721,6 +705,20 @@ namespace new_inspection
         }
         #endregion
 
+        #region control
+        public enum MC_unit
+        {
+            unknow,
+            Robot,
+            RB_jog,
+            Loadport1,
+            Loadport2,
+            RFID1,
+            RFID2,
+            ITRI,
+            others,
+            SCES
+        }
         enum job_status
         {
             free,
@@ -749,6 +747,7 @@ namespace new_inspection
             cycle,
             RBsimple
         }
+        #endregion
     }
 
 

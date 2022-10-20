@@ -35,7 +35,7 @@ namespace new_inspection
             this.btn_exit = new System.Windows.Forms.Button();
             this.pnlNav = new System.Windows.Forms.Panel();
             this.btn_error = new System.Windows.Forms.Button();
-            this.btn_history = new System.Windows.Forms.Button();
+            this.btn_Result = new System.Windows.Forms.Button();
             this.btn_Log = new System.Windows.Forms.Button();
             this.btn_Manual = new System.Windows.Forms.Button();
             this.btn_Dashbord = new System.Windows.Forms.Button();
@@ -82,7 +82,7 @@ namespace new_inspection
             this.panel1.Controls.Add(this.btn_exit);
             this.panel1.Controls.Add(this.pnlNav);
             this.panel1.Controls.Add(this.btn_error);
-            this.panel1.Controls.Add(this.btn_history);
+            this.panel1.Controls.Add(this.btn_Result);
             this.panel1.Controls.Add(this.btn_Log);
             this.panel1.Controls.Add(this.btn_Manual);
             this.panel1.Controls.Add(this.btn_Dashbord);
@@ -162,21 +162,21 @@ namespace new_inspection
             this.btn_error.UseVisualStyleBackColor = true;
             this.btn_error.Click += new System.EventHandler(this.btn_error_Click);
             // 
-            // btn_history
+            // btn_Result
             // 
-            this.btn_history.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.btn_history.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_history.FlatAppearance.BorderSize = 0;
-            this.btn_history.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_history.Font = new System.Drawing.Font("Microsoft YaHei UI", 18F);
-            this.btn_history.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_history.Location = new System.Drawing.Point(0, 363);
-            this.btn_history.Name = "btn_history";
-            this.btn_history.Size = new System.Drawing.Size(200, 55);
-            this.btn_history.TabIndex = 8;
-            this.btn_history.Text = "Result";
-            this.btn_history.UseVisualStyleBackColor = false;
-            this.btn_history.Click += new System.EventHandler(this.btn_history_Click);
+            this.btn_Result.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.btn_Result.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Result.FlatAppearance.BorderSize = 0;
+            this.btn_Result.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Result.Font = new System.Drawing.Font("Microsoft YaHei UI", 18F);
+            this.btn_Result.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btn_Result.Location = new System.Drawing.Point(0, 363);
+            this.btn_Result.Name = "btn_Result";
+            this.btn_Result.Size = new System.Drawing.Size(200, 55);
+            this.btn_Result.TabIndex = 8;
+            this.btn_Result.Text = "Result";
+            this.btn_Result.UseVisualStyleBackColor = false;
+            this.btn_Result.Click += new System.EventHandler(this.btn_history_Click);
             // 
             // btn_Log
             // 
@@ -589,7 +589,7 @@ namespace new_inspection
         private System.Windows.Forms.Panel pnlNav;
         private System.Windows.Forms.Button btn_error;
         private System.Windows.Forms.Button btn_About;
-        private System.Windows.Forms.Button btn_history;
+        private System.Windows.Forms.Button btn_Result;
         private System.Windows.Forms.Button btn_Log;
         private System.Windows.Forms.Button btn_Manual;
         private System.Windows.Forms.Button btn_Dashbord;
