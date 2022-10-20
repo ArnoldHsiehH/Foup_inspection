@@ -96,6 +96,48 @@ namespace new_inspection
 
         #region 單動 commends
 
+        public void RB_jog(RB_jog_commend jog_axis)
+        {
+            job now_job = new job();
+            now_job.unit = MC_unit.RB_jog;
+            now_job.RB_jog = jog_axis;
+            send_simple(now_job);
+
+        }
+        //parameter
+        public void RB_set_speed(string parameter)
+        {
+            job now_job = new job();
+            now_job.unit = MC_unit.RB_jog;
+            now_job.RB_jog = Main_control.RB_jog_commend.set_speed;
+            now_job.parameter = parameter;
+            send_simple(now_job);
+        }
+        public void RB_set_jog_dis(string parameter)
+        {
+            job now_job = new job();
+            now_job.unit = MC_unit.RB_jog;
+            now_job.RB_jog = Main_control.RB_jog_commend.set_dis;
+            now_job.parameter = parameter;
+            send_simple(now_job);
+        }
+        public void RB_set_setpos( )
+        {
+            job now_job = new job();
+            now_job.unit = MC_unit.RB_jog;
+            now_job.RB_jog = Main_control.RB_jog_commend.setpos;
+            
+            send_simple(now_job);
+        }
+
+        public void LP_simple(MC_unit loadport, LP_commend commend)
+        {
+
+            job now_job = new job();
+            now_job.unit = loadport;        // MC_unit.Loadport1;
+            now_job.Loadport_commend = commend;
+            send_simple(now_job);
+        }
         public void RF_check(Loadport port)
         {
             job now_job = new job();
@@ -132,14 +174,7 @@ namespace new_inspection
             send_simple(now_job);
 
         }
-        public void LP_simple(MC_unit loadport, LP_commend commend)
-        {
-
-            job now_job = new job();
-            now_job.unit = loadport;        // MC_unit.Loadport1;
-            now_job.Loadport_commend = commend;
-            send_simple(now_job);
-        }
+        
         private void get_sinle_commend(job Job)
         {
             job new_job = new job();
@@ -152,6 +187,10 @@ namespace new_inspection
             switch (new_job.unit)
             {
                 case MC_unit.Robot:
+                    break;
+                case MC_unit.RB_jog:
+                    Motion_thread = new Thread(new ParameterizedThreadStart(Motion_process));
+                    Motion_thread.Start(new_job);
                     break;
                 case MC_unit.Loadport1:
                     if ((int)new_job.Loadport_commend > 5)
@@ -358,6 +397,7 @@ namespace new_inspection
         #endregion
 
         #region 單動控制
+
         private void Motion_process(object Data)
         {
             job now_job = (job)Data;
@@ -366,6 +406,9 @@ namespace new_inspection
             {
                 case MC_unit.Robot:
                     logwriter.write_local_log(string.Format("{0},{1}", now_job.unit, now_job.Robot_commend));
+                    break;
+                case MC_unit.RB_jog:
+                    logwriter.write_local_log(string.Format("{0},{1}", now_job.unit, now_job.RB_jog));
                     break;
                 case MC_unit.Loadport1:
                     logwriter.write_local_log(string.Format("{0},{1}", now_job.unit, now_job.Loadport_commend));
@@ -407,6 +450,8 @@ namespace new_inspection
             public LP_commend Loadport_commend { get; set; }//motion
             public RB_commend Robot_commend { get; set; }
             public RF_commend RFID_commend { get; set; }
+            public RB_jog_commend RB_jog { get; set; }
+            public string parameter { get; set; }
             public string SCES_commend { get; set; }
             public int port_number
             {
@@ -428,11 +473,12 @@ namespace new_inspection
         {
             unknow,
             Robot,
+            RB_jog,
             Loadport1,
             Loadport2,
             RFID1,
             RFID2,
-            ITRI,
+            ITRI, 
             others,
             SCES
         }
@@ -650,8 +696,11 @@ namespace new_inspection
             RB_L2_Bottom_8,
             RB_L2_Bottom_9,
             RB_L2_Bottom_10,
-            RB_L2_Bottom_11,
+            RB_L2_Bottom_11
+        }
 
+        public enum RB_jog_commend 
+        {
             Rb_Xp = 0x80,//jog
             Rb_Xn,//jog
             Rb_Yp,//jog
@@ -665,7 +714,10 @@ namespace new_inspection
             Rb_Cp,//jog
             Rb_Cn,//jog
             Rb_Sp,
-            Rb_Sn
+            Rb_Sn,
+            setpos,
+            set_speed,
+            set_dis
         }
         #endregion
 

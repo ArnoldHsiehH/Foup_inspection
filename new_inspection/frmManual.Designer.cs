@@ -127,7 +127,6 @@ namespace new_inspection
             this.ckb_rfid = new System.Windows.Forms.CheckBox();
             this.ckb_Camera = new System.Windows.Forms.CheckBox();
             this.ckb_LP1 = new System.Windows.Forms.CheckBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.btn_cycleStart = new System.Windows.Forms.Button();
             this.txt_conter = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -895,6 +894,7 @@ namespace new_inspection
             this.btn_disn.TabIndex = 5;
             this.btn_disn.Text = "dis-";
             this.btn_disn.UseVisualStyleBackColor = false;
+            this.btn_disn.Click += new System.EventHandler(this.btn_disn_Click);
             // 
             // btn_disp
             // 
@@ -910,6 +910,7 @@ namespace new_inspection
             this.btn_disp.TabIndex = 5;
             this.btn_disp.Text = "dis+";
             this.btn_disp.UseVisualStyleBackColor = false;
+            this.btn_disp.Click += new System.EventHandler(this.btn_disp_Click);
             // 
             // btn_rb_setpos
             // 
@@ -925,6 +926,7 @@ namespace new_inspection
             this.btn_rb_setpos.TabIndex = 5;
             this.btn_rb_setpos.Text = "setpos";
             this.btn_rb_setpos.UseVisualStyleBackColor = false;
+            this.btn_rb_setpos.Click += new System.EventHandler(this.btn_rb_setpos_Click);
             // 
             // btn_Snegative
             // 
@@ -1199,6 +1201,7 @@ namespace new_inspection
             this.btn_set_speed.TabIndex = 5;
             this.btn_set_speed.Text = "Set speed";
             this.btn_set_speed.UseVisualStyleBackColor = false;
+            this.btn_set_speed.Click += new System.EventHandler(this.btn_set_speed_Click);
             // 
             // btn_Xpositive
             // 
@@ -1482,7 +1485,6 @@ namespace new_inspection
             this.panel8.Controls.Add(this.ckb_rfid);
             this.panel8.Controls.Add(this.ckb_Camera);
             this.panel8.Controls.Add(this.ckb_LP1);
-            this.panel8.Controls.Add(this.button3);
             this.panel8.Controls.Add(this.btn_cycleStart);
             this.panel8.Controls.Add(this.txt_conter);
             this.panel8.Controls.Add(this.label4);
@@ -1551,18 +1553,6 @@ namespace new_inspection
             this.ckb_LP1.TabIndex = 39;
             this.ckb_LP1.Text = "Loadport 1";
             this.ckb_LP1.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button3.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(147, 146);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(110, 50);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "butten";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Visible = false;
             // 
             // btn_cycleStart
             // 
@@ -1875,7 +1865,6 @@ namespace new_inspection
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btn_p2_RF_c;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btn_cycleStart;
         private System.Windows.Forms.TextBox txt_conter;
         private System.Windows.Forms.Label label4;

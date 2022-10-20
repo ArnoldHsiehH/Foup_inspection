@@ -63,7 +63,7 @@ namespace new_inspection
 
         private void frmManual_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         private void btn_Home_Click(object sender, EventArgs e)
@@ -363,7 +363,85 @@ namespace new_inspection
         }
         private void btn_robot_jog_Click(object sender, EventArgs e)
         {
+            Button btn_click = (Button)sender;
+            switch (btn_click.Name)
+            {
+                case "btn_Xpositive":
+                    Insp_process.RB_jog(Main_control.RB_jog_commend.Rb_Xp);
+                    break;
 
+                case "btn_Ypositive":
+                    Insp_process.RB_jog(Main_control.RB_jog_commend.Rb_Yp);
+                    break;
+
+                case "btn_Zpositive":
+                    Insp_process.RB_jog(Main_control.RB_jog_commend.Rb_Zp);
+                    break;
+
+                case "btn_Wpositive":
+                    Insp_process.RB_jog(Main_control.RB_jog_commend.Rb_Wp);
+                    break;
+
+                case "btn_Rpositive":
+                    Insp_process.RB_jog(Main_control.RB_jog_commend.Rb_Rp);
+                    break;
+
+                case "btn_Cpositive":
+                    Insp_process.RB_jog(Main_control.RB_jog_commend.Rb_Cp);
+                    break;
+
+                case "btn_Spositive":
+                    Insp_process.RB_jog(Main_control.RB_jog_commend.Rb_Sp);
+                    break;
+
+                case "btn_Xnegative":
+                    Insp_process.RB_jog(Main_control.RB_jog_commend.Rb_Xn);
+                    break;
+                case "btn_Ynegative":
+                    Insp_process.RB_jog(Main_control.RB_jog_commend.Rb_Yn);
+                    break;
+                case "btn_Znegative":
+                    Insp_process.RB_jog(Main_control.RB_jog_commend.Rb_Zn);
+                    break;
+                case "btn_Wnegative":
+                    Insp_process.RB_jog(Main_control.RB_jog_commend.Rb_Wn);
+                    break;
+                case "btn_Rnegative":
+                    Insp_process.RB_jog(Main_control.RB_jog_commend.Rb_Rn);
+                    break;
+                case "btn_Cnegative":
+                    Insp_process.RB_jog(Main_control.RB_jog_commend.Rb_Cn);
+                    break;
+                case "btn_Snegative":
+                    Insp_process.RB_jog(Main_control.RB_jog_commend.Rb_Sn);
+                    break;
+                case "btn_rb_setpos":
+                    break;
+
+            }
+        }
+
+        private void btn_rb_setpos_Click(object sender, EventArgs e)
+        {
+            Insp_process.RB_set_setpos();
+        }
+
+        private void btn_set_speed_Click(object sender, EventArgs e)
+        {
+            string data = "";
+            Insp_process.RB_set_speed(data);
+        }
+
+        private void btn_disp_Click(object sender, EventArgs e)
+        {
+            string data = "";
+            Insp_process.RB_set_jog_dis(data);
+        }
+
+        private void btn_disn_Click(object sender, EventArgs e)
+        {
+            string data = "";
+            Insp_process.RB_set_jog_dis(data);
         }
         #endregion
 
