@@ -19,10 +19,10 @@ namespace new_inspection
         logwriter01 logwriter = new logwriter01();
         Main_control Insp_process = new Main_control();
 
-        frmDashboard frmDashboard_vrb = new frmDashboard()  { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-        frmManual Manual_vrb = new frmManual()              { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; //Manual_vrb
-        frmLog frmLog_vrb = new frmLog()                    { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-        frmResult frmResult_vrb = new frmResult()           { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+        frmDashboard frmDashboard_vrb = new frmDashboard() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+        frmManual Manual_vrb = new frmManual() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; //Manual_vrb
+        frmLog frmLog_vrb = new frmLog() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+        frmResult frmResult_vrb = new frmResult() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
         public Form1()
         {
             InitializeComponent();
@@ -52,6 +52,55 @@ namespace new_inspection
         {
             pnlfromcontrol(frmDashboard_vrb);
             Insp_process.initail();
+            Main_control.status_update += new Main_control.percent(percent_IU);
+
+        }
+
+        private void percent_IU(object obj)
+        {
+            Type t = obj.GetType();
+            if (t.Equals(typeof(job)))//工作
+            {
+                job now_job = (job)obj;
+                this.Invoke(new MethodInvoker(delegate () { n_job_ui(now_job); }));
+            }
+            // 
+        }
+        public void n_job_ui(job now_job)
+        {
+            //lbl_LP1_motion.Text = string.Format("{0}", now_job.unit);
+
+            switch (now_job.unit)
+            {
+                case MC_unit.Robot:
+                    txt_Console.Text += (string.Format("Unit :{0}   Motion :{1}\r\n", now_job.unit, now_job.Robot_commend));
+                    break;
+                case MC_unit.RB_jog:
+                    txt_Console.Text += (string.Format("Unit :{0}   Motion :{1}\r\n", now_job.unit, now_job.RB_jog));
+                    break;
+                case MC_unit.Loadport1:
+                    txt_Console.Text += (string.Format("Unit :{0}   Motion :{1}\r\n", now_job.unit, now_job.Loadport_commend));
+                    break;
+                case MC_unit.Loadport2:
+                    txt_Console.Text += (string.Format("Unit :{0}   Motion :{1}\r\n", now_job.unit, now_job.Loadport_commend));
+                    break;
+                case MC_unit.RFID1://RFID_commend
+                    txt_Console.Text += (string.Format("Unit :{0}   Motion :{1}\r\n", now_job.unit, now_job.RFID_commend));
+                    break;
+                case MC_unit.RFID2:
+                    txt_Console.Text += (string.Format("Unit :{0}   Motion :{1}\r\n", now_job.unit, now_job.RFID_commend));
+                    break;
+                case MC_unit.ITRI:
+                    txt_Console.Text += (string.Format("Unit :{0}   Motion :{1}\r\n", now_job.unit, now_job.ins));
+                    break;
+                case MC_unit.SCES:
+                    txt_Console.Text += (string.Format("Unit :{0}   Motion :{1}\r\n", now_job.unit, now_job.SCES_commend));
+                    break;
+            }
+            txt_Console.SelectionStart = txt_Console.Text.Length;
+
+
+            txt_Console.ScrollToCaret();
 
         }
         private void setlistbtn()
@@ -60,6 +109,9 @@ namespace new_inspection
             {
                 if (item is Button)
                 {
+                    Button a = (Button)item;
+                    if (a.Text == "Error")//跳過error設定
+                        continue;
                     ((Button)item).BackColor = System.Drawing.SystemColors.MenuBar;
                 }
             }

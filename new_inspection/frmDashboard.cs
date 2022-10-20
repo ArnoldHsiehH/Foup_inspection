@@ -20,13 +20,27 @@ namespace new_inspection
 
         private void frmDashboard_Load(object sender, EventArgs e)
         {
-            Main_control.percent_update += new Main_control.percent(percent_IU);
+            Main_control.status_update += new Main_control.percent(percent_IU);
         }
 
         #region percent event
-        private void percent_IU(float value)
+        private void percent_IU(object obj)
         {
-            this.Invoke(new MethodInvoker(delegate () { Progressbar_lp1_c(value); }));//百分比
+            Type t = obj.GetType();
+            schedule Schedule = new schedule();
+            Console.WriteLine("OBJ : Type is {0}", obj.GetType());
+            if (t.Equals(typeof(schedule))) //進度表
+            {
+                Schedule = (schedule)obj;
+                this.Invoke(new MethodInvoker(delegate () { Progressbar_lp1_c(Schedule.percent); }));//百分比
+            }
+
+            if (t.Equals(typeof(job)))//工作
+            {
+                job now_job = (job)obj;
+                this.Invoke(new MethodInvoker(delegate () { n_job_ui(now_job); }));
+            }
+            // 
         }
         public void Progressbar_lp1_c(float value)
         {
@@ -37,6 +51,41 @@ namespace new_inspection
 
             btn_Progressbar_lp1.Width = (int)(value * p_Progressbar_lp1.Width);
         }
+
+        public void n_job_ui(job now_job)
+        {
+            //lbl_LP1_motion.Text = string.Format("{0}", now_job.unit);
+
+            switch (now_job.unit)
+            {
+                case MC_unit.Robot:
+                    lbl_LP1_motion.Text = (string.Format("Unit :{0}   Motion :{1}", now_job.unit, now_job.Robot_commend));
+                    break;
+                case MC_unit.RB_jog:
+                    lbl_LP1_motion.Text = (string.Format("Unit :{0}   Motion :{1}", now_job.unit, now_job.RB_jog));
+                    break;
+                case MC_unit.Loadport1:
+                    lbl_LP1_motion.Text = (string.Format("Unit :{0}   Motion :{1}", now_job.unit, now_job.Loadport_commend));
+                    break;
+                case MC_unit.Loadport2:
+                    lbl_LP1_motion.Text = (string.Format("Unit :{0}   Motion :{1}", now_job.unit, now_job.Loadport_commend));
+                    break;
+                case MC_unit.RFID1://RFID_commend
+                    lbl_LP1_motion.Text = (string.Format("Unit :{0}   Motion :{1}", now_job.unit, now_job.RFID_commend));
+                    break;
+                case MC_unit.RFID2:
+                    lbl_LP1_motion.Text = (string.Format("Unit :{0}   Motion :{1}", now_job.unit, now_job.RFID_commend));
+                    break;
+                case MC_unit.ITRI:
+                    lbl_LP1_motion.Text = (string.Format("Unit :{0}   Motion :{1}", now_job.unit, now_job.ins));
+                    break;
+                case MC_unit.SCES:
+                    lbl_LP1_motion.Text = (string.Format("Unit :{0}   Motion :{1}", now_job.unit, now_job.SCES_commend));
+                    break;
+            }
+
+        }
+
         #endregion
 
         #region pan controll
@@ -64,21 +113,21 @@ namespace new_inspection
 
         private void btn_lp1_start_Click(object sender, EventArgs e)
         {
-            Insp_process.Insp_start(Main_control.Loadport.Loadport1);
+            Insp_process.Insp_start(Loadport.Loadport1);
         }
 
         private void btn_lp2_start_Click(object sender, EventArgs e)
         {
-            Insp_process.Insp_start(Main_control.Loadport.Loadport2);
+            Insp_process.Insp_start(Loadport.Loadport2);
         }
 
         private void btn_lp1_load_Click(object sender, EventArgs e)
         {
-            Insp_process.Insp_Load(Main_control.Loadport.Loadport1);
+            Insp_process.Insp_Load(Loadport.Loadport1);
         }
         private void btn_lp2_load_Click(object sender, EventArgs e)
         {
-            Insp_process.Insp_Load(Main_control.Loadport.Loadport2);
+            Insp_process.Insp_Load(Loadport.Loadport2);
         }
 
         private void btn_Progressbar_lp1_Click(object sender, EventArgs e)
@@ -87,5 +136,7 @@ namespace new_inspection
         }
         #endregion
 
+
     }
+    
 }

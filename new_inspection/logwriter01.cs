@@ -117,6 +117,7 @@ namespace new_inspection
         #region WriteFile
 
         private static readonly object balanceLock = new object();
+        private static readonly object writeLock = new object();
 
         private static void WriteLogToFile(log_mail log_data)
         {
@@ -124,15 +125,16 @@ namespace new_inspection
             string _LogMessage = log_data.message;
             string LogFolder = log_data.LogFolder;
             string Time = log_data.Time;
-
-            using (StreamWriter Stream = new StreamWriter(Path.Combine(LogFolder, string.Format("{0}_{1}.txt", _LogFile, Time)), true, Encoding.Default))
+            lock (writeLock)
             {
-                Stream.WriteLine(_LogMessage);
-                Stream.Flush();
-                Stream.Dispose();
-                Stream.Close();
+                using (StreamWriter Stream = new StreamWriter(Path.Combine(LogFolder, string.Format("{0}_{1}.txt", _LogFile, Time)), true, Encoding.Default))
+                {
+                    Stream.WriteLine(_LogMessage);
+                    Stream.Flush();
+                    Stream.Dispose();
+                    Stream.Close();
+                }
             }
-
         }
 
         #endregion
