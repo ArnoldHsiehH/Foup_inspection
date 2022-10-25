@@ -1597,13 +1597,13 @@ namespace new_inspection
             this.panel6.Controls.Add(this.label14);
             this.panel6.Location = new System.Drawing.Point(26, 308);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(251, 318);
+            this.panel6.Size = new System.Drawing.Size(251, 328);
             this.panel6.TabIndex = 41;
             // 
             // txt_camera_Console
             // 
             this.txt_camera_Console.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
-            this.txt_camera_Console.Location = new System.Drawing.Point(12, 47);
+            this.txt_camera_Console.Location = new System.Drawing.Point(12, 59);
             this.txt_camera_Console.Multiline = true;
             this.txt_camera_Console.Name = "txt_camera_Console";
             this.txt_camera_Console.ReadOnly = true;
@@ -1618,7 +1618,7 @@ namespace new_inspection
             this.btn_f101.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_f101.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_f101.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_f101.Location = new System.Drawing.Point(12, 204);
+            this.btn_f101.Location = new System.Drawing.Point(12, 216);
             this.btn_f101.Name = "btn_f101";
             this.btn_f101.Size = new System.Drawing.Size(110, 45);
             this.btn_f101.TabIndex = 5;
@@ -1634,7 +1634,7 @@ namespace new_inspection
             this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button1.Location = new System.Drawing.Point(12, 255);
+            this.button1.Location = new System.Drawing.Point(12, 267);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 45);
             this.button1.TabIndex = 5;
@@ -1650,7 +1650,7 @@ namespace new_inspection
             this.btn_F200.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_F200.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_F200.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_F200.Location = new System.Drawing.Point(128, 153);
+            this.btn_F200.Location = new System.Drawing.Point(128, 165);
             this.btn_F200.Name = "btn_F200";
             this.btn_F200.Size = new System.Drawing.Size(110, 45);
             this.btn_F200.TabIndex = 5;
@@ -1665,7 +1665,7 @@ namespace new_inspection
             this.btn_103.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_103.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_103.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_103.Location = new System.Drawing.Point(12, 153);
+            this.btn_103.Location = new System.Drawing.Point(12, 165);
             this.btn_103.Name = "btn_103";
             this.btn_103.Size = new System.Drawing.Size(110, 45);
             this.btn_103.TabIndex = 5;
@@ -1680,7 +1680,7 @@ namespace new_inspection
             this.btn_F100.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_F100.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_F100.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_F100.Location = new System.Drawing.Point(128, 204);
+            this.btn_F100.Location = new System.Drawing.Point(128, 216);
             this.btn_F100.Name = "btn_F100";
             this.btn_F100.Size = new System.Drawing.Size(110, 45);
             this.btn_F100.TabIndex = 5;

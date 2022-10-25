@@ -94,7 +94,7 @@ namespace new_inspection
             this.p_Progressbar_lp1.Location = new System.Drawing.Point(14, 73);
             this.p_Progressbar_lp1.Margin = new System.Windows.Forms.Padding(5);
             this.p_Progressbar_lp1.Name = "p_Progressbar_lp1";
-            this.p_Progressbar_lp1.Size = new System.Drawing.Size(813, 18);
+            this.p_Progressbar_lp1.Size = new System.Drawing.Size(813, 24);
             this.p_Progressbar_lp1.TabIndex = 44;
             // 
             // btn_Progressbar_lp1
@@ -106,7 +106,7 @@ namespace new_inspection
             this.btn_Progressbar_lp1.Location = new System.Drawing.Point(0, 0);
             this.btn_Progressbar_lp1.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Progressbar_lp1.Name = "btn_Progressbar_lp1";
-            this.btn_Progressbar_lp1.Size = new System.Drawing.Size(121, 18);
+            this.btn_Progressbar_lp1.Size = new System.Drawing.Size(121, 24);
             this.btn_Progressbar_lp1.TabIndex = 0;
             this.btn_Progressbar_lp1.UseVisualStyleBackColor = false;
             this.btn_Progressbar_lp1.Click += new System.EventHandler(this.btn_Progressbar_lp1_Click);
