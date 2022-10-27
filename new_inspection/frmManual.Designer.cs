@@ -1505,6 +1505,7 @@ namespace new_inspection
             this.ckb_uld.TabIndex = 39;
             this.ckb_uld.Text = "unLoad";
             this.ckb_uld.UseVisualStyleBackColor = true;
+            this.ckb_uld.Visible = false;
             // 
             // ckb_LP2
             // 
@@ -1721,6 +1722,7 @@ namespace new_inspection
             this.btn_stop.TabIndex = 9;
             this.btn_stop.Text = "Stop";
             this.btn_stop.UseVisualStyleBackColor = true;
+            this.btn_stop.Click += new System.EventHandler(this.btn_stop_Click);
             // 
             // btn_Home
             // 

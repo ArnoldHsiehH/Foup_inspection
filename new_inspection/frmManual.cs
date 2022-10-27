@@ -73,7 +73,8 @@ namespace new_inspection
 
         private void btn_cycleStart_Click(object sender, EventArgs e)
         {
-            Insp_process.Insp_start(Loadport.Loadport1);
+
+            Insp_process.cycle(ckb_LP1.Checked, ckb_LP2.Checked, ckb_rfid.Checked, ckb_Camera.Checked);
         }
 
         #region Loadport
@@ -469,5 +470,9 @@ namespace new_inspection
 
         #endregion
 
+        private void btn_stop_Click(object sender, EventArgs e)
+        {
+            Insp_process.Insp_stop();
+        }
     }
 }
