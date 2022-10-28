@@ -120,7 +120,7 @@ namespace new_inspection
 
             send_simple(now_job);
         }
-  
+
         public void LP_simple(Loadport loadport, LP_commend commend)
         {
 
@@ -179,7 +179,7 @@ namespace new_inspection
         {
             EventInsp(new MC_commend_pack() { commend = MC_commend.RBsimple, RB_Commend = commend, LP_unit = port });
         }
- 
+
 
         #endregion
 
@@ -194,6 +194,7 @@ namespace new_inspection
             #region 建立工作項目
             Type t = Data.GetType();
 
+            //建立工作項目
             if (t.Equals(typeof(MC_commend_pack)))
             {
 
@@ -209,10 +210,10 @@ namespace new_inspection
                         job_pack.Add(new job() { commend = new MP_Loadport() { port = Loadport.Loadport2, Commend = LP_commend.ORGN } });
                         break;
                     case MC_commend.RBsimple:
-                        job_pack.Add(new job() { commend = new MP_Robot() { Commend= commend_pack.RB_Commend } });
+                        job_pack.Add(new job() { commend = new MP_Robot() { Commend = commend_pack.RB_Commend } });
                         // job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = commend_pack.RB_Commend });
                         break;
-                }//建立工作項目
+                }
 
             }
 
@@ -227,39 +228,39 @@ namespace new_inspection
             {
                 MC_load setting = (MC_load)Data;
 
-                LPunit = (setting.port == Loadport.Loadport1) ? MC_unit.Loadport1 : MC_unit.unknow;
-                LPunit = (setting.port == Loadport.Loadport2) ? MC_unit.Loadport2 : LPunit;
-                if (LPunit == MC_unit.unknow)
-                    return;
-
-
-
                 if (setting.port == Loadport.Loadport1)
                 {
+                    job_pack.Add(new job() { commend = new MP_RFID() { port = setting.port, Commend = RF_commend.L1_RFID_read } });
+                    job_pack.Add(new job() { commend = new MP_Loadport() { port = setting.port, Commend = LP_commend.Clamp } });
                 }
                 if (setting.port == Loadport.Loadport2)
                 {
+                    job_pack.Add(new job() { commend = new MP_RFID() { port = setting.port, Commend = RF_commend.L2_RFID_read } });
+                    job_pack.Add(new job() { commend = new MP_Loadport() { port = setting.port, Commend = LP_commend.Clamp } });
                 }
-
-                //job_pack.Add(new job() { unit = LPunit, Loadport_commend = LP_commend.LOAD });
-
             }
 
             //cycle
             else if (t.Equals(typeof(MC_cycle)))
             {
                 MC_cycle setting = (MC_cycle)Data;
+                string RF_read = "test";
+                if (setting.RFID)
+                    RF_read = "";
                 for (int i = 0; i < setting.cycletimes; i++)
                 {
                     if (setting.Loadport1)
                     {
+                        MC_insp p1 = new MC_insp() { port = Loadport.Loadport1, foupID = RF_read };
+                        Creat_insp_jobs(p1, ref job_pack);
+
                     }
                     if (setting.Loadport2)
                     {
+                        MC_insp p2 = new MC_insp() { port = Loadport.Loadport2, foupID = RF_read };
+                        Creat_insp_jobs(p2, ref job_pack);
                     }
                 }
-
-
             }
 
             #endregion
@@ -361,7 +362,46 @@ namespace new_inspection
 
         private void Creat_insp_jobs(MC_insp commend_pack, ref List<job> job_pack)
         {
+            job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home1 } });
+            job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home } });
 
+            if (commend_pack.port == Loadport.Loadport1)
+            {
+                if (string.IsNullOrEmpty(commend_pack.foupID))
+                    job_pack.Add(new job() { commend = new MP_RFID() { port = commend_pack.port, Commend = RF_commend.L1_RFID_read } });
+
+                job_pack.Add(new job() { commend = new MP_Loadport() { port = Loadport.Loadport1, Commend = LP_commend.ORGN } });
+                job_pack.Add(new job() { commend = new MP_Loadport() { port = Loadport.Loadport1, Commend = LP_commend.LOAD } });
+                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L1_IC_L_1 } });
+                job_pack.Add(new job() { commend = new MP_ins() { ins = "F102,L1_IC_L_2" } });
+                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L1_IC_L_2 } });
+                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L1_IC_L_3 } });
+                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L1_IC_L_4 } });
+                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L1_IC_L_5 } });
+                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L1_IC_L_6 } });
+
+                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home1 } });
+                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home } });
+            }
+            else if (commend_pack.port == Loadport.Loadport2)
+            {
+                if (string.IsNullOrEmpty(commend_pack.foupID))
+                    job_pack.Add(new job() { commend = new MP_RFID() { port = commend_pack.port, Commend = RF_commend.L2_RFID_read } });
+
+                job_pack.Add(new job() { commend = new MP_Loadport() { port = Loadport.Loadport2, Commend = LP_commend.ORGN } });
+                job_pack.Add(new job() { commend = new MP_Loadport() { port = Loadport.Loadport2, Commend = LP_commend.LOAD } });
+                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L2_IC_L_1 } });
+                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L2_IC_L_2 } });
+                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L2_IC_L_3 } });
+                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L2_IC_L_4 } });
+                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L2_IC_L_5 } });
+                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L2_IC_L_6 } });
+
+
+                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home1 } });
+                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home } });
+            }
+            job_pack.Add(new job() { commend = new MP_other() { commend = MP_report.Insp_end } });
         }
 
 
@@ -377,14 +417,14 @@ namespace new_inspection
             if (t.Equals(typeof(MP_Robot)))
             {
                 MP_Robot commend = (MP_Robot)now_job.commend;
-                log=(string.Format("Robot: {0}", commend.Commend));
-                
+                log = (string.Format("Robot: {0}", commend.Commend));
+
             }
             else if (t.Equals(typeof(MP_Loadport)))
             {
                 MP_Loadport commend = (MP_Loadport)now_job.commend;
                 log = (string.Format("{0} : {1}", commend.port, commend.Commend));
-                
+
             }
             else if (t.Equals(typeof(MP_ins)))
             {
@@ -395,14 +435,42 @@ namespace new_inspection
             {
                 MP_RFID commend = (MP_RFID)now_job.commend;
                 log = (string.Format("Insp {0}: {1}", commend.port, commend.Commend));
+                switch (commend.Commend)
+                {
+                    case RF_commend.L1_RFIDcheck:
+                        status_update(new RFID_report() { ID = "L1 check", port = Loadport.Loadport1 });
+                        break;
+                    case RF_commend.L2_RFIDcheck:
+                        status_update(new RFID_report() { ID = "L2 check", port = Loadport.Loadport2 });
+                        break;
+                    case RF_commend.L1_RFID_read:
+                        status_update(new RFID_report() { ID = "L1 123", port = Loadport.Loadport1 });
+                        break;
+                    case RF_commend.L2_RFID_read:
+                        status_update(new RFID_report() { ID = "L2 123", port = Loadport.Loadport2 });
+                        break;
+                }
+            }
+            else if (t.Equals(typeof(MP_SCES)))
+            {
+                log = (string.Format("SCES"));
             }
             else if (t.Equals(typeof(MP_RB_job)))
             {
-
+                MP_RB_job commend = (MP_RB_job)now_job.commend;
+                log = (string.Format("RB : {0}", commend.Commend));
             }
-            else if (t.Equals(typeof(MP_set_speed)))
+            else if (t.Equals(typeof(MP_other)))
             {
-
+                MP_other commend = (MP_other)now_job.commend;
+                switch (commend.commend)
+                {
+                    case MP_report.Insp_end:
+                        status_update(new RFID_report() { ID = "", port = Loadport.Loadport1 });
+                        status_update(new RFID_report() { ID = "", port = Loadport.Loadport2 });
+                        break;
+                }
+                log = "Insp_end";
             }
             else
             {
@@ -451,7 +519,6 @@ namespace new_inspection
     {
         public string process_name { get; set; }
         public object commend { get; set; }
-
         public string ID { get; set; }
         public string ins { get; set; }
         public int foupType { get; set; }
@@ -475,7 +542,7 @@ namespace new_inspection
     {
         public string parameter;
         public RB_jog_commend Commend { get; set; }
-     
+
     }
     class MP_ins
     {
@@ -485,9 +552,11 @@ namespace new_inspection
     class MP_SCES
     {
     }
-    class MP_set_speed
+    class MP_other
     {
+        public MP_report commend { get; set; }
     }
+
     public enum RF_commend
     {
         no_commend,
@@ -765,6 +834,11 @@ namespace new_inspection
         home,
         clamp,
         RBsimple
+    }
+
+    enum MP_report
+    {
+        Insp_end
     }
     #endregion
 

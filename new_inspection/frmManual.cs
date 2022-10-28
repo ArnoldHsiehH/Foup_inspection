@@ -63,9 +63,25 @@ namespace new_inspection
 
         private void frmManual_Load(object sender, EventArgs e)
         {
-           
+            Main_control.status_update += new Main_control.percent(percent_IU);
         }
+        private void percent_IU(object obj)
+        {
+            Type t = obj.GetType();
+            schedule Schedule = new schedule();
+            Console.WriteLine("OBJ : Type is {0}", obj.GetType());
+     
 
+            if (t.Equals(typeof(RFID_report)))
+            {
+                RFID_report data = (RFID_report)obj;
+                if (data.port == Loadport.Loadport1)
+                    this.Invoke(new MethodInvoker(delegate () { txt_L1_RF_Console.Text = data.ID; }));
+                if (data.port == Loadport.Loadport2)
+                    this.Invoke(new MethodInvoker(delegate () { txt_L2_RF_Console.Text = data.ID; }));
+            }
+            // 
+        }
         private void btn_Home_Click(object sender, EventArgs e)
         {
             Insp_process.Insp_home();

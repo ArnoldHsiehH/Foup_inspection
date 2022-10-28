@@ -35,10 +35,10 @@ namespace new_inspection
                 this.Invoke(new MethodInvoker(delegate () { Progressbar_lp1_c(Schedule.percent); }));//百分比
             }
 
-            if (t.Equals(typeof(job)))//工作
+            if (t.Equals(typeof(string)))//工作
             {
-                job now_job = (job)obj;
-                this.Invoke(new MethodInvoker(delegate () { n_job_ui(now_job); }));
+                string now_job = (string)obj;
+                this.Invoke(new MethodInvoker(delegate () { lbl_LP1_motion.Text = now_job; }));
             }
             if (t.Equals(typeof(RFID_report)))
             {
@@ -60,10 +60,7 @@ namespace new_inspection
             btn_Progressbar_lp1.Width = (int)(value * p_Progressbar_lp1.Width);
         }
 
-        public void n_job_ui(job now_job)
-        {
-            //lbl_LP1_motion.Text = string.Format("{0}", now_job.unit);
-        }
+
 
         #endregion
 

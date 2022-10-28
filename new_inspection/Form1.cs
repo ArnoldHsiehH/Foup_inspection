@@ -68,11 +68,9 @@ namespace new_inspection
         }
         public void n_job_ui(string now_job)
         {
-            //lbl_LP1_motion.Text = string.Format("{0}", now_job.unit);
+            
+            txt_Console.Text += now_job + "\r\n";
             txt_Console.SelectionStart = txt_Console.Text.Length;
-
-            txt_Console.Text += now_job+"\r\n";
-
             txt_Console.ScrollToCaret();
 
         }
