@@ -113,12 +113,12 @@ namespace new_inspection
 
         private void btn_lp1_start_Click(object sender, EventArgs e)
         {
-            Insp_process.Insp_start(Loadport.Loadport1);
+            Insp_process.Insp_start(Loadport.Loadport1, txt_L1_foupID.Text);
         }
 
         private void btn_lp2_start_Click(object sender, EventArgs e)
         {
-            Insp_process.Insp_start(Loadport.Loadport2);
+            Insp_process.Insp_start(Loadport.Loadport2, txt_L2_foupID.Text);
         }
 
         private void btn_lp1_load_Click(object sender, EventArgs e)
