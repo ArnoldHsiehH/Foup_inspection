@@ -40,6 +40,14 @@ namespace new_inspection
                 job now_job = (job)obj;
                 this.Invoke(new MethodInvoker(delegate () { n_job_ui(now_job); }));
             }
+            if (t.Equals(typeof(RFID_report)))
+            {
+                RFID_report data = (RFID_report)obj;
+                if (data.port == Loadport.Loadport1)
+                    this.Invoke(new MethodInvoker(delegate () { txt_L1_foupID.Text = data.ID; }));
+                if (data.port == Loadport.Loadport2)
+                    this.Invoke(new MethodInvoker(delegate () { txt_L2_foupID.Text = data.ID; }));
+            }
             // 
         }
         public void Progressbar_lp1_c(float value)
@@ -55,35 +63,6 @@ namespace new_inspection
         public void n_job_ui(job now_job)
         {
             //lbl_LP1_motion.Text = string.Format("{0}", now_job.unit);
-
-            switch (now_job.unit)
-            {
-                case MC_unit.Robot:
-                    lbl_LP1_motion.Text = (string.Format("Unit :{0}   Motion :{1}", now_job.unit, now_job.Robot_commend));
-                    break;
-                case MC_unit.RB_jog:
-                    lbl_LP1_motion.Text = (string.Format("Unit :{0}   Motion :{1}", now_job.unit, now_job.RB_jog));
-                    break;
-                case MC_unit.Loadport1:
-                    lbl_LP1_motion.Text = (string.Format("Unit :{0}   Motion :{1}", now_job.unit, now_job.Loadport_commend));
-                    break;
-                case MC_unit.Loadport2:
-                    lbl_LP1_motion.Text = (string.Format("Unit :{0}   Motion :{1}", now_job.unit, now_job.Loadport_commend));
-                    break;
-                case MC_unit.RFID1://RFID_commend
-                    lbl_LP1_motion.Text = (string.Format("Unit :{0}   Motion :{1}", now_job.unit, now_job.RFID_commend));
-                    break;
-                case MC_unit.RFID2:
-                    lbl_LP1_motion.Text = (string.Format("Unit :{0}   Motion :{1}", now_job.unit, now_job.RFID_commend));
-                    break;
-                case MC_unit.ITRI:
-                    lbl_LP1_motion.Text = (string.Format("Unit :{0}   Motion :{1}", now_job.unit, now_job.ins));
-                    break;
-                case MC_unit.SCES:
-                    lbl_LP1_motion.Text = (string.Format("Unit :{0}   Motion :{1}", now_job.unit, now_job.SCES_commend));
-                    break;
-            }
-
         }
 
         #endregion
@@ -108,7 +87,7 @@ namespace new_inspection
         }
 
         #endregion
-        
+
         #region UI commend
 
         private void btn_lp1_start_Click(object sender, EventArgs e)
@@ -138,5 +117,5 @@ namespace new_inspection
 
 
     }
-    
+
 }

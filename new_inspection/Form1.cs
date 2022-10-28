@@ -59,46 +59,19 @@ namespace new_inspection
         private void percent_IU(object obj)
         {
             Type t = obj.GetType();
-            if (t.Equals(typeof(job)))//工作
+            if (t.Equals(typeof(string)))//工作
             {
-                job now_job = (job)obj;
-                this.Invoke(new MethodInvoker(delegate () { n_job_ui(now_job); }));
+                ///job now_job = (job)obj;
+                this.Invoke(new MethodInvoker(delegate () { n_job_ui((string)obj); }));
             }
             // 
         }
-        public void n_job_ui(job now_job)
+        public void n_job_ui(string now_job)
         {
             //lbl_LP1_motion.Text = string.Format("{0}", now_job.unit);
-
-            switch (now_job.unit)
-            {
-                case MC_unit.Robot:
-                    txt_Console.Text += (string.Format("Unit :{0}   Motion :{1}\r\n", now_job.unit, now_job.Robot_commend));
-                    break;
-                case MC_unit.RB_jog:
-                    txt_Console.Text += (string.Format("Unit :{0}   Motion :{1}\r\n", now_job.unit, now_job.RB_jog));
-                    break;
-                case MC_unit.Loadport1:
-                    txt_Console.Text += (string.Format("Unit :{0}   Motion :{1}\r\n", now_job.unit, now_job.Loadport_commend));
-                    break;
-                case MC_unit.Loadport2:
-                    txt_Console.Text += (string.Format("Unit :{0}   Motion :{1}\r\n", now_job.unit, now_job.Loadport_commend));
-                    break;
-                case MC_unit.RFID1://RFID_commend
-                    txt_Console.Text += (string.Format("Unit :{0}   Motion :{1}\r\n", now_job.unit, now_job.RFID_commend));
-                    break;
-                case MC_unit.RFID2:
-                    txt_Console.Text += (string.Format("Unit :{0}   Motion :{1}\r\n", now_job.unit, now_job.RFID_commend));
-                    break;
-                case MC_unit.ITRI:
-                    txt_Console.Text += (string.Format("Unit :{0}   Motion :{1}\r\n", now_job.unit, now_job.ins));
-                    break;
-                case MC_unit.SCES:
-                    txt_Console.Text += (string.Format("Unit :{0}   Motion :{1}\r\n", now_job.unit, now_job.SCES_commend));
-                    break;
-            }
             txt_Console.SelectionStart = txt_Console.Text.Length;
 
+            txt_Console.Text += now_job+"\r\n";
 
             txt_Console.ScrollToCaret();
 

@@ -83,29 +83,29 @@ namespace new_inspection
         {
             Button btn_click = (Button)sender;
             // Console.WriteLine("{0}", btn_click.Name);
-            LP_simple(MC_unit.Loadport1, btn_click.Text);
+            LP_simple(Loadport.Loadport1, btn_click.Text);
         }
 
         private void btn_Lp2_Click(object sender, EventArgs e)
         {
             Button btn_click = (Button)sender;
             // Console.WriteLine("{0}", btn_click.Name);
-            LP_simple(MC_unit.Loadport2, btn_click.Text);
+            LP_simple(Loadport.Loadport2, btn_click.Text);
         }
 
         private void btn_port1start_Click_1(object sender, EventArgs e)
         {
             if (lsb_portmotion.SelectedItems.Count == 1)
-                LP_simple(MC_unit.Loadport1, lsb_portmotion.SelectedItem.ToString());
+                LP_simple(Loadport.Loadport1, lsb_portmotion.SelectedItem.ToString());
         }
 
         private void btn_port2start_Click(object sender, EventArgs e)
         {
             if (lsb_portmotion.SelectedItems.Count == 1)
-                LP_simple(MC_unit.Loadport2, lsb_portmotion.SelectedItem.ToString());
+                LP_simple(Loadport.Loadport2, lsb_portmotion.SelectedItem.ToString());
         }
 
-        void LP_simple(MC_unit unit, string txt)
+        void LP_simple(Loadport unit, string txt)
         {
             switch (txt)
             {
@@ -180,8 +180,9 @@ namespace new_inspection
 
         #region Robot
 
-        private void btn_robotStart_Click(object sender, EventArgs e)
+        private void btn_robotStart_Click_1(object sender, EventArgs e)
         {
+
             if (lsb_rbmotion.SelectedItems.Count != 1 || lsb_port.SelectedItems.Count != 1)
                 return;
             int shift = 0;
@@ -359,9 +360,8 @@ namespace new_inspection
                     break;
             }
             Insp_process.RB_simple(port, commend);
-
-
         }
+
         private void btn_robot_jog_Click(object sender, EventArgs e)
         {
             Button btn_click = (Button)sender;
@@ -474,5 +474,7 @@ namespace new_inspection
         {
             Insp_process.Insp_stop();
         }
+
+
     }
 }

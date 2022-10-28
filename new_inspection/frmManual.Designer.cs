@@ -878,7 +878,7 @@ namespace new_inspection
             this.btn_robotStart.TabIndex = 5;
             this.btn_robotStart.Text = "Start";
             this.btn_robotStart.UseVisualStyleBackColor = false;
-            this.btn_robotStart.Click += new System.EventHandler(this.btn_robotStart_Click);
+            this.btn_robotStart.Click += new System.EventHandler(this.btn_robotStart_Click_1);
             // 
             // btn_disn
             // 
