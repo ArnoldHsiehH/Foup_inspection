@@ -20,7 +20,7 @@ namespace new_inspection
         {
             InitializeComponent();
             this.Show();
-           
+
             Error.EventErr += new Error.ErrEvent(UI_error_update);
 
         }
@@ -28,7 +28,7 @@ namespace new_inspection
 
         private void frmError_Load(object sender, EventArgs e)
         {
-          
+
         }
         private void btn_mute_Click(object sender, EventArgs e)
         {
@@ -93,12 +93,12 @@ namespace new_inspection
         public void err_clear()
         {
             Error.err_list.Clear();//異常清除
-                                   AlarmTriger(false);
+            AlarmTriger(false);
             err_flag = false;
         }
         public void write_alarmMessage(error_unit errlist, string errMessage)
         {
-             AlarmTriger(true);
+            AlarmTriger(true);
             err_flag = true;
             if (first_run)
             {
@@ -119,7 +119,7 @@ namespace new_inspection
         }
         public void write_alarmMessage(error_unit errlist, int code)//搜尋 alarm 內容
         {
-             AlarmTriger(true);
+            AlarmTriger(true);
             string message = "";
             err_flag = true;
             if (first_run)

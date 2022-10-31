@@ -113,6 +113,7 @@
     <Compile Include="frmResult.Designer.cs">
       <DependentUpon>frmResult.cs</DependentUpon>
     </Compile>
+    <Compile Include="INSP_recipe.cs" />
     <Compile Include="logwriter01.cs" />
     <Compile Include="Log_Read.cs">
       <SubType>UserControl</SubType>

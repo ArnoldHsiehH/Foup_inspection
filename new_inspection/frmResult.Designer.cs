@@ -108,10 +108,10 @@ namespace new_inspection
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(47, 134);
+            this.dataGridView1.Location = new System.Drawing.Point(47, 135);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(532, 737);
+            this.dataGridView1.Size = new System.Drawing.Size(483, 737);
             this.dataGridView1.TabIndex = 24;
             // 
             // frmResult

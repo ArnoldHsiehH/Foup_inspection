@@ -11,6 +11,7 @@ namespace new_inspection
     {
         static logwriter01 logwriter = new logwriter01();
         Error err_write = new Error();
+        INSP_recipe insp_Recipe = new INSP_recipe();
 
         private static Thread Main_thread;
         private static Thread Motion_thread;
@@ -27,6 +28,9 @@ namespace new_inspection
         static Queue<Interrupt_commend> Q_IC = new Queue<Interrupt_commend>();
         public void initail()
         {
+            insp_Recipe.Page_Load();
+
+
             logwriter.setLogType = logwriter01.LogDir.System;
             logwriter.setDevice_Name = "process";
             logwriter.write_local_log("initail process");
@@ -153,10 +157,10 @@ namespace new_inspection
                 case Loadport.Loadport1:
                     now_job.commend = new MP_RFID { port = Loadport.Loadport1, Commend = RF_commend.L1_RFID_read };
                     break;
-
                 case Loadport.Loadport2:
                     now_job.commend = new MP_RFID { port = Loadport.Loadport2, Commend = RF_commend.L2_RFID_read };
                     break;
+
             }
             send_simple(now_job);
 
@@ -188,7 +192,6 @@ namespace new_inspection
         private void Main_process(object Data)//觸發流程啟動
         {
             logwriter.write_local_log("Main process start");
-            MC_unit LPunit = MC_unit.unknow;
             List<job> job_pack = new List<job>();
 
             #region 建立工作項目
@@ -362,6 +365,13 @@ namespace new_inspection
 
         private void Creat_insp_jobs(MC_insp commend_pack, ref List<job> job_pack)
         {
+            if (string.IsNullOrEmpty(commend_pack.recipe))
+            {
+                commend_pack.recipe = (commend_pack.port == Loadport.Loadport1) ? "A01R" : "A01L";
+            }
+
+            List<INSP_recipe.recipe> ins_list = insp_Recipe.get_insp_list(commend_pack.recipe);
+
             job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home1 } });
             job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home } });
 
@@ -372,13 +382,16 @@ namespace new_inspection
 
                 job_pack.Add(new job() { commend = new MP_Loadport() { port = Loadport.Loadport1, Commend = LP_commend.ORGN } });
                 job_pack.Add(new job() { commend = new MP_Loadport() { port = Loadport.Loadport1, Commend = LP_commend.LOAD } });
-                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L1_IC_L_1 } });
-                job_pack.Add(new job() { commend = new MP_ins() { ins = "F102,L1_IC_L_2" } });
-                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L1_IC_L_2 } });
-                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L1_IC_L_3 } });
-                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L1_IC_L_4 } });
-                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L1_IC_L_5 } });
-                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L1_IC_L_6 } });
+                foreach (INSP_recipe.recipe target in ins_list)
+                {
+                    RB_commend RB_commendValue;
+                    if (Enum.TryParse(target.RB_motion, out RB_commendValue))
+                    {
+
+                        job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commendValue } });
+                    }
+
+                }
 
                 job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home1 } });
                 job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home } });
@@ -505,6 +518,7 @@ namespace new_inspection
     class MC_insp
     {
         public string foupID;
+        public string recipe;
         public Loadport port;
     }
     class MC_load
@@ -798,19 +812,6 @@ namespace new_inspection
     #endregion
 
     #region control
-    public enum MC_unit
-    {
-        unknow,
-        Robot,
-        RB_jog,
-        Loadport1,
-        Loadport2,
-        RFID1,
-        RFID2,
-        ITRI,
-        others,
-        SCES
-    }
     enum job_status
     {
         free,
