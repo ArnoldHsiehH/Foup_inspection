@@ -33,6 +33,7 @@ namespace new_inspection
             {
                 Schedule = (schedule)obj;
                 this.Invoke(new MethodInvoker(delegate () { Progressbar_lp1_c(Schedule.percent); }));//百分比
+                this.Invoke(new MethodInvoker(delegate () { lbl_LP1_motion.Text = "End"; }));
             }
 
             if (t.Equals(typeof(string)))//工作
@@ -73,10 +74,13 @@ namespace new_inspection
         private void btn_stop_Click(object sender, EventArgs e)
         {
             Insp_process.Insp_stop();
+            this.Invoke(new MethodInvoker(delegate () { Progressbar_lp1_c(0); }));//百分比
+            this.Invoke(new MethodInvoker(delegate () { lbl_LP1_motion.Text = "Stop"; }));
         }
         private void btn_pause_Click(object sender, EventArgs e)
         {
             Insp_process.Insp_pause();
+            this.Invoke(new MethodInvoker(delegate () { lbl_LP1_motion.Text = "pause"; }));
         }
         private void btn_continue_Click(object sender, EventArgs e)
         {

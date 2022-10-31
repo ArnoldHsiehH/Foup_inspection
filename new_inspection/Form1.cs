@@ -26,6 +26,7 @@ namespace new_inspection
         frmManual Manual_vrb = new frmManual() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; //Manual_vrb
         frmLog frmLog_vrb = new frmLog() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
         frmResult frmResult_vrb = new frmResult() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+        frmSetting frmSetting_vrb = new frmSetting() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
         public Form1()
         {
             InitializeComponent();
@@ -111,10 +112,6 @@ namespace new_inspection
         private void btn_exit_Click(object sender, EventArgs e)
         {
             logwriter.write_local_log(string.Format("Exit,click"));
-            //for (int i = 0; i < 0x800; i++)
-            //{
-            //    misubushi_IO.setB(i, 0);
-            //}
 
             System.Environment.Exit(0);
         }
@@ -175,6 +172,14 @@ namespace new_inspection
         {
             logwriter.write_local_log(string.Format("{0},click", "btn_error"));
             errfrm.Show();
+        }
+
+        private void btn_setting_Click(object sender, EventArgs e)
+        {
+            setlistbtn();
+            setlisttxt("Setting", btn_setting);
+            pnlfromcontrol(frmSetting_vrb);
+          
         }
     }
 }

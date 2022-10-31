@@ -113,6 +113,12 @@
     <Compile Include="frmResult.Designer.cs">
       <DependentUpon>frmResult.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetting.Designer.cs">
+      <DependentUpon>frmSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="INSP_recipe.cs" />
     <Compile Include="logwriter01.cs" />
     <Compile Include="Log_Read.cs">
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmResult.resx">
       <DependentUpon>frmResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetting.resx">
+      <DependentUpon>frmSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Log_Read.resx">
       <DependentUpon>Log_Read.cs</DependentUpon>

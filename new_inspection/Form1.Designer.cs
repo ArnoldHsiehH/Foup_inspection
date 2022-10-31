@@ -77,10 +77,10 @@ namespace new_inspection
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.panel1.Controls.Add(this.pnlNav);
             this.panel1.Controls.Add(this.btn_About);
             this.panel1.Controls.Add(this.btn_setting);
             this.panel1.Controls.Add(this.btn_exit);
-            this.panel1.Controls.Add(this.pnlNav);
             this.panel1.Controls.Add(this.btn_error);
             this.panel1.Controls.Add(this.btn_Result);
             this.panel1.Controls.Add(this.btn_Log);
@@ -122,6 +122,7 @@ namespace new_inspection
             this.btn_setting.TabIndex = 6;
             this.btn_setting.Text = "Setting";
             this.btn_setting.UseVisualStyleBackColor = true;
+            this.btn_setting.Click += new System.EventHandler(this.btn_setting_Click);
             // 
             // btn_exit
             // 

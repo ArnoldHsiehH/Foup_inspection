@@ -223,7 +223,11 @@ namespace new_inspection
             //insp
             else if (t.Equals(typeof(MC_insp)))
             {
-                Creat_insp_jobs((MC_insp)Data, ref job_pack);
+                if (!Creat_insp_jobs((MC_insp)Data, ref job_pack))
+                {
+                    err_write.write_warnMessage(Error.error_unit.system, "recipe file error");
+                    return;
+                }
             }
 
             //Load
@@ -255,13 +259,21 @@ namespace new_inspection
                     if (setting.Loadport1)
                     {
                         MC_insp p1 = new MC_insp() { port = Loadport.Loadport1, foupID = RF_read };
-                        Creat_insp_jobs(p1, ref job_pack);
+                        if (!Creat_insp_jobs(p1, ref job_pack))
+                        {
+                            err_write.write_warnMessage(Error.error_unit.system, "recipe file error");
+                            return;
+                        }
 
                     }
                     if (setting.Loadport2)
                     {
                         MC_insp p2 = new MC_insp() { port = Loadport.Loadport2, foupID = RF_read };
-                        Creat_insp_jobs(p2, ref job_pack);
+                        if (!Creat_insp_jobs(p2, ref job_pack))
+                        {
+                            err_write.write_warnMessage(Error.error_unit.system, "recipe file error");
+                            return;
+                        }
                     }
                 }
             }
@@ -363,7 +375,7 @@ namespace new_inspection
 
         }
 
-        private void Creat_insp_jobs(MC_insp commend_pack, ref List<job> job_pack)
+        private bool Creat_insp_jobs(MC_insp commend_pack, ref List<job> job_pack)
         {
             if (string.IsNullOrEmpty(commend_pack.recipe))
             {
@@ -390,6 +402,10 @@ namespace new_inspection
                         job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commendValue } });
                         job_pack.Add(new job() { commend = new MP_ins() { port = Loadport.Loadport1, ins = target.INSP_message } });
                     }
+                    else
+                    {
+                        return false;
+                    }
 
                 }
             }
@@ -409,12 +425,16 @@ namespace new_inspection
                         job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commendValue } });
                         job_pack.Add(new job() { commend = new MP_ins() { port = Loadport.Loadport2, ins = target.INSP_message } });
                     }
-
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
             job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home1 } });
             job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home } });
             job_pack.Add(new job() { commend = new MP_other() { commend = MP_report.Insp_end } });
+            return true;
         }
 
 
