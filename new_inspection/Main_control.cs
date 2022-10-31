@@ -387,14 +387,11 @@ namespace new_inspection
                     RB_commend RB_commendValue;
                     if (Enum.TryParse(target.RB_motion, out RB_commendValue))
                     {
-
                         job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commendValue } });
+                        job_pack.Add(new job() { commend = new MP_ins() { port = Loadport.Loadport1, ins = target.INSP_message } });
                     }
 
                 }
-
-                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home1 } });
-                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home } });
             }
             else if (commend_pack.port == Loadport.Loadport2)
             {
@@ -403,17 +400,20 @@ namespace new_inspection
 
                 job_pack.Add(new job() { commend = new MP_Loadport() { port = Loadport.Loadport2, Commend = LP_commend.ORGN } });
                 job_pack.Add(new job() { commend = new MP_Loadport() { port = Loadport.Loadport2, Commend = LP_commend.LOAD } });
-                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L2_IC_L_1 } });
-                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L2_IC_L_2 } });
-                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L2_IC_L_3 } });
-                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L2_IC_L_4 } });
-                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L2_IC_L_5 } });
-                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.RB_L2_IC_L_6 } });
 
+                foreach (INSP_recipe.recipe target in ins_list)
+                {
+                    RB_commend RB_commendValue;
+                    if (Enum.TryParse(target.RB_motion, out RB_commendValue))
+                    {
+                        job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commendValue } });
+                        job_pack.Add(new job() { commend = new MP_ins() { port = Loadport.Loadport2, ins = target.INSP_message } });
+                    }
 
-                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home1 } });
-                job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home } });
+                }
             }
+            job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home1 } });
+            job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home } });
             job_pack.Add(new job() { commend = new MP_other() { commend = MP_report.Insp_end } });
         }
 
