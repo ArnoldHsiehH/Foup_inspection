@@ -42,7 +42,6 @@ namespace new_inspection
 
             insp_Recipe.Page_Load();
             pnlfromcontrol(frmLog_vrb);
-
         }
         private void errbtn_color(bool value)
         {

@@ -46,9 +46,10 @@ namespace new_inspection
         {
             EventInsp(new MC_load() { port = Lpunit });
         }
-        public void Insp_start(Loadport Lpunit, string foupID)
+        public void Insp_start(Loadport Lpunit, string recipe, string foupID)
         {
-            EventInsp(new MC_insp() { port = Lpunit, foupID = foupID });//ID: RFID
+
+            EventInsp(new MC_insp() { port = Lpunit, recipe = recipe, foupID = foupID });//ID: RFID
         }
         public void Insp_home()
         {
@@ -378,7 +379,7 @@ namespace new_inspection
         {
             if (string.IsNullOrEmpty(commend_pack.recipe))
             {
-                commend_pack.recipe = (commend_pack.port == Loadport.Loadport1) ? "A01R" : "A01L";
+                commend_pack.recipe = (commend_pack.port == Loadport.Loadport1) ? "A01L" : "A01R";
             }
 
             List<INSP_recipe.recipe> ins_list = insp_Recipe.get_insp_list(commend_pack.recipe);
@@ -396,8 +397,10 @@ namespace new_inspection
                 foreach (INSP_recipe.recipe target in ins_list)
                 {
                     RB_commend RB_commendValue;
-                    if (Enum.TryParse(target.RB_motion, out RB_commendValue))
+                    if (Enum.TryParse(target.RB_motion, out RB_commendValue))//格式是否又誤
                     {
+                        if (target.do_undo != "O")//是否執行
+                            continue;
                         job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commendValue } });
                         job_pack.Add(new job() { commend = new MP_ins() { port = Loadport.Loadport1, ins = target.INSP_message } });
                     }
@@ -421,6 +424,8 @@ namespace new_inspection
                     RB_commend RB_commendValue;
                     if (Enum.TryParse(target.RB_motion, out RB_commendValue))
                     {
+                        if (target.do_undo != "O")//是否執行
+                            continue;
                         job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commendValue } });
                         job_pack.Add(new job() { commend = new MP_ins() { port = Loadport.Loadport2, ins = target.INSP_message } });
                     }
@@ -705,7 +710,7 @@ namespace new_inspection
         home1 = 2,
         select,
 
-        RB_L1_Lach_L = 101,
+        RB_L1_Lach_L = 101,//"RB_R1_Lach_L"
         RB_L1_Lach_R,
         RB_L1_TE_Out_L,
         RB_L1_TE_Out_R,
