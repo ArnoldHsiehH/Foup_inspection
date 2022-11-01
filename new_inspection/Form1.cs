@@ -16,6 +16,7 @@ namespace new_inspection
 
     public partial class Form1 : Form
     {
+        INSP_recipe insp_Recipe = new INSP_recipe();
         frmError errfrm = new frmError();
         Error err_write = new Error();
 
@@ -39,6 +40,7 @@ namespace new_inspection
             pnlNav.Left = btn_Dashbord.Left;
             btn_Dashbord.BackColor = System.Drawing.SystemColors.Window;
 
+            insp_Recipe.Page_Load();
             pnlfromcontrol(frmLog_vrb);
 
         }

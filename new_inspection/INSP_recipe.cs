@@ -52,12 +52,56 @@ namespace new_inspection
                 myRow.num = string.Format("{0}", range[rCnt, 2].Value2);
                 myRow.RB_motion = string.Format("{0}", range[rCnt, 3].Value2);
                 myRow.INSP_message = string.Format("{0}", range[rCnt, 4].Value2);
+                myRow.do_undo = string.Format("{0}", range[rCnt, 5].Value2);
                 myRows.Add(myRow);
             }
             code_list.Clear();
             code_list = myRows;
 
             xlWorkBook.Close(true, null, null);
+            xlApp.Quit();
+            Marshal.ReleaseComObject(xlWorkSheet);
+            Marshal.ReleaseComObject(xlWorkBook);
+            Marshal.ReleaseComObject(xlApp);
+
+        }
+        public void set_Do(string value,int row)
+        {
+            code_list[row].do_undo = value;
+
+            //myexcelApplication.ActiveWorkbook.Save(@"C:\abc.xls", Excel.XlFileFormat.xlWorkbookNormal);
+
+            Microsoft.Office.Interop.Excel.Application xlApp;
+            Workbook xlWorkBook;
+            Worksheet xlWorkSheet;
+            Range range;
+
+            int rCnt;
+            int rw = 0;
+            int cl = 0;
+
+            xlApp = new Microsoft.Office.Interop.Excel.Application();
+            //open the excel
+            xlWorkBook = xlApp.Workbooks.Open(@"D:\new_ins\recipe.xlsx");
+            //get the first sheet of the excel
+            xlWorkSheet = (Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+            range = xlWorkSheet.UsedRange;
+            // get the total row count
+            rw = range.Rows.Count;
+            //get the total column count
+            cl = range.Columns.Count;
+
+            List<recipe> myRows = new List<recipe>();
+            // traverse all the row in the excel
+            //xlApp.Cells[1, 1] = "Value 1";
+            xlApp.Cells[row+1, 5] = value;
+            //code_list.Clear();
+            //code_list = myRows;
+
+            //xlWorkBook.SaveAs(@"D:\new_ins\recipe1.xlsx");
+            xlWorkBook.Save();
+            xlWorkBook.Close(true, null, null); 
             xlApp.Quit();
             Marshal.ReleaseComObject(xlWorkSheet);
             Marshal.ReleaseComObject(xlWorkBook);
@@ -77,6 +121,7 @@ namespace new_inspection
             public string num { get; set; }
             public string RB_motion { get; set; }
             public string INSP_message { get; set; }
+            public string do_undo { get; set; }
 
         }
     }

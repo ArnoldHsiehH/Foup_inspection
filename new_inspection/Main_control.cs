@@ -28,9 +28,6 @@ namespace new_inspection
         static Queue<Interrupt_commend> Q_IC = new Queue<Interrupt_commend>();
         public void initail()
         {
-            insp_Recipe.Page_Load();
-
-
             logwriter.setLogType = logwriter01.LogDir.System;
             logwriter.setDevice_Name = "process";
             logwriter.write_local_log("initail process");
@@ -310,9 +307,11 @@ namespace new_inspection
                     {
                         case Interrupt_commend.insp_stop:
                             status = process_status.stop;
+                            status_update("stop");
                             logwriter.write_local_log("process stop");
                             break;
                         case Interrupt_commend.insp_pause:
+                            status_update("pause");
                             logwriter.write_local_log("process pause");
                             status = process_status.pause;
                             break;

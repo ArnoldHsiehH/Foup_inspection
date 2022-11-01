@@ -49,7 +49,6 @@ namespace new_inspection
                 if (data.port == Loadport.Loadport2)
                     this.Invoke(new MethodInvoker(delegate () { txt_L2_foupID.Text = data.ID; }));
             }
-            // 
         }
         public void Progressbar_lp1_c(float value)
         {
@@ -57,12 +56,8 @@ namespace new_inspection
                 value = 1.0f;
             else if (value < 0.0f)
                 value = 0.0f;
-
             btn_Progressbar_lp1.Width = (int)(value * p_Progressbar_lp1.Width);
         }
-
-
-
         #endregion
 
         #region pan controll
@@ -75,12 +70,10 @@ namespace new_inspection
         {
             Insp_process.Insp_stop();
             this.Invoke(new MethodInvoker(delegate () { Progressbar_lp1_c(0); }));//百分比
-            this.Invoke(new MethodInvoker(delegate () { lbl_LP1_motion.Text = "Stop"; }));
         }
         private void btn_pause_Click(object sender, EventArgs e)
         {
             Insp_process.Insp_pause();
-            this.Invoke(new MethodInvoker(delegate () { lbl_LP1_motion.Text = "pause"; }));
         }
         private void btn_continue_Click(object sender, EventArgs e)
         {
