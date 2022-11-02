@@ -19,7 +19,7 @@ namespace new_inspection
         public frmError()
         {
             InitializeComponent();
-            this.Show();
+            //this.Show();
 
             Error.EventErr += new Error.ErrEvent(UI_error_update);
 

@@ -39,6 +39,8 @@ namespace new_inspection
             if (t.Equals(typeof(string)))//工作
             {
                 string now_job = (string)obj;
+                if(now_job=="stop")
+                    this.Invoke(new MethodInvoker(delegate () { Progressbar_lp1_c(0); }));//百分比
                 this.Invoke(new MethodInvoker(delegate () { lbl_LP1_motion.Text = now_job; }));
             }
             if (t.Equals(typeof(RFID_report)))
@@ -69,7 +71,7 @@ namespace new_inspection
         private void btn_stop_Click(object sender, EventArgs e)
         {
             Insp_process.Insp_stop();
-            this.Invoke(new MethodInvoker(delegate () { Progressbar_lp1_c(0); }));//百分比
+            //this.Invoke(new MethodInvoker(delegate () { Progressbar_lp1_c(0); }));//百分比
         }
         private void btn_pause_Click(object sender, EventArgs e)
         {

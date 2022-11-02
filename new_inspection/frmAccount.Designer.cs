@@ -36,6 +36,8 @@ namespace new_inspection
             this.btn_set_pw = new System.Windows.Forms.Button();
             this.btn_set = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txt_l2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,21 +50,21 @@ namespace new_inspection
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(14, 93);
+            this.textBox2.Location = new System.Drawing.Point(16, 130);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(246, 22);
             this.textBox2.TabIndex = 24;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(14, 39);
+            this.textBox1.Location = new System.Drawing.Point(16, 72);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(246, 22);
             this.textBox1.TabIndex = 25;
             // 
             // btn_Adduser
             // 
-            this.btn_Adduser.Location = new System.Drawing.Point(14, 121);
+            this.btn_Adduser.Location = new System.Drawing.Point(16, 158);
             this.btn_Adduser.Name = "btn_Adduser";
             this.btn_Adduser.Size = new System.Drawing.Size(145, 23);
             this.btn_Adduser.TabIndex = 22;
@@ -99,11 +101,35 @@ namespace new_inspection
             this.dataGridView1.Size = new System.Drawing.Size(867, 343);
             this.dataGridView1.TabIndex = 19;
             // 
+            // txt_l2
+            // 
+            this.txt_l2.AutoSize = true;
+            this.txt_l2.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_l2.Location = new System.Drawing.Point(11, 39);
+            this.txt_l2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.txt_l2.Name = "txt_l2";
+            this.txt_l2.Size = new System.Drawing.Size(59, 30);
+            this.txt_l2.TabIndex = 26;
+            this.txt_l2.Text = "User";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(11, 97);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 30);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Pasword";
+            // 
             // frmAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1166, 535);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txt_l2);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -129,5 +155,7 @@ namespace new_inspection
         private System.Windows.Forms.Button btn_set_pw;
         private System.Windows.Forms.Button btn_set;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label txt_l2;
+        private System.Windows.Forms.Label label1;
     }
 }

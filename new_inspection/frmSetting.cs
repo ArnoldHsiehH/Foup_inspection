@@ -40,5 +40,15 @@ namespace new_inspection
             dataGridView1.DataSource = INSP_recipe.code_list;
             dataGridView1.Refresh();
         }
+
+        private void btn_account_Click(object sender, EventArgs e)
+        {
+            frmAccount Accountset = new frmAccount();
+            Accountset.Show();
+        }
+        /*
+            frmAccount Accountset = new frmAccount();
+   Accountset.Show();
+*/
     }
 }

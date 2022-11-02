@@ -33,6 +33,8 @@ namespace new_inspection
         public Form1()
         {
             InitializeComponent();
+            user_login();
+            errfrm.Show();
             Error.AlarmTriger += new Error.Alarmflag(errbtn_color);
             logwriter.setLogType = logwriter01.LogDir.System;
             logwriter.setDevice_Name = "Form1";
@@ -209,7 +211,7 @@ namespace new_inspection
 
             user user_account = new user();
             // Console.WriteLine(userlogin.txb_user.Text);
-            //    Console.WriteLine(userlogin.txb_pw.Text);
+            // Console.WriteLine(userlogin.txb_pw.Text);
 
             if (!System.IO.File.Exists(@"C:\EFEMdb\userDB.db"))
                 return;
@@ -238,13 +240,13 @@ namespace new_inspection
                     return;
                 }
                 Console.WriteLine("Pass");
-                // txt_userprint.Text = user_account.account_number;
-                //btn_Manual.Enabled = (user_account.manul == 0) ? false : true;
+                txt_userprint.Text = user_account.account_number;
+                btn_Manual.Enabled = (user_account.manul == 0) ? false : true;
                 //btn_Opration.Enabled = (user_account.opration == 0) ? false : true;
-                //btn_Log.Enabled = (user_account.log == 0) ? false : true;
-                //btn_history.Enabled = (user_account.result == 0) ? false : true;
-                //btn_setting.Enabled = (user_account.setting == 0) ? false : true;
-                //Setting_vrb.btn_account.Enabled = (user_account.setuser == 0) ? false : true;
+                btn_Log.Enabled = (user_account.log == 0) ? false : true;
+                btn_Result.Enabled = (user_account.result == 0) ? false : true;
+                btn_setting.Enabled = (user_account.setting == 0) ? false : true;
+                frmSetting_vrb.btn_account.Enabled = (user_account.setuser == 0) ? false : true;
 
                 setlistbtn();
                 setlisttxt("Dashboard", btn_Dashbord);
