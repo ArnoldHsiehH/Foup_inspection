@@ -9,13 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
-
+using System.Data.SQLite;
+using Dapper;
 
 namespace new_inspection
 {
 
     public partial class Form1 : Form
     {
+        AES AEScheck = new AES();
         INSP_recipe insp_Recipe = new INSP_recipe();
         frmError errfrm = new frmError();
         Error err_write = new Error();
@@ -73,7 +75,7 @@ namespace new_inspection
         }
         public void n_job_ui(string now_job)
         {
-            
+
             txt_Console.Text += now_job + "\r\n";
             txt_Console.SelectionStart = txt_Console.Text.Length;
             txt_Console.ScrollToCaret();
@@ -180,7 +182,77 @@ namespace new_inspection
             setlistbtn();
             setlisttxt("Setting", btn_setting);
             pnlfromcontrol(frmSetting_vrb);
-          
+
         }
+
+        private void btn_login_Click(object sender, EventArgs e)
+        {
+            user_login();
+            //InitSQLiteDb();
+            //TestInsert();
+            // TestSelect();
+
+        }
+        static string dbPath = @".\Test.sqlite";
+        static string cnStr = "data source=" + dbPath;
+
+        
+        private void user_login()
+        {
+            frmUser_account userlogin = new frmUser_account();
+            DialogResult loginResult = userlogin.ShowDialog();
+            //回傳正常]
+            if (loginResult != DialogResult.OK)
+                return;
+            string user = userlogin.txb_user.Text;
+            string pasword = userlogin.txb_pw.Text;
+
+            user user_account = new user();
+            // Console.WriteLine(userlogin.txb_user.Text);
+            //    Console.WriteLine(userlogin.txb_pw.Text);
+
+            if (!System.IO.File.Exists(@"C:\EFEMdb\userDB.db"))
+                return;
+
+            using (IDbConnection db = new SQLiteConnection(@"Data source= C:\EFEMdb\userDB.db;Version=3;New=true;"))
+            {
+                //搜尋資料
+                //var list = db.Query<user>("select * from users where account_number = 'Hirata'");
+                user_account = db.QuerySingleOrDefault<user>("select * from users where account_number = '" + user + "'");
+                if (user_account == null)
+                {
+                    err_write.write_warnMessage(Error.error_unit.system, "account error");
+                    //login_fild();
+                    return;
+                }
+                //
+
+                Console.WriteLine("account_number:{0} password:{1}", user_account.account_number, AEScheck.aesDecryptBase64(user_account.password));
+
+                string pw = user_account.password;
+                //確認密碼
+                if (pasword != AEScheck.aesDecryptBase64(pw))
+                {
+                    err_write.write_warnMessage(Error.error_unit.system, "password error");
+                    //login_fild();
+                    return;
+                }
+                Console.WriteLine("Pass");
+                // txt_userprint.Text = user_account.account_number;
+                //btn_Manual.Enabled = (user_account.manul == 0) ? false : true;
+                //btn_Opration.Enabled = (user_account.opration == 0) ? false : true;
+                //btn_Log.Enabled = (user_account.log == 0) ? false : true;
+                //btn_history.Enabled = (user_account.result == 0) ? false : true;
+                //btn_setting.Enabled = (user_account.setting == 0) ? false : true;
+                //Setting_vrb.btn_account.Enabled = (user_account.setuser == 0) ? false : true;
+
+                setlistbtn();
+                setlisttxt("Dashboard", btn_Dashbord);
+                pnlfromcontrol(frmDashboard_vrb);
+
+            }
+        }
+
+
     }
 }

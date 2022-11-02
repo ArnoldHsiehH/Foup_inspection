@@ -29,11 +29,12 @@ namespace new_inspection
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlNav = new System.Windows.Forms.Panel();
             this.btn_About = new System.Windows.Forms.Button();
             this.btn_setting = new System.Windows.Forms.Button();
             this.btn_exit = new System.Windows.Forms.Button();
-            this.pnlNav = new System.Windows.Forms.Panel();
             this.btn_error = new System.Windows.Forms.Button();
             this.btn_Result = new System.Windows.Forms.Button();
             this.btn_Log = new System.Windows.Forms.Button();
@@ -66,6 +67,7 @@ namespace new_inspection
             this.lbl_Title = new System.Windows.Forms.Label();
             this.txt_uptime = new System.Windows.Forms.Label();
             this.pnlFormLoader = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -93,6 +95,15 @@ namespace new_inspection
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 1021);
             this.panel1.TabIndex = 3;
+            // 
+            // pnlNav
+            // 
+            this.pnlNav.BackColor = System.Drawing.Color.Black;
+            this.pnlNav.Location = new System.Drawing.Point(11, 199);
+            this.pnlNav.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlNav.Name = "pnlNav";
+            this.pnlNav.Size = new System.Drawing.Size(10, 55);
+            this.pnlNav.TabIndex = 5;
             // 
             // btn_About
             // 
@@ -138,15 +149,6 @@ namespace new_inspection
             this.btn_exit.Text = "Exit";
             this.btn_exit.UseVisualStyleBackColor = true;
             this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
-            // 
-            // pnlNav
-            // 
-            this.pnlNav.BackColor = System.Drawing.Color.Black;
-            this.pnlNav.Location = new System.Drawing.Point(11, 199);
-            this.pnlNav.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlNav.Name = "pnlNav";
-            this.pnlNav.Size = new System.Drawing.Size(10, 55);
-            this.pnlNav.TabIndex = 5;
             // 
             // btn_error
             // 
@@ -248,9 +250,11 @@ namespace new_inspection
             this.btn_login.TabIndex = 0;
             this.btn_login.Text = "change";
             this.btn_login.UseVisualStyleBackColor = true;
+            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Image = global::new_inspection.Properties.Resources.profile;
             this.pictureBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
@@ -283,6 +287,7 @@ namespace new_inspection
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::new_inspection.Properties.Resources._2560px_Hirata_Logo_svg;
             this.pictureBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
@@ -621,6 +626,7 @@ namespace new_inspection
         private System.Windows.Forms.Panel pnlFormLoader;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
