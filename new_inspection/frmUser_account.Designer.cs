@@ -100,6 +100,7 @@ namespace new_inspection
             this.Controls.Add(this.txb_user);
             this.Name = "frmUser_account";
             this.Text = "frmUser_account";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

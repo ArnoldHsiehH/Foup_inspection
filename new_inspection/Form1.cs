@@ -34,7 +34,7 @@ namespace new_inspection
         {
             InitializeComponent();
             user_login();
-            errfrm.Show();
+            //errfrm.Show();
             Error.AlarmTriger += new Error.Alarmflag(errbtn_color);
             logwriter.setLogType = logwriter01.LogDir.System;
             logwriter.setDevice_Name = "Form1";
@@ -223,6 +223,7 @@ namespace new_inspection
                 user_account = db.QuerySingleOrDefault<user>("select * from users where account_number = '" + user + "'");
                 if (user_account == null)
                 {
+                    login_fild();
                     err_write.write_warnMessage(Error.error_unit.system, "account error");
                     //login_fild();
                     return;
@@ -235,6 +236,7 @@ namespace new_inspection
                 //確認密碼
                 if (pasword != AEScheck.aesDecryptBase64(pw))
                 {
+                    login_fild();
                     err_write.write_warnMessage(Error.error_unit.system, "password error");
                     //login_fild();
                     return;
@@ -255,6 +257,16 @@ namespace new_inspection
             }
         }
 
+        private void login_fild() 
+        {
+            txt_userprint.Text ="";
+            btn_Manual.Enabled = false;
+            //btn_Opration.Enabled = (user_account.opration == 0) ? false : true;
+            btn_Log.Enabled = false;
+            btn_Result.Enabled = false;
+            btn_setting.Enabled = false;
+            frmSetting_vrb.btn_account.Enabled = false;
+        }
 
     }
 }
