@@ -34,6 +34,7 @@ namespace new_inspection
             this.btn_do = new System.Windows.Forms.Button();
             this.btn_undo = new System.Windows.Forms.Button();
             this.btn_account = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,12 +92,25 @@ namespace new_inspection
             this.btn_account.UseVisualStyleBackColor = true;
             this.btn_account.Click += new System.EventHandler(this.btn_account_Click);
             // 
+            // button2
+            // 
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button2.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(672, 700);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(113, 43);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "file";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // frmSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1629, 774);
             this.Controls.Add(this.btn_account);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.btn_undo);
             this.Controls.Add(this.btn_do);
             this.Controls.Add(this.dataGridView1);
@@ -104,7 +118,7 @@ namespace new_inspection
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmSetting";
             this.Text = "frmSetting";
-            this.Load += new System.EventHandler(this.frmSetting_Load);
+            this.Load += new System.EventHandler(this.frmSetting_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -117,5 +131,6 @@ namespace new_inspection
         private System.Windows.Forms.Button btn_do;
         private System.Windows.Forms.Button btn_undo;
         public System.Windows.Forms.Button btn_account;
+        private System.Windows.Forms.Button button2;
     }
 }

@@ -77,7 +77,8 @@ namespace new_inspection
         }
         public void n_job_ui(string now_job)
         {
-
+            if (txt_Console.Lines.Length > 5000)
+                txt_Console.Text = "";
             txt_Console.Text += now_job + "\r\n";
             txt_Console.SelectionStart = txt_Console.Text.Length;
             txt_Console.ScrollToCaret();
@@ -213,10 +214,10 @@ namespace new_inspection
             // Console.WriteLine(userlogin.txb_user.Text);
             // Console.WriteLine(userlogin.txb_pw.Text);
 
-            if (!System.IO.File.Exists(@"C:\EFEMdb\userDB.db"))
+            if (!System.IO.File.Exists(@"D:\new_ins\userDB.db"))
                 return;
 
-            using (IDbConnection db = new SQLiteConnection(@"Data source= C:\EFEMdb\userDB.db;Version=3;New=true;"))
+            using (IDbConnection db = new SQLiteConnection(@"Data source= D:\new_ins\userDB.db;Version=3;New=true;"))
             {
                 //搜尋資料
                 //var list = db.Query<user>("select * from users where account_number = 'Hirata'");

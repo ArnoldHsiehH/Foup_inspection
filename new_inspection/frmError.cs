@@ -219,6 +219,7 @@ namespace new_inspection
             xlApp = new Microsoft.Office.Interop.Excel.Application();
             //open the excel
             xlWorkBook = xlApp.Workbooks.Open(@"D:\new_ins\Alarm_codes.xlsx");
+            //xlWorkBook = xlApp.Workbooks.Open(@".\Alarm_codes.xlsx");
             //get the first sheet of the excel
             xlWorkSheet = (Worksheet)xlWorkBook.Worksheets.get_Item(1);
 

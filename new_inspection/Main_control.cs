@@ -273,6 +273,7 @@ namespace new_inspection
                             return;
                         }
                     }
+                    job_pack.Add(new job() { commend = new MP_other { Commend = MP_report.conter_add } }) ;
                 }
             }
 
@@ -437,7 +438,7 @@ namespace new_inspection
             }
             job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home1 } });
             job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home } });
-            job_pack.Add(new job() { commend = new MP_other() { commend = MP_report.Insp_end } });
+            job_pack.Add(new job() { commend = new MP_other() { Commend = MP_report.Insp_end } });
             return true;
         }
 
@@ -500,14 +501,19 @@ namespace new_inspection
             else if (t.Equals(typeof(MP_other)))
             {
                 MP_other commend = (MP_other)now_job.commend;
-                switch (commend.commend)
+                switch (commend.Commend)
                 {
+                    case MP_report.conter_add:
+                        status_update(new conter() { });
+                        log = "conter_add";
+                        break;
                     case MP_report.Insp_end:
                         status_update(new RFID_report() { ID = "", port = Loadport.Loadport1 });
                         status_update(new RFID_report() { ID = "", port = Loadport.Loadport2 });
+                        log = "Insp_end";
                         break;
                 }
-                log = "Insp_end";
+              
             }
             else
             {
@@ -592,7 +598,7 @@ namespace new_inspection
     }
     class MP_other
     {
-        public MP_report commend { get; set; }
+        public MP_report Commend { get; set; }
     }
 
     public enum RF_commend
@@ -863,6 +869,7 @@ namespace new_inspection
 
     enum MP_report
     {
+        conter_add,
         Insp_end
     }
     #endregion
@@ -876,6 +883,10 @@ namespace new_inspection
     {
         public Loadport port;
         public string ID;
+    }
+    public class conter 
+    {
+
     }
     #endregion
 }

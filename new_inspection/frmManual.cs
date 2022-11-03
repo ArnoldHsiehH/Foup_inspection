@@ -80,6 +80,11 @@ namespace new_inspection
                 if (data.port == Loadport.Loadport2)
                     this.Invoke(new MethodInvoker(delegate () { txt_L2_RF_Console.Text = data.ID; }));
             }
+            if (t.Equals(typeof(conter)))
+            {
+                int a =Convert.ToInt32(txt_conter.Text) ;
+                this.Invoke(new MethodInvoker(delegate () { txt_conter.Text = Convert.ToString(a + 1); }));
+            }
             // 
         }
         private void btn_Home_Click(object sender, EventArgs e)
@@ -89,8 +94,8 @@ namespace new_inspection
 
         private void btn_cycleStart_Click(object sender, EventArgs e)
         {
-
-            Insp_process.cycle(ckb_LP1.Checked, ckb_LP2.Checked, ckb_rfid.Checked, ckb_Camera.Checked,10);
+            txt_conter.Text = "0";
+            Insp_process.cycle(ckb_LP1.Checked, ckb_LP2.Checked, ckb_rfid.Checked, ckb_Camera.Checked,999);
         }
 
         #region Loadport

@@ -84,6 +84,8 @@ namespace new_inspection
         {
             LogPage[(int)_LogFile].Text += "\r\n";
             LogPage[(int)_LogFile].Text += _LogMessage;
+            LogPage[(int)_LogFile].SelectionStart = LogPage[(int)_LogFile].Text.Length;
+            LogPage[(int)_LogFile].ScrollToCaret();
         }
 
         private void btnLogSearch_Click(object sender, EventArgs e)

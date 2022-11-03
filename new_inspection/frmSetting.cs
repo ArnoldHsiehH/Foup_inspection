@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace new_inspection
 {
@@ -17,12 +18,10 @@ namespace new_inspection
         {
             InitializeComponent();
         }
-
-        private void frmSetting_Load(object sender, EventArgs e)
+        private void frmSetting_Load_1(object sender, EventArgs e)
         {
             dataGridView1.DataSource = INSP_recipe.code_list;
         }
-
         private void btn_do_Click(object sender, EventArgs e)
         {
             insp_Recipe.set_Do("O", dataGridView1.CurrentCell.RowIndex);
@@ -46,9 +45,12 @@ namespace new_inspection
             frmAccount Accountset = new frmAccount();
             Accountset.Show();
         }
-        /*
-            frmAccount Accountset = new frmAccount();
-   Accountset.Show();
-*/
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string sPath = @"D:\new_ins\recipe.xlsx";//檔案位置///D:\inspectionBackup
+            Process.Start(sPath);
+        }
+
     }
 }
