@@ -38,7 +38,7 @@ namespace new_inspection
             Error.AlarmTriger += new Error.Alarmflag(errbtn_color);
             logwriter.setLogType = logwriter01.LogDir.System;
             logwriter.setDevice_Name = "Form1";
-
+            
             pnlNav.Height = btn_Dashbord.Height;
             pnlNav.Top = btn_Dashbord.Top;
             pnlNav.Left = btn_Dashbord.Left;

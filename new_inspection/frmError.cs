@@ -270,6 +270,7 @@ namespace new_inspection
             #region ITRI
             ITRI,
             #endregion
+            RFID,
             #region other
             other
             #endregion

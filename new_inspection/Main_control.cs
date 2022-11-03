@@ -26,6 +26,12 @@ namespace new_inspection
         public static event percent status_update;
 
         static Queue<Interrupt_commend> Q_IC = new Queue<Interrupt_commend>();
+
+
+
+        public static OMRON_RFID L1_RF = new OMRON_RFID();
+        public static OMRON_RFID L2_RF = new OMRON_RFID();
+
         public void initail()
         {
             logwriter.setLogType = logwriter01.LogDir.System;
@@ -461,6 +467,7 @@ namespace new_inspection
 
         private void Motion_process(object Data)
         {
+            string read_ID;
             string log = "unknow";
             job now_job = (job)Data;
             Type t = now_job.commend.GetType();
@@ -483,10 +490,18 @@ namespace new_inspection
             }
             else if (t.Equals(typeof(MP_RFID)))
             {
+               
+                read_ID = "";
                 MP_RFID commend = (MP_RFID)now_job.commend;
                 log = (string.Format("Insp {0}: {1}", commend.port, commend.Commend));
                 switch (commend.Commend)
                 {
+                    case RF_commend.L1_Initial:
+                        L1_RF.Initial(22);
+                        break;
+                    case RF_commend.L2_Initial:
+                        L2_RF.Initial(23);
+                        break;
                     case RF_commend.L1_RFIDcheck:
                         status_update(new RFID_report() { ID = "L1 check", port = Loadport.Loadport1 });
                         break;
@@ -494,7 +509,18 @@ namespace new_inspection
                         status_update(new RFID_report() { ID = "L2 check", port = Loadport.Loadport2 });
                         break;
                     case RF_commend.L1_RFID_read:
-                        status_update(new RFID_report() { ID = "L1 123", port = Loadport.Loadport1 });
+                       
+                        if (!L1_RF.READ_RFID("00000004", out read_ID))//
+                        {
+                            //loadport1_ID = "";
+                            //anser = motion_status.fail;
+                            //err_write
+                        }
+                        else
+                        {
+                            status_update(new RFID_report() { ID = read_ID, port = Loadport.Loadport1 });
+                        }
+
                         break;
                     case RF_commend.L2_RFID_read:
                         status_update(new RFID_report() { ID = "L2 123", port = Loadport.Loadport2 });
@@ -616,7 +642,8 @@ namespace new_inspection
     public enum RF_commend
     {
         no_commend,
-
+        L1_Initial,
+        L2_Initial,
         L1_RFIDcheck,
         L2_RFIDcheck,
         L1_RFID_read,
