@@ -194,23 +194,25 @@ namespace new_inspection
 
             #region 建立工作項目
             Type t = Data.GetType();
-
+            string job_name="";
             //建立工作項目
             if (t.Equals(typeof(MC_commend_pack)))
             {
-
+                
                 MC_commend_pack commend_pack;
                 commend_pack = (MC_commend_pack)Data;
                 logwriter.write_local_log(string.Format("Commend: {0}", commend_pack.commend));
                 switch (commend_pack.commend)
                 {
                     case MC_commend.home:   //建立工作項目: Home
+                        job_name = "HOME";
                         job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home } });
                         job_pack.Add(new job() { commend = new MP_Robot() { Commend = RB_commend.home1 } });
                         job_pack.Add(new job() { commend = new MP_Loadport() { port = Loadport.Loadport1, Commend = LP_commend.ORGN } });
                         job_pack.Add(new job() { commend = new MP_Loadport() { port = Loadport.Loadport2, Commend = LP_commend.ORGN } });
                         break;
                     case MC_commend.RBsimple:
+                        job_name = "RBSIMPLE";
                         job_pack.Add(new job() { commend = new MP_Robot() { Commend = commend_pack.RB_Commend } });
                         // job_pack.Add(new job() { unit = MC_unit.Robot, Robot_commend = commend_pack.RB_Commend });
                         break;
@@ -221,6 +223,7 @@ namespace new_inspection
             //insp
             else if (t.Equals(typeof(MC_insp)))
             {
+                job_name = "INSP";
                 if (!Creat_insp_jobs((MC_insp)Data, ref job_pack))
                 {
                     err_write.write_warnMessage(Error.error_unit.system, "recipe file error");
@@ -231,6 +234,7 @@ namespace new_inspection
             //Load
             else if (t.Equals(typeof(MC_load)))
             {
+                job_name = "LOAD";
                 MC_load setting = (MC_load)Data;
 
                 if (setting.port == Loadport.Loadport1)
@@ -248,6 +252,7 @@ namespace new_inspection
             //cycle
             else if (t.Equals(typeof(MC_cycle)))
             {
+                job_name = "CYCLE";
                 MC_cycle setting = (MC_cycle)Data;
                 string RF_read = "test";
                 if (setting.RFID)
@@ -275,6 +280,10 @@ namespace new_inspection
                     }
                     job_pack.Add(new job() { commend = new MP_other { Commend = MP_report.conter_add } }) ;
                 }
+            }
+            else
+            {
+                job_name = "UNKNOW";
             }
 
             #endregion
@@ -371,6 +380,9 @@ namespace new_inspection
             #endregion
 
             #region 工作結束
+           
+
+            status_update(string.Format("Process End,{0}", job_name));
             logwriter.write_local_log("Main process End");//工作結束
             #endregion
 
@@ -519,7 +531,7 @@ namespace new_inspection
             {
 
             }
-
+            
             logwriter.write_local_log(log);
             status_update(log);
 
