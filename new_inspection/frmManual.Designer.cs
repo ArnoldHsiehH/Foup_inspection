@@ -112,7 +112,7 @@ namespace new_inspection
             this.btn_Ynegative = new System.Windows.Forms.Button();
             this.btn_Zpositive = new System.Windows.Forms.Button();
             this.btn_Xnegative = new System.Windows.Forms.Button();
-            this.panel_RFID = new System.Windows.Forms.Panel();
+            this.panel_RFID1 = new System.Windows.Forms.Panel();
             this.btn_p2_RF_r = new System.Windows.Forms.Button();
             this.txt_L2_RF_Console = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -141,16 +141,18 @@ namespace new_inspection
             this.panel_control = new System.Windows.Forms.Panel();
             this.btn_stop = new System.Windows.Forms.Button();
             this.btn_Home = new System.Windows.Forms.Button();
+            this.panel_RFID2 = new System.Windows.Forms.Panel();
             this.panel7.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel_RFID.SuspendLayout();
+            this.panel_RFID1.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel_control.SuspendLayout();
+            this.panel_RFID2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel7
@@ -190,19 +192,20 @@ namespace new_inspection
             // 
             this.btn_port2start.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_port2start.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_port2start.Location = new System.Drawing.Point(132, 117);
+            this.btn_port2start.Location = new System.Drawing.Point(16, 232);
             this.btn_port2start.Name = "btn_port2start";
             this.btn_port2start.Size = new System.Drawing.Size(110, 50);
             this.btn_port2start.TabIndex = 14;
             this.btn_port2start.Text = "Port 2 start";
             this.btn_port2start.UseVisualStyleBackColor = true;
+            this.btn_port2start.Visible = false;
             this.btn_port2start.Click += new System.EventHandler(this.btn_port2start_Click);
             // 
             // btn_port1start
             // 
             this.btn_port1start.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_port1start.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_port1start.Location = new System.Drawing.Point(132, 58);
+            this.btn_port1start.Location = new System.Drawing.Point(16, 173);
             this.btn_port1start.Name = "btn_port1start";
             this.btn_port1start.Size = new System.Drawing.Size(110, 50);
             this.btn_port1start.TabIndex = 14;
@@ -261,6 +264,7 @@ namespace new_inspection
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(254, 476);
             this.panel5.TabIndex = 7;
+            this.panel5.Visible = false;
             // 
             // btn_Lp2_A300Dn
             // 
@@ -1150,8 +1154,7 @@ namespace new_inspection
             this.lsb_port.FormattingEnabled = true;
             this.lsb_port.ItemHeight = 21;
             this.lsb_port.Items.AddRange(new object[] {
-            "port1",
-            "port2"});
+            "port1"});
             this.lsb_port.Location = new System.Drawing.Point(46, 336);
             this.lsb_port.Name = "lsb_port";
             this.lsb_port.Size = new System.Drawing.Size(124, 46);
@@ -1357,20 +1360,16 @@ namespace new_inspection
             this.btn_Xnegative.Text = "X negative";
             this.btn_Xnegative.UseVisualStyleBackColor = false;
             // 
-            // panel_RFID
+            // panel_RFID1
             // 
-            this.panel_RFID.Controls.Add(this.btn_p2_RF_r);
-            this.panel_RFID.Controls.Add(this.txt_L2_RF_Console);
-            this.panel_RFID.Controls.Add(this.label15);
-            this.panel_RFID.Controls.Add(this.btn_p1_RF_c);
-            this.panel_RFID.Controls.Add(this.txt_L1_RF_Console);
-            this.panel_RFID.Controls.Add(this.btn_p1_RF_r);
-            this.panel_RFID.Controls.Add(this.label16);
-            this.panel_RFID.Controls.Add(this.btn_p2_RF_c);
-            this.panel_RFID.Location = new System.Drawing.Point(328, 96);
-            this.panel_RFID.Name = "panel_RFID";
-            this.panel_RFID.Size = new System.Drawing.Size(487, 152);
-            this.panel_RFID.TabIndex = 42;
+            this.panel_RFID1.Controls.Add(this.label15);
+            this.panel_RFID1.Controls.Add(this.btn_p1_RF_c);
+            this.panel_RFID1.Controls.Add(this.txt_L1_RF_Console);
+            this.panel_RFID1.Controls.Add(this.btn_p1_RF_r);
+            this.panel_RFID1.Location = new System.Drawing.Point(328, 96);
+            this.panel_RFID1.Name = "panel_RFID1";
+            this.panel_RFID1.Size = new System.Drawing.Size(266, 152);
+            this.panel_RFID1.TabIndex = 42;
             // 
             // btn_p2_RF_r
             // 
@@ -1380,7 +1379,7 @@ namespace new_inspection
             this.btn_p2_RF_r.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_p2_RF_r.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_p2_RF_r.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_p2_RF_r.Location = new System.Drawing.Point(365, 83);
+            this.btn_p2_RF_r.Location = new System.Drawing.Point(128, 82);
             this.btn_p2_RF_r.Name = "btn_p2_RF_r";
             this.btn_p2_RF_r.Size = new System.Drawing.Size(110, 45);
             this.btn_p2_RF_r.TabIndex = 5;
@@ -1391,7 +1390,7 @@ namespace new_inspection
             // txt_L2_RF_Console
             // 
             this.txt_L2_RF_Console.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
-            this.txt_L2_RF_Console.Location = new System.Drawing.Point(249, 44);
+            this.txt_L2_RF_Console.Location = new System.Drawing.Point(12, 44);
             this.txt_L2_RF_Console.Multiline = true;
             this.txt_L2_RF_Console.Name = "txt_L2_RF_Console";
             this.txt_L2_RF_Console.ReadOnly = true;
@@ -1455,7 +1454,7 @@ namespace new_inspection
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(244, 7);
+            this.label16.Location = new System.Drawing.Point(11, 7);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(93, 30);
@@ -1470,7 +1469,7 @@ namespace new_inspection
             this.btn_p2_RF_c.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_p2_RF_c.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_p2_RF_c.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_p2_RF_c.Location = new System.Drawing.Point(249, 83);
+            this.btn_p2_RF_c.Location = new System.Drawing.Point(12, 82);
             this.btn_p2_RF_c.Name = "btn_p2_RF_c";
             this.btn_p2_RF_c.Size = new System.Drawing.Size(110, 45);
             this.btn_p2_RF_c.TabIndex = 5;
@@ -1736,13 +1735,26 @@ namespace new_inspection
             this.btn_Home.UseVisualStyleBackColor = true;
             this.btn_Home.Click += new System.EventHandler(this.btn_Home_Click);
             // 
+            // panel_RFID2
+            // 
+            this.panel_RFID2.Controls.Add(this.btn_p2_RF_r);
+            this.panel_RFID2.Controls.Add(this.label16);
+            this.panel_RFID2.Controls.Add(this.txt_L2_RF_Console);
+            this.panel_RFID2.Controls.Add(this.btn_p2_RF_c);
+            this.panel_RFID2.Location = new System.Drawing.Point(594, 96);
+            this.panel_RFID2.Name = "panel_RFID2";
+            this.panel_RFID2.Size = new System.Drawing.Size(250, 152);
+            this.panel_RFID2.TabIndex = 45;
+            this.panel_RFID2.Visible = false;
+            // 
             // frmManual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1720, 920);
+            this.Controls.Add(this.panel_RFID2);
             this.Controls.Add(this.panel_control);
-            this.Controls.Add(this.panel_RFID);
+            this.Controls.Add(this.panel_RFID1);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
@@ -1761,13 +1773,15 @@ namespace new_inspection
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel_RFID.ResumeLayout(false);
-            this.panel_RFID.PerformLayout();
+            this.panel_RFID1.ResumeLayout(false);
+            this.panel_RFID1.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel_control.ResumeLayout(false);
+            this.panel_RFID2.ResumeLayout(false);
+            this.panel_RFID2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1857,7 +1871,7 @@ namespace new_inspection
         private System.Windows.Forms.Button btn_Ynegative;
         private System.Windows.Forms.Button btn_Zpositive;
         private System.Windows.Forms.Button btn_Xnegative;
-        private System.Windows.Forms.Panel panel_RFID;
+        private System.Windows.Forms.Panel panel_RFID1;
         private System.Windows.Forms.Button btn_p2_RF_r;
         private System.Windows.Forms.TextBox txt_L2_RF_Console;
         private System.Windows.Forms.Label label15;
@@ -1886,5 +1900,6 @@ namespace new_inspection
         private System.Windows.Forms.CheckBox ckb_rfid;
         private System.Windows.Forms.CheckBox ckb_Camera;
         private System.Windows.Forms.CheckBox ckb_LP1;
+        private System.Windows.Forms.Panel panel_RFID2;
     }
 }

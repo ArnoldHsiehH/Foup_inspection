@@ -495,7 +495,5 @@ namespace new_inspection
         {
             Insp_process.Insp_stop();
         }
-
-
     }
 }

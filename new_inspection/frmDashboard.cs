@@ -12,6 +12,8 @@ namespace new_inspection
 {
     public partial class frmDashboard : Form
     {
+        Error err_write = new Error();
+        INSP_recipe insp_Recipe = new INSP_recipe();
         Main_control Insp_process = new Main_control();
         public frmDashboard()
         {
@@ -21,6 +23,15 @@ namespace new_inspection
         private void frmDashboard_Load(object sender, EventArgs e)
         {
             Main_control.status_update += new Main_control.percent(percent_IU);
+            string ins_recipe_name = "";
+            foreach (INSP_recipe.recipe ins_recipe in INSP_recipe.code_list)
+            {
+                if (ins_recipe_name == ins_recipe.type)
+                    continue;
+                ins_recipe_name = ins_recipe.type;
+                listBox_recipe.Items.Add(ins_recipe_name);
+            }
+            //listBox_recipe
         }
 
         #region percent event
@@ -39,7 +50,7 @@ namespace new_inspection
             if (t.Equals(typeof(string)))//工作
             {
                 string now_job = (string)obj;
-                if(now_job=="stop")
+                if (now_job == "stop")
                     this.Invoke(new MethodInvoker(delegate () { Progressbar_lp1_c(0); }));//百分比
                 this.Invoke(new MethodInvoker(delegate () { lbl_LP1_motion.Text = now_job; }));
             }
@@ -88,7 +99,12 @@ namespace new_inspection
 
         private void btn_lp1_start_Click(object sender, EventArgs e)
         {
-            Insp_process.Insp_start(Loadport.Loadport1, "A01L", txt_L1_foupID.Text);
+            if (listBox_recipe.SelectedIndex == -1)
+            {
+                err_write.write_warnMessage(Error.error_unit.system, "please slect resipe");
+            }
+            else
+                Insp_process.Insp_start(Loadport.Loadport1, listBox_recipe.SelectedItem.ToString(), txt_L1_foupID.Text);
         }
 
         private void btn_lp2_start_Click(object sender, EventArgs e)

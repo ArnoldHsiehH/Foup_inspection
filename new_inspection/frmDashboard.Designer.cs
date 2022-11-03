@@ -60,6 +60,7 @@ namespace new_inspection
             this.label15 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LB_ins_result = new System.Windows.Forms.ListBox();
+            this.listBox_recipe = new System.Windows.Forms.ListBox();
             this.panel_control.SuspendLayout();
             this.p_Progressbar_lp1.SuspendLayout();
             this.panel_loadport2.SuspendLayout();
@@ -187,11 +188,12 @@ namespace new_inspection
             this.panel_loadport2.Controls.Add(this.panel4);
             this.panel_loadport2.Controls.Add(this.label14);
             this.panel_loadport2.Controls.Add(this.label11);
-            this.panel_loadport2.Location = new System.Drawing.Point(385, 0);
+            this.panel_loadport2.Location = new System.Drawing.Point(574, 16);
             this.panel_loadport2.Margin = new System.Windows.Forms.Padding(0);
             this.panel_loadport2.Name = "panel_loadport2";
             this.panel_loadport2.Size = new System.Drawing.Size(385, 243);
             this.panel_loadport2.TabIndex = 40;
+            this.panel_loadport2.Visible = false;
             // 
             // txt_L2ct
             // 
@@ -289,7 +291,7 @@ namespace new_inspection
             this.panel_loadport1.Controls.Add(this.btn_lp1_start);
             this.panel_loadport1.Controls.Add(this.label10);
             this.panel_loadport1.Controls.Add(this.label1);
-            this.panel_loadport1.Location = new System.Drawing.Point(0, 0);
+            this.panel_loadport1.Location = new System.Drawing.Point(189, 16);
             this.panel_loadport1.Margin = new System.Windows.Forms.Padding(0);
             this.panel_loadport1.Name = "panel_loadport1";
             this.panel_loadport1.Size = new System.Drawing.Size(385, 243);
@@ -387,6 +389,7 @@ namespace new_inspection
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel1.Controls.Add(this.listBox_recipe);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.LB_ins_result);
@@ -403,7 +406,7 @@ namespace new_inspection
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft YaHei UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(776, 16);
+            this.label15.Location = new System.Drawing.Point(1001, 16);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(194, 41);
@@ -412,9 +415,9 @@ namespace new_inspection
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(783, 72);
+            this.pictureBox1.Location = new System.Drawing.Point(1008, 147);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(864, 638);
+            this.pictureBox1.Size = new System.Drawing.Size(639, 563);
             this.pictureBox1.TabIndex = 42;
             this.pictureBox1.TabStop = false;
             // 
@@ -423,10 +426,20 @@ namespace new_inspection
             this.LB_ins_result.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.LB_ins_result.FormattingEnabled = true;
             this.LB_ins_result.ItemHeight = 21;
-            this.LB_ins_result.Location = new System.Drawing.Point(14, 265);
+            this.LB_ins_result.Location = new System.Drawing.Point(14, 370);
             this.LB_ins_result.Name = "LB_ins_result";
-            this.LB_ins_result.Size = new System.Drawing.Size(732, 445);
+            this.LB_ins_result.Size = new System.Drawing.Size(935, 340);
             this.LB_ins_result.TabIndex = 41;
+            // 
+            // listBox_recipe
+            // 
+            this.listBox_recipe.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox_recipe.FormattingEnabled = true;
+            this.listBox_recipe.ItemHeight = 21;
+            this.listBox_recipe.Location = new System.Drawing.Point(25, 16);
+            this.listBox_recipe.Name = "listBox_recipe";
+            this.listBox_recipe.Size = new System.Drawing.Size(120, 235);
+            this.listBox_recipe.TabIndex = 44;
             // 
             // frmDashboard
             // 
@@ -489,5 +502,6 @@ namespace new_inspection
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel p_Progressbar_lp1;
         private System.Windows.Forms.Button btn_Progressbar_lp1;
+        private System.Windows.Forms.ListBox listBox_recipe;
     }
 }

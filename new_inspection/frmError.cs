@@ -259,12 +259,16 @@ namespace new_inspection
         {
             system,
             #region PLC
+            PLC,
             #endregion
             #region Robot
+            Robot,
             #endregion
             #region LP
+            LP,
             #endregion
             #region ITRI
+            ITRI,
             #endregion
             #region other
             other

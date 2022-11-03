@@ -18,13 +18,13 @@ namespace new_inspection
     public partial class Form1 : Form
     {
         AES AEScheck = new AES();
-        INSP_recipe insp_Recipe = new INSP_recipe();
-        frmError errfrm = new frmError();
+        INSP_recipe insp_Recipe = new INSP_recipe();       
         Error err_write = new Error();
 
         logwriter01 logwriter = new logwriter01();
         Main_control Insp_process = new Main_control();
-
+        
+        frmError errfrm = new frmError();
         frmDashboard frmDashboard_vrb = new frmDashboard() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
         frmManual Manual_vrb = new frmManual() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; //Manual_vrb
         frmLog frmLog_vrb = new frmLog() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
