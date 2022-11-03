@@ -61,6 +61,8 @@ namespace new_inspection
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LB_ins_result = new System.Windows.Forms.ListBox();
             this.listBox_recipe = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel_control.SuspendLayout();
             this.p_Progressbar_lp1.SuspendLayout();
             this.panel_loadport2.SuspendLayout();
@@ -69,6 +71,7 @@ namespace new_inspection
             this.panel_p1_fid.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_control
@@ -291,7 +294,7 @@ namespace new_inspection
             this.panel_loadport1.Controls.Add(this.btn_lp1_start);
             this.panel_loadport1.Controls.Add(this.label10);
             this.panel_loadport1.Controls.Add(this.label1);
-            this.panel_loadport1.Location = new System.Drawing.Point(189, 16);
+            this.panel_loadport1.Location = new System.Drawing.Point(171, 16);
             this.panel_loadport1.Margin = new System.Windows.Forms.Padding(0);
             this.panel_loadport1.Name = "panel_loadport1";
             this.panel_loadport1.Size = new System.Drawing.Size(385, 243);
@@ -389,7 +392,7 @@ namespace new_inspection
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel1.Controls.Add(this.listBox_recipe);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.LB_ins_result);
@@ -436,10 +439,30 @@ namespace new_inspection
             this.listBox_recipe.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox_recipe.FormattingEnabled = true;
             this.listBox_recipe.ItemHeight = 21;
-            this.listBox_recipe.Location = new System.Drawing.Point(25, 16);
+            this.listBox_recipe.Location = new System.Drawing.Point(7, 44);
             this.listBox_recipe.Name = "listBox_recipe";
-            this.listBox_recipe.Size = new System.Drawing.Size(120, 235);
+            this.listBox_recipe.Size = new System.Drawing.Size(120, 172);
             this.listBox_recipe.TabIndex = 44;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(2, 11);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 30);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "Recipe :";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.listBox_recipe);
+            this.panel2.Location = new System.Drawing.Point(14, 16);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(154, 243);
+            this.panel2.TabIndex = 46;
             // 
             // frmDashboard
             // 
@@ -466,6 +489,8 @@ namespace new_inspection
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -503,5 +528,7 @@ namespace new_inspection
         private System.Windows.Forms.Panel p_Progressbar_lp1;
         private System.Windows.Forms.Button btn_Progressbar_lp1;
         private System.Windows.Forms.ListBox listBox_recipe;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label2;
     }
 }

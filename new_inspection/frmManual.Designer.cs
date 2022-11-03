@@ -157,7 +157,7 @@ namespace new_inspection
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel7.BackColor = System.Drawing.SystemColors.Control;
             this.panel7.Controls.Add(this.panel2);
             this.panel7.Location = new System.Drawing.Point(328, 308);
             this.panel7.Name = "panel7";
@@ -166,7 +166,7 @@ namespace new_inspection
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Snow;
+            this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.panel3);
@@ -178,6 +178,7 @@ namespace new_inspection
             // 
             // panel4
             // 
+            this.panel4.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel4.Controls.Add(this.btn_port2start);
             this.panel4.Controls.Add(this.btn_port1start);
             this.panel4.Controls.Add(this.lsb_portmotion);
@@ -242,6 +243,7 @@ namespace new_inspection
             // 
             // panel5
             // 
+            this.panel5.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel5.Controls.Add(this.btn_Lp2_A300Dn);
             this.panel5.Controls.Add(this.btn_Lp2_Dn);
             this.panel5.Controls.Add(this.btn_Lp2_unLatch);
@@ -519,6 +521,7 @@ namespace new_inspection
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel3.Controls.Add(this.btn_Lp1_A300Dn);
             this.panel3.Controls.Add(this.btn_Lp1_Dn);
             this.panel3.Controls.Add(this.txt_l1);
@@ -1595,7 +1598,7 @@ namespace new_inspection
             this.panel6.Controls.Add(this.btn_103);
             this.panel6.Controls.Add(this.btn_F100);
             this.panel6.Controls.Add(this.label14);
-            this.panel6.Location = new System.Drawing.Point(26, 308);
+            this.panel6.Location = new System.Drawing.Point(26, 366);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(251, 328);
             this.panel6.TabIndex = 41;
