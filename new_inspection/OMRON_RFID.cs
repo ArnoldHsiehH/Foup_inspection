@@ -81,6 +81,7 @@ namespace new_inspection
             else
             {
                 anser = "";
+                err_write.write_alarmMessage(Error.error_unit.RFID, "RFID wrong ans");
                 Console.WriteLine("wrong ans");
             }
             RFID.unsubscribe(Subscriber);
@@ -140,18 +141,23 @@ namespace new_inspection
                 else//ascii 轉換成foup id
                 {
                     string output = "";
-
-                    for (int i = 0; i < 8; i++)///需要改回8
+                    if (anser.Length < 18)
+                    { }
+                    else 
                     {
-                        int buffer;
-                        string b = string.Format("{0}{1}", anser[i * 2 + 2], anser[i * 2 + 3]);
-                        if (b != "00")
+                        for (int i = 0; i < 8; i++)///需要改回8
                         {
-                            buffer = Convert.ToInt32(b, 16);
-                            char ascii_txt = (char)buffer;
-                            output = output + ascii_txt;
+                            int buffer;
+                            string b = string.Format("{0}{1}", anser[i * 2 + 2], anser[i * 2 + 3]);
+                            if (b != "00")
+                            {
+                                buffer = Convert.ToInt32(b, 16);
+                                char ascii_txt = (char)buffer;
+                                output = output + ascii_txt;
+                            }
                         }
-                    }
+                    } 
+
                     anser = output.Trim();
 
                 }
@@ -178,6 +184,7 @@ namespace new_inspection
     }
     class RF_Serial_driver
     {
+        logwriter01 logwriter = new logwriter01();
         RF_newspaper_office Newsboy = new RF_newspaper_office("ITRI");  // 發送者   (將接收的資料發送給訂閱者 )
         Error err_write = new Error();
         public string DeviceName;
@@ -196,6 +203,9 @@ namespace new_inspection
 
         public void Initial(int number)
         {
+            logwriter.setLogType = logwriter01.LogDir.LP;
+            logwriter.setDevice_Name = "RFID";
+
             DeviceName = string.Format("{0}{1}", "RFID", number);
 
             #region  RS232 Setting
@@ -222,7 +232,7 @@ namespace new_inspection
                 return;
             }
             // t_rec=
-
+            logwriter.write_local_log("RFID start");
             t_rec = new Thread(Received);
             t_rec.Start();
         }
@@ -306,6 +316,7 @@ namespace new_inspection
                             str = encoding.GetString(tempList.ToArray());
 
                             Newsboy.send_paper(str);
+                           
                             tempList.Clear();
                             break;
                         }
@@ -336,9 +347,12 @@ namespace new_inspection
     }
     class RF_newspaper_office
     {
+        logwriter01 logwriter = new logwriter01();
         private string name;
         public RF_newspaper_office(string name)
         {
+            logwriter.setLogType = logwriter01.LogDir.LP;
+            logwriter.setDevice_Name = "RFID";
             this.name = name;
         }
         // 委派(方法類別)
@@ -352,6 +366,7 @@ namespace new_inspection
             Console.WriteLine("Hi i am {0}", name);
             if (Newsboy_Event != null)
             {
+                logwriter.write_local_log(str);
                 Newsboy_Event(str);
             }
         }
@@ -359,16 +374,20 @@ namespace new_inspection
     }
     class RF_subscriber
     {
+        logwriter01 logwriter = new logwriter01();
         Queue<string> news = new Queue<string>();
         public string name;
         public RF_subscriber(string name)
         {
+            logwriter.setLogType = logwriter01.LogDir.LP;
+            logwriter.setDevice_Name = "RFID";
             this.name = name;
         }
         public void get_paper(string a)//(string newspaper)
         {
             // string newspaper = "aaa";
             news.Enqueue(a);
+           
             Console.WriteLine("send {1} to {0}", name, a);
         }
         //public void get_paper(string a, Queue<string> otherQ)//(string newspaper)

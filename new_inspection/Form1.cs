@@ -18,12 +18,12 @@ namespace new_inspection
     public partial class Form1 : Form
     {
         AES AEScheck = new AES();
-        INSP_recipe insp_Recipe = new INSP_recipe();       
+        INSP_recipe insp_Recipe = new INSP_recipe();
         Error err_write = new Error();
 
         logwriter01 logwriter = new logwriter01();
         Main_control Insp_process = new Main_control();
-        
+
         frmError errfrm = new frmError();
         frmDashboard frmDashboard_vrb = new frmDashboard() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
         frmManual Manual_vrb = new frmManual() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; //Manual_vrb
@@ -38,7 +38,7 @@ namespace new_inspection
             Error.AlarmTriger += new Error.Alarmflag(errbtn_color);
             logwriter.setLogType = logwriter01.LogDir.System;
             logwriter.setDevice_Name = "Form1";
-            
+
             pnlNav.Height = btn_Dashbord.Height;
             pnlNav.Top = btn_Dashbord.Top;
             pnlNav.Left = btn_Dashbord.Left;
@@ -46,6 +46,7 @@ namespace new_inspection
 
             insp_Recipe.Page_Load();
             pnlfromcontrol(frmLog_vrb);
+            Insp_process.initail();
         }
         private void errbtn_color(bool value)
         {
@@ -60,8 +61,9 @@ namespace new_inspection
         private void Form1_Load(object sender, EventArgs e)
         {
             pnlfromcontrol(frmDashboard_vrb);
-            Insp_process.initail();
+
             Main_control.status_update += new Main_control.percent(percent_IU);
+            Insp_process.Insp_initail();
 
         }
 
@@ -199,7 +201,7 @@ namespace new_inspection
         static string dbPath = @".\Test.sqlite";
         static string cnStr = "data source=" + dbPath;
 
-        
+
         private void user_login()
         {
             frmUser_account userlogin = new frmUser_account();
@@ -258,9 +260,9 @@ namespace new_inspection
             }
         }
 
-        private void login_fild() 
+        private void login_fild()
         {
-            txt_userprint.Text ="";
+            txt_userprint.Text = "";
             btn_Manual.Enabled = false;
             //btn_Opration.Enabled = (user_account.opration == 0) ? false : true;
             btn_Log.Enabled = false;

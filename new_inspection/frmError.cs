@@ -138,6 +138,7 @@ namespace new_inspection
             }
             logwriter.setLogType = logwriter01.LogDir.Error;
             logwriter.setDevice_Name = "Error";
+           
 
             if (!err_list.Exists(x => x.ToString() == message))
             {

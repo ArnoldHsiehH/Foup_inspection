@@ -48,6 +48,12 @@ namespace new_inspection
         }
 
         #region commends
+
+        public void Insp_initail()
+        {
+            EventInsp(new MC_initail() { RFID = true }) ;
+        }
+
         public void Insp_Load(Loadport Lpunit)
         {
             EventInsp(new MC_load() { port = Lpunit });
@@ -202,7 +208,21 @@ namespace new_inspection
             Type t = Data.GetType();
             string job_name="";
             //建立工作項目
-            if (t.Equals(typeof(MC_commend_pack)))
+            if (t.Equals(typeof(MC_initail)))
+            {
+                MC_initail Setting;
+                Setting = (MC_initail)Data;
+                if (Setting.PLC) { }
+                if (Setting.RFID) 
+                {
+                    job_pack.Add(new job() { commend = new MP_RFID() { port = Loadport.Loadport1, Commend = RF_commend.L1_Initial } });
+                }
+                if (Setting.adam)
+                {
+
+                }
+            }
+            else if (t.Equals(typeof(MC_commend_pack)))
             {
                 
                 MC_commend_pack commend_pack;
@@ -393,7 +413,7 @@ namespace new_inspection
             #endregion
 
         }
-
+            #region 掃描動作建立
         private bool Creat_insp_jobs(MC_insp commend_pack, ref List<job> job_pack)
         {
             if (string.IsNullOrEmpty(commend_pack.recipe))
@@ -459,7 +479,7 @@ namespace new_inspection
             job_pack.Add(new job() { commend = new MP_other() { Commend = MP_report.Insp_end } });
             return true;
         }
-
+        #endregion
 
         #endregion
 
@@ -497,24 +517,24 @@ namespace new_inspection
                 switch (commend.Commend)
                 {
                     case RF_commend.L1_Initial:
-                        L1_RF.Initial(22);
+                        //L1_RF.Initial(22);
+                        L1_RF.Initial(3);
                         break;
                     case RF_commend.L2_Initial:
                         L2_RF.Initial(23);
                         break;
                     case RF_commend.L1_RFIDcheck:
                         status_update(new RFID_report() { ID = "L1 check", port = Loadport.Loadport1 });
+                        L1_RF.check_connection();
                         break;
                     case RF_commend.L2_RFIDcheck:
                         status_update(new RFID_report() { ID = "L2 check", port = Loadport.Loadport2 });
+                        L2_RF.check_connection();
                         break;
                     case RF_commend.L1_RFID_read:
                        
                         if (!L1_RF.READ_RFID("00000004", out read_ID))//
                         {
-                            //loadport1_ID = "";
-                            //anser = motion_status.fail;
-                            //err_write
                         }
                         else
                         {
@@ -523,7 +543,16 @@ namespace new_inspection
 
                         break;
                     case RF_commend.L2_RFID_read:
-                        status_update(new RFID_report() { ID = "L2 123", port = Loadport.Loadport2 });
+
+                        if (!L1_RF.READ_RFID("00000004", out read_ID))//
+                        {
+                        }
+                        else
+                        {
+                            status_update(new RFID_report() { ID = read_ID, port = Loadport.Loadport2 });
+                        }
+                        //status_update(new RFID_report() { ID = "L2 123", port = Loadport.Loadport2 });
+
                         break;
                 }
             }
@@ -574,6 +603,14 @@ namespace new_inspection
         public Loadport LP_unit;
         public RB_commend RB_Commend;
         public string ID;
+    }
+    class MC_initail
+    {
+        public bool PLC;
+        public bool RFID;
+        public bool Insp;
+        public bool adam;
+
     }
     class MC_cycle
     {
