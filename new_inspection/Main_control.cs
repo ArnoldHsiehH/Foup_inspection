@@ -44,19 +44,20 @@ namespace new_inspection
             Motion_thread = new Thread(new ParameterizedThreadStart(Motion_process));
             Main_thread.IsBackground = true;
             Motion_thread.IsBackground = true;
-
+           
             EventInsp += new inspEvent(get_commend);
             send_simple += new simpleEvent(get_sinle_commend);
+          
         }
 
         #region commends
 
         public void Insp_initail()
         {
-            EventInsp(new MC_initail() { RFID = true }) ;
+            EventInsp(new MC_initail() {PLC=true, RFID = true, adam=true, Insp=true }) ;
         }
 
-        public void Insp_Load(Loadport Lpunit)
+        public void Insp_Load(Loadport Lpunit)  
         {
             EventInsp(new MC_load() { port = Lpunit });
         }
@@ -214,15 +215,8 @@ namespace new_inspection
             {
                 MC_initail Setting;
                 Setting = (MC_initail)Data;
-                if (Setting.PLC) { }
-                if (Setting.RFID) 
-                {
-                    job_pack.Add(new job() { commend = new MP_RFID() { port = Loadport.Loadport1, Commend = RF_commend.L1_Initial } });
-                }
-                if (Setting.adam)
-                {
+                job_pack.Add(new job() {commend= Setting });
 
-                }
             }
             else if (t.Equals(typeof(MC_commend_pack)))
             {
@@ -493,6 +487,15 @@ namespace new_inspection
             string log = "unknow";
             job now_job = (job)Data;
             Type t = now_job.commend.GetType();
+            if (t.Equals(typeof(MC_initail)))
+            {
+                MC_initail setting = (MC_initail)now_job.commend;
+                Misubushi_IO.Initial();
+                if (setting.RFID == true)
+                {
+                    L1_RF.Initial(22);
+                }
+            }
             if (t.Equals(typeof(MP_Robot)))
             {
                 MP_Robot commend = (MP_Robot)now_job.commend;
@@ -518,13 +521,6 @@ namespace new_inspection
                 log = (string.Format("Insp {0}: {1}", commend.port, commend.Commend));
                 switch (commend.Commend)
                 {
-                    case RF_commend.L1_Initial:
-                        //L1_RF.Initial(22);
-                        L1_RF.Initial(3);
-                        break;
-                    case RF_commend.L2_Initial:
-                        L2_RF.Initial(23);
-                        break;
                     case RF_commend.L1_RFIDcheck:
                         status_update(new RFID_report() { ID = "L1 check", port = Loadport.Loadport1 });
                         L1_RF.check_connection();
