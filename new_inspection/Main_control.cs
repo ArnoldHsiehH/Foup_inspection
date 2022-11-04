@@ -9,6 +9,8 @@ namespace new_inspection
 {
     class Main_control
     {
+
+        misubushi_IO Misubushi_IO = new misubushi_IO();
         static logwriter01 logwriter = new logwriter01();
         Error err_write = new Error();
         INSP_recipe insp_Recipe = new INSP_recipe();
@@ -532,7 +534,6 @@ namespace new_inspection
                         L2_RF.check_connection();
                         break;
                     case RF_commend.L1_RFID_read:
-                       
                         if (!L1_RF.READ_RFID("00000004", out read_ID))//
                         {
                         }
@@ -540,19 +541,15 @@ namespace new_inspection
                         {
                             status_update(new RFID_report() { ID = read_ID, port = Loadport.Loadport1 });
                         }
-
                         break;
                     case RF_commend.L2_RFID_read:
-
                         if (!L1_RF.READ_RFID("00000004", out read_ID))//
                         {
                         }
-                        else
+                        else  
                         {
                             status_update(new RFID_report() { ID = read_ID, port = Loadport.Loadport2 });
                         }
-                        //status_update(new RFID_report() { ID = "L2 123", port = Loadport.Loadport2 });
-
                         break;
                 }
             }

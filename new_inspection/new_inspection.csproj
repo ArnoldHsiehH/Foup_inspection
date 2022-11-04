@@ -150,6 +150,10 @@
       <DependentUpon>Log_Read.cs</DependentUpon>
     </Compile>
     <Compile Include="Main_control.cs" />
+    <Compile Include="mitsubishi_IO\misubushi_IO.cs" />
+    <Compile Include="mitsubishi_IO\Mitsubishi_PLC_Get_B.cs" />
+    <Compile Include="mitsubishi_IO\Mitsubishi_PLC_Get_W.cs" />
+    <Compile Include="mitsubishi_IO\Mitsubishi_PLC_Send.cs" />
     <Compile Include="OMRON_RFID.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
