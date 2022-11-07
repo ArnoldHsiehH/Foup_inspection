@@ -497,12 +497,24 @@ namespace new_inspection
                     L1_RF.Initial(22);
                 }
             }
+
+            #region Robot
             if (t.Equals(typeof(MP_Robot)))
             {
                 MP_Robot commend = (MP_Robot)now_job.commend;
                 log = (string.Format("Robot: {0}", commend.Commend));
+                PLC.robot_compoundmotion((int)commend.Commend);
 
             }
+            else if (t.Equals(typeof(MP_RB_job)))
+            {
+                MP_RB_job commend = (MP_RB_job)now_job.commend;
+                log = (string.Format("RB : {0}", commend.Commend));
+            }
+
+            #endregion
+
+            #region Loadport
             else if (t.Equals(typeof(MP_Loadport)))
             {
                 MP_Loadport commend = (MP_Loadport)now_job.commend;
@@ -524,7 +536,7 @@ namespace new_inspection
                     }
 
                 }
-                else if (10F >= (int)commend.Commend && (int)commend.Commend >= 0x100)//指令沒有分port
+                else if (0x10F >= (int)commend.Commend && (int)commend.Commend >= 0x100)//指令沒有分port
                 {
                     if (commend.port == Loadport.Loadport1)
                     {
@@ -541,11 +553,15 @@ namespace new_inspection
                     }
                 }
             }
+            #endregion
+
             else if (t.Equals(typeof(MP_ins)))
             {
                 MP_ins commend = (MP_ins)now_job.commend;
                 log = (string.Format("Insp : {0}", commend.ins));
             }
+
+            #region RFID
             else if (t.Equals(typeof(MP_RFID)))
             {
 
@@ -582,15 +598,13 @@ namespace new_inspection
                         break;
                 }
             }
+            #endregion
+
             else if (t.Equals(typeof(MP_SCES)))
             {
                 log = (string.Format("SCES"));
             }
-            else if (t.Equals(typeof(MP_RB_job)))
-            {
-                MP_RB_job commend = (MP_RB_job)now_job.commend;
-                log = (string.Format("RB : {0}", commend.Commend));
-            }
+
             else if (t.Equals(typeof(MP_other)))
             {
                 MP_other commend = (MP_other)now_job.commend;
@@ -606,7 +620,6 @@ namespace new_inspection
                         log = "Insp_end";
                         break;
                 }
-
             }
             else
             {
