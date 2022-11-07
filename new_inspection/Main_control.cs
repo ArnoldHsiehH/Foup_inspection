@@ -14,6 +14,7 @@ namespace new_inspection
         static logwriter01 logwriter = new logwriter01();
         Error err_write = new Error();
         INSP_recipe insp_Recipe = new INSP_recipe();
+        PLC_motion PLC = new PLC_motion();
 
         private static Thread Main_thread;
         private static Thread Motion_thread;
@@ -44,20 +45,20 @@ namespace new_inspection
             Motion_thread = new Thread(new ParameterizedThreadStart(Motion_process));
             Main_thread.IsBackground = true;
             Motion_thread.IsBackground = true;
-           
+
             EventInsp += new inspEvent(get_commend);
             send_simple += new simpleEvent(get_sinle_commend);
-          
+
         }
 
         #region commends
 
         public void Insp_initail()
         {
-            EventInsp(new MC_initail() {PLC=true, RFID = true, adam=true, Insp=true }) ;
+            EventInsp(new MC_initail() { PLC = true, RFID = true, adam = true, Insp = true });
         }
 
-        public void Insp_Load(Loadport Lpunit)  
+        public void Insp_Load(Loadport Lpunit)
         {
             EventInsp(new MC_load() { port = Lpunit });
         }
@@ -209,18 +210,18 @@ namespace new_inspection
 
             #region 建立工作項目
             Type t = Data.GetType();
-            string job_name="";
+            string job_name = "";
             //建立工作項目
             if (t.Equals(typeof(MC_initail)))
             {
                 MC_initail Setting;
                 Setting = (MC_initail)Data;
-                job_pack.Add(new job() {commend= Setting });
+                job_pack.Add(new job() { commend = Setting });
 
             }
             else if (t.Equals(typeof(MC_commend_pack)))
             {
-                
+
                 MC_commend_pack commend_pack;
                 commend_pack = (MC_commend_pack)Data;
                 logwriter.write_local_log(string.Format("Commend: {0}", commend_pack.commend));
@@ -300,7 +301,7 @@ namespace new_inspection
                             return;
                         }
                     }
-                    job_pack.Add(new job() { commend = new MP_other { Commend = MP_report.conter_add } }) ;
+                    job_pack.Add(new job() { commend = new MP_other { Commend = MP_report.conter_add } });
                 }
             }
             else
@@ -402,14 +403,14 @@ namespace new_inspection
             #endregion
 
             #region 工作結束
-           
+
 
             status_update(string.Format("Process End,{0}", job_name));
             logwriter.write_local_log("Main process End");//工作結束
             #endregion
 
         }
-            #region 掃描動作建立
+        #region 掃描動作建立
         private bool Creat_insp_jobs(MC_insp commend_pack, ref List<job> job_pack)
         {
             if (string.IsNullOrEmpty(commend_pack.recipe))
@@ -506,7 +507,39 @@ namespace new_inspection
             {
                 MP_Loadport commend = (MP_Loadport)now_job.commend;
                 log = (string.Format("{0} : {1}", commend.port, commend.Commend));
+                if ((int)commend.Commend < 6)
+                {
+                    if (commend.port == Loadport.Loadport1)
+                    {
 
+                        PLC.loadport1Select();
+                        PLC.loadport1_compoundmotion((int)commend.Commend);
+
+                    }
+                    else if (commend.port == Loadport.Loadport2)
+                    {
+                        PLC.loadport2Select();
+                        PLC.loadport2_compoundmotion((int)commend.Commend);
+
+                    }
+
+                }
+                else if (10F >= (int)commend.Commend && (int)commend.Commend >= 0x100)//指令沒有分port
+                {
+                    if (commend.port == Loadport.Loadport1)
+                    {
+
+                        PLC.loadport1Select();
+                        PLC.loadport1_compoundmotion((int)commend.Commend + 0x10);
+
+                    }
+                    else if (commend.port == Loadport.Loadport2)
+                    {
+                        PLC.loadport2Select();
+                        PLC.loadport2_compoundmotion((int)commend.Commend + 0x20);
+
+                    }
+                }
             }
             else if (t.Equals(typeof(MP_ins)))
             {
@@ -515,7 +548,7 @@ namespace new_inspection
             }
             else if (t.Equals(typeof(MP_RFID)))
             {
-               
+
                 read_ID = "";
                 MP_RFID commend = (MP_RFID)now_job.commend;
                 log = (string.Format("Insp {0}: {1}", commend.port, commend.Commend));
@@ -542,7 +575,7 @@ namespace new_inspection
                         if (!L1_RF.READ_RFID("00000004", out read_ID))//
                         {
                         }
-                        else  
+                        else
                         {
                             status_update(new RFID_report() { ID = read_ID, port = Loadport.Loadport2 });
                         }
@@ -573,13 +606,13 @@ namespace new_inspection
                         log = "Insp_end";
                         break;
                 }
-              
+
             }
             else
             {
 
             }
-            
+
             logwriter.write_local_log(log);
             status_update(log);
 
@@ -953,7 +986,7 @@ namespace new_inspection
         public Loadport port;
         public string ID;
     }
-    public class conter 
+    public class conter
     {
 
     }

@@ -113,12 +113,12 @@ namespace new_inspection
             this.btn_Zpositive = new System.Windows.Forms.Button();
             this.btn_Xnegative = new System.Windows.Forms.Button();
             this.panel_RFID1 = new System.Windows.Forms.Panel();
-            this.btn_p2_RF_r = new System.Windows.Forms.Button();
-            this.txt_L2_RF_Console = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btn_p1_RF_c = new System.Windows.Forms.Button();
             this.txt_L1_RF_Console = new System.Windows.Forms.TextBox();
             this.btn_p1_RF_r = new System.Windows.Forms.Button();
+            this.btn_p2_RF_r = new System.Windows.Forms.Button();
+            this.txt_L2_RF_Console = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.btn_p2_RF_c = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -1374,32 +1374,6 @@ namespace new_inspection
             this.panel_RFID1.Size = new System.Drawing.Size(266, 152);
             this.panel_RFID1.TabIndex = 42;
             // 
-            // btn_p2_RF_r
-            // 
-            this.btn_p2_RF_r.BackColor = System.Drawing.Color.Silver;
-            this.btn_p2_RF_r.FlatAppearance.BorderSize = 0;
-            this.btn_p2_RF_r.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_p2_RF_r.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_p2_RF_r.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btn_p2_RF_r.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_p2_RF_r.Location = new System.Drawing.Point(128, 82);
-            this.btn_p2_RF_r.Name = "btn_p2_RF_r";
-            this.btn_p2_RF_r.Size = new System.Drawing.Size(110, 45);
-            this.btn_p2_RF_r.TabIndex = 5;
-            this.btn_p2_RF_r.Text = "read";
-            this.btn_p2_RF_r.UseVisualStyleBackColor = false;
-            this.btn_p2_RF_r.Click += new System.EventHandler(this.btn_p2_RF_r_Click);
-            // 
-            // txt_L2_RF_Console
-            // 
-            this.txt_L2_RF_Console.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
-            this.txt_L2_RF_Console.Location = new System.Drawing.Point(12, 44);
-            this.txt_L2_RF_Console.Multiline = true;
-            this.txt_L2_RF_Console.Name = "txt_L2_RF_Console";
-            this.txt_L2_RF_Console.ReadOnly = true;
-            this.txt_L2_RF_Console.Size = new System.Drawing.Size(226, 33);
-            this.txt_L2_RF_Console.TabIndex = 10;
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -1452,6 +1426,32 @@ namespace new_inspection
             this.btn_p1_RF_r.Text = "read";
             this.btn_p1_RF_r.UseVisualStyleBackColor = false;
             this.btn_p1_RF_r.Click += new System.EventHandler(this.btn_p1_RF_r_Click);
+            // 
+            // btn_p2_RF_r
+            // 
+            this.btn_p2_RF_r.BackColor = System.Drawing.Color.Silver;
+            this.btn_p2_RF_r.FlatAppearance.BorderSize = 0;
+            this.btn_p2_RF_r.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_p2_RF_r.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_p2_RF_r.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btn_p2_RF_r.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btn_p2_RF_r.Location = new System.Drawing.Point(128, 82);
+            this.btn_p2_RF_r.Name = "btn_p2_RF_r";
+            this.btn_p2_RF_r.Size = new System.Drawing.Size(110, 45);
+            this.btn_p2_RF_r.TabIndex = 5;
+            this.btn_p2_RF_r.Text = "read";
+            this.btn_p2_RF_r.UseVisualStyleBackColor = false;
+            this.btn_p2_RF_r.Click += new System.EventHandler(this.btn_p2_RF_r_Click);
+            // 
+            // txt_L2_RF_Console
+            // 
+            this.txt_L2_RF_Console.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
+            this.txt_L2_RF_Console.Location = new System.Drawing.Point(12, 44);
+            this.txt_L2_RF_Console.Multiline = true;
+            this.txt_L2_RF_Console.Name = "txt_L2_RF_Console";
+            this.txt_L2_RF_Console.ReadOnly = true;
+            this.txt_L2_RF_Console.Size = new System.Drawing.Size(226, 33);
+            this.txt_L2_RF_Console.TabIndex = 10;
             // 
             // label16
             // 
