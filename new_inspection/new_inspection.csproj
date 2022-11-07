@@ -155,6 +155,7 @@
     <Compile Include="mitsubishi_IO\Mitsubishi_PLC_Get_W.cs" />
     <Compile Include="mitsubishi_IO\Mitsubishi_PLC_Send.cs" />
     <Compile Include="OMRON_RFID.cs" />
+    <Compile Include="PLC_motion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatusTable.cs" />
