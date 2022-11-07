@@ -29,6 +29,7 @@ namespace new_inspection
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -142,6 +143,7 @@ namespace new_inspection
             this.btn_stop = new System.Windows.Forms.Button();
             this.btn_Home = new System.Windows.Forms.Button();
             this.panel_RFID2 = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel7.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -1750,6 +1752,10 @@ namespace new_inspection
             this.panel_RFID2.TabIndex = 45;
             this.panel_RFID2.Visible = false;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // frmManual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1904,5 +1910,6 @@ namespace new_inspection
         private System.Windows.Forms.CheckBox ckb_Camera;
         private System.Windows.Forms.CheckBox ckb_LP1;
         private System.Windows.Forms.Panel panel_RFID2;
+        private System.Windows.Forms.Timer timer1;
     }
 }

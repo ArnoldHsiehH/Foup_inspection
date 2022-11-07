@@ -59,11 +59,15 @@ namespace new_inspection
             };
             foreach (Button button in btn_robot_jog)
                 button.Click += new System.EventHandler(this.btn_robot_jog_Click);
+
+            timer1.Interval = 100;
+            timer1.Enabled = true;
         }
 
         private void frmManual_Load(object sender, EventArgs e)
         {
             Main_control.status_update += new Main_control.percent(percent_IU);
+            timer1.Start();
         }
         private void percent_IU(object obj)
         {
@@ -494,6 +498,183 @@ namespace new_inspection
         private void btn_stop_Click(object sender, EventArgs e)
         {
             Insp_process.Insp_stop();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            loadport1UI();
+        }
+        private void loadport1UI()
+        {
+            switch (Insp_process.readw_stratus(W_statusIO.L1_Present))
+            {
+                case 1:
+                    txt_l1.Text = "Loadport1: occupied";
+                    break;
+                case 2:
+                    txt_l1.Text = "Loadport1: free";
+                    break;
+                default:
+                    txt_l1.Text = string.Format("Loadport1: {0}", Insp_process.readw_stratus(W_statusIO.L1_Present));
+                    break;
+            }
+
+            switch(Insp_process.readw_stratus(W_statusIO.L1_Clamp))
+            {
+                case 0:
+                    btn_Lp1_clamp.BackColor = Color.Red;
+                    btn_Lp1_unclamp.BackColor = Color.Red;
+                    break;
+                case 1:
+                    btn_Lp1_clamp.BackColor = Color.Orange;
+                    btn_Lp1_unclamp.BackColor = Color.Silver;
+                    break;
+                case 2:
+                    btn_Lp1_clamp.BackColor = Color.Silver;
+                    btn_Lp1_unclamp.BackColor = Color.Orange;
+                    break;
+                default:
+                    btn_Lp1_clamp.BackColor = Color.Black;
+                    btn_Lp1_unclamp.BackColor = Color.Black;
+                    break;
+            }
+
+            switch (Insp_process.readw_stratus(W_statusIO.L1_dock))
+            {
+                case 0:
+                    btn_Lp1_duck.BackColor = Color.Red;
+                    btn_Lp1_unduck.BackColor = Color.Red;
+                    break;
+                case 1:
+                    btn_Lp1_duck.BackColor = Color.Orange;
+                    btn_Lp1_unduck.BackColor = Color.Silver;
+
+                    break;
+                case 2:
+                    btn_Lp1_duck.BackColor = Color.Silver;
+                    btn_Lp1_unduck.BackColor = Color.Orange;
+                 
+                    break;
+                default:
+                    btn_Lp1_duck.BackColor = Color.Black;
+                    btn_Lp1_unduck.BackColor = Color.Black;
+                    break;
+            }
+            switch (Insp_process.readw_stratus(W_statusIO.L1_PurgeOn))
+            {
+                case 0:
+                    btn_Lp1_purge.BackColor = Color.Red;
+                    btn_Lp1_unpurge.BackColor = Color.Red;
+                    break;
+                case 1:
+                    btn_Lp1_purge.BackColor = Color.Orange;
+                    btn_Lp1_unpurge.BackColor = Color.Silver;
+                    break;
+                case 2:
+                    btn_Lp1_purge.BackColor = Color.Silver;
+                    btn_Lp1_unpurge.BackColor = Color.Orange;
+                    break;
+                default:
+                    btn_Lp1_purge.BackColor = Color.Black;
+                    btn_Lp1_unpurge.BackColor = Color.Black;
+                    break;
+            }
+            switch (Insp_process.readw_stratus(W_statusIO.L1_VacOn))
+            {
+                case 0:
+                    btn_Lp1_vacOn.BackColor = Color.Red;
+                    btn_Lp1_vacOff.BackColor = Color.Red;
+                    break;
+                case 1:
+                    btn_Lp1_vacOn.BackColor = Color.Orange;
+                    btn_Lp1_vacOff.BackColor = Color.Silver;
+                    break;
+                case 2:
+                    btn_Lp1_vacOn.BackColor = Color.Silver;
+                    btn_Lp1_vacOff.BackColor = Color.Orange;
+                    break;
+                default:
+                    btn_Lp1_vacOn.BackColor = Color.Black;
+                    btn_Lp1_vacOff.BackColor = Color.Black;
+                    break;
+            }
+            switch (Insp_process.readw_stratus(W_statusIO.L1_Latch))
+            {
+                case 0:
+                    btn_Lp1_Latch.BackColor = Color.Red;
+                    btn_Lp1_unLatch.BackColor = Color.Red;
+                    break;
+                case 1:
+                    btn_Lp1_Latch.BackColor = Color.Orange;
+                    btn_Lp1_unLatch.BackColor = Color.Silver;
+                    break;
+                case 2:
+                    btn_Lp1_Latch.BackColor = Color.Silver;
+                    btn_Lp1_unLatch.BackColor = Color.Orange;
+                    break;
+                default:
+                    btn_Lp1_Latch.BackColor = Color.Black;
+                    btn_Lp1_unLatch.BackColor = Color.Black;
+                    break;
+            }
+            switch (Insp_process.readw_stratus(W_statusIO.L1_A300_Cylinder_N2))
+            {
+                case 0:
+                    btn_Lp1_A300Up.BackColor = Color.Red;
+                    btn_Lp1_A300Dn.BackColor = Color.Red;
+                    break;
+                case 1:
+                    btn_Lp1_A300Up.BackColor = Color.Orange;
+                    btn_Lp1_A300Dn.BackColor = Color.Silver;
+                    break;
+                case 2:
+                    btn_Lp1_A300Up.BackColor = Color.Silver;
+                    btn_Lp1_A300Dn.BackColor = Color.Orange;
+                    break;
+                default:
+                    btn_Lp1_A300Up.BackColor = Color.Black;
+                    btn_Lp1_A300Dn.BackColor = Color.Black;
+                    break;
+            }
+
+            switch (Insp_process.readw_stratus(W_statusIO.L1_Door_open))
+            {
+                case 0:
+                    btn_Lp1_coverOn.BackColor = Color.Red;
+                    btn_Lp1_coverOff.BackColor = Color.Red;
+                    break;
+                case 2:
+                    btn_Lp1_coverOn.BackColor = Color.Orange;
+                    btn_Lp1_coverOff.BackColor = Color.Silver;
+                    break;
+                case 1:
+                    btn_Lp1_coverOn.BackColor = Color.Silver;
+                    btn_Lp1_coverOff.BackColor = Color.Orange;
+                    break;
+                default:
+                    btn_Lp1_coverOn.BackColor = Color.Black;
+                    btn_Lp1_coverOff.BackColor = Color.Black;
+                    break;
+            }
+            switch (Insp_process.readw_stratus(W_statusIO.L1_Door_up))
+            {
+                case 0:
+                    btn_Lp1_Up.BackColor = Color.Red;
+                    btn_Lp1_Dn.BackColor = Color.Red;
+                    break;
+                case 1:
+                    btn_Lp1_Up.BackColor = Color.Orange;
+                    btn_Lp1_Dn.BackColor = Color.Silver;
+                    break;
+                case 2:
+                    btn_Lp1_Up.BackColor = Color.Silver;
+                    btn_Lp1_Dn.BackColor = Color.Orange;
+                    break;
+                default:
+                    btn_Lp1_Up.BackColor = Color.Black;
+                    btn_Lp1_Dn.BackColor = Color.Black;
+                    break;
+            }
         }
     }
 }

@@ -51,6 +51,14 @@ namespace new_inspection
 
         }
 
+        #region stratus
+
+        public int readw_stratus(W_statusIO statusIO)
+        {
+            return  PLC.w_read((int)statusIO); ;
+        }
+        #endregion
+
         #region commends
 
         public void Insp_initail()
@@ -503,6 +511,7 @@ namespace new_inspection
             {
                 MP_Robot commend = (MP_Robot)now_job.commend;
                 log = (string.Format("Robot: {0}", commend.Commend));
+                PLC.robotSelect();
                 PLC.robot_compoundmotion((int)commend.Commend);
 
             }
@@ -636,6 +645,8 @@ namespace new_inspection
 
 
     }
+
+    #region defind
     class MC_commend_pack// 大的指令
     {
         public MC_commend commend;
@@ -749,6 +760,7 @@ namespace new_inspection
         update_L1_RFID,
         update_L2_RFID
     }
+    #endregion
 
     #region Loadport_commend
     public enum Loadport
