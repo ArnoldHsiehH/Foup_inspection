@@ -282,6 +282,7 @@ namespace new_inspection
         private void timer1_Tick(object sender, EventArgs e)
         {
             sys_time();
+            equipment_status();
         }
         private void sys_time()
         {
@@ -293,5 +294,100 @@ namespace new_inspection
             string result2 = ((TimeSpan)(time_end - time_start)).ToString();
             txt_uptime.Text = string.Format("{0}{1}", "run time: ", run_time.ToString(@"dd\.hh\:mm\:ss"));
         }
+        private void equipment_status()
+        {
+            int EQvalue_800 = Insp_process.readw_stratus(W_statusIO.status_EQ);
+            int L1value_801 = Insp_process.readw_stratus(W_statusIO.status_L1);
+            int L2value_802 = Insp_process.readw_stratus(W_statusIO.status_L2);
+            int RBvalue_803 = Insp_process.readw_stratus(W_statusIO.status_RB);
+
+            lbl_PLC_status.Text = string.Format("EQ_status: {0}", status_(EQvalue_800, 0));
+            lbl_PLC_status.BackColor = status_color(EQvalue_800);
+
+            lbl_RB.Text = string.Format("RB_status: {0}", status_(RBvalue_803, (int)compoundmotionIO.robot_ready_get));
+            lbl_RB.BackColor = status_color(RBvalue_803);
+            lbl_L1.Text = string.Format("LP1_status: {0}", status_(L1value_801, (int)compoundmotionIO.loadport1_ready_get));
+            lbl_L1.BackColor = status_color(L1value_801);
+            lbl_L2.Text = string.Format("LP2_status: {0}", status_(L2value_802, (int)compoundmotionIO.loadport2_ready_get));
+            lbl_L2.BackColor = status_color(L2value_802);
+
+        }
+        private string status_(int status_v, int select)
+        {
+            string status;
+            switch (status_v)
+            {
+                case 0:
+                    status = "error";
+                    break;
+                case 1:
+                    {
+                        status = "stable";
+                        //if (select == 0)
+                        //{
+                        //    status = "stable";
+                        //    break;
+                        //}
+                        //int value;
+                        //misubushi_IO.getB(select + 3, out value);
+                        //if (value != 1)
+                        //{
+                        //    status = "not auto";
+                        //    break;
+                        //}
+                        //misubushi_IO.getB(select, out value);
+                        //if (value == 1)
+                        //    status = "stable";
+                        //else
+                        //    status = "unselect";
+                        break;
+                    }
+                case 2:
+                    status = "working";
+                    break;
+                case 3:
+                    status = "warning";
+                    break;
+                case 5:
+                    status = "unselect";
+                    break;
+                default:
+                    status = Convert.ToString(status_v);
+                    break;
+
+            }
+            return status;
+        }
+        private Color status_color(int v)
+        {
+            Color out_color = Color.Black;
+            switch (v)
+            {
+                case 0:
+                    out_color = Color.Red;
+                    break;
+                case 1:
+                    out_color = Color.Green;
+                    break;
+
+                case 2:
+                    out_color = Color.Yellow;
+                    break;
+
+                case 3:
+                    out_color = Color.Yellow;
+                    break;
+                case 5:
+                    out_color = Color.Yellow;
+                    break;
+                default:
+                    out_color = Color.White;
+                    break;
+
+            }
+            return out_color;
+
+        }
+
     }
 }

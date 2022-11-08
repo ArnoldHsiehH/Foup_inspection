@@ -30,8 +30,6 @@ namespace new_inspection
 
         static Queue<Interrupt_commend> Q_IC = new Queue<Interrupt_commend>();
 
-
-
         public static OMRON_RFID L1_RF = new OMRON_RFID();
         public static OMRON_RFID L2_RF = new OMRON_RFID();
 
@@ -55,7 +53,7 @@ namespace new_inspection
 
         public int readw_stratus(W_statusIO statusIO)
         {
-            return  PLC.w_read((int)statusIO); ;
+            return PLC.w_read((int)statusIO); ;
         }
         #endregion
 
@@ -222,6 +220,7 @@ namespace new_inspection
             //建立工作項目
             if (t.Equals(typeof(MC_initail)))
             {
+                job_name = "initail";
                 MC_initail Setting;
                 Setting = (MC_initail)Data;
                 job_pack.Add(new job() { commend = Setting });
@@ -331,13 +330,15 @@ namespace new_inspection
                 return;
             }
 
+            status_update(string.Format("Process start,{0}", job_name));
+            logwriter.write_local_log(string.Format("Process start,{0}", job_name));//工作結束
             #region 執行工作項目
             while (job_conter < job_pack.Count)//執行工作
             {
                 #region 異常
                 if (err_write.check_error)//異常產生
                 {
-                    err_write.write_warnMessage(Error.error_unit.system, "please reast error");
+                    err_write.write_warnMessage(Error.error_unit.system, " ");
                     break;
                 }
                 #endregion
@@ -414,7 +415,7 @@ namespace new_inspection
 
 
             status_update(string.Format("Process End,{0}", job_name));
-            logwriter.write_local_log("Main process End");//工作結束
+            logwriter.write_local_log(string.Format("Process End,{0}", job_name));//工作結束
             #endregion
 
         }
@@ -498,6 +499,7 @@ namespace new_inspection
             Type t = now_job.commend.GetType();
             if (t.Equals(typeof(MC_initail)))
             {
+                log = "initail";
                 MC_initail setting = (MC_initail)now_job.commend;
                 Misubushi_IO.Initial();
                 if (setting.RFID == true)
@@ -507,7 +509,7 @@ namespace new_inspection
             }
 
             #region Robot
-            if (t.Equals(typeof(MP_Robot)))
+            else if (t.Equals(typeof(MP_Robot)))
             {
                 MP_Robot commend = (MP_Robot)now_job.commend;
                 log = (string.Format("Robot: {0}", commend.Commend));
@@ -642,7 +644,6 @@ namespace new_inspection
             Thread.Sleep(1000);
         }
         #endregion
-
 
     }
 
@@ -1016,4 +1017,5 @@ namespace new_inspection
 
     }
     #endregion
+
 }
