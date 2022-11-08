@@ -562,6 +562,10 @@ namespace new_inspection
             this.pnlFormLoader.Size = new System.Drawing.Size(1704, 980);
             this.pnlFormLoader.TabIndex = 6;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);

@@ -60,13 +60,14 @@ namespace new_inspection
             foreach (Button button in btn_robot_jog)
                 button.Click += new System.EventHandler(this.btn_robot_jog_Click);
 
-            timer1.Interval = 100;
-            timer1.Enabled = true;
+
         }
 
         private void frmManual_Load(object sender, EventArgs e)
         {
             Main_control.status_update += new Main_control.percent(percent_IU);
+            timer1.Interval = 100;
+            timer1.Enabled = true;
             timer1.Start();
         }
         private void percent_IU(object obj)

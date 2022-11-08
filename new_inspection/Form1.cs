@@ -30,8 +30,10 @@ namespace new_inspection
         frmLog frmLog_vrb = new frmLog() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
         frmResult frmResult_vrb = new frmResult() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
         frmSetting frmSetting_vrb = new frmSetting() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+        DateTime time_start = DateTime.Now;
         public Form1()
         {
+
             InitializeComponent();
             user_login();
             //errfrm.Show();
@@ -48,15 +50,6 @@ namespace new_inspection
             pnlfromcontrol(frmLog_vrb);
             Insp_process.initail();
         }
-        private void errbtn_color(bool value)
-        {
-            this.Invoke(new MethodInvoker(delegate () { write_errbtn(value); }));
-        }
-        private void write_errbtn(bool value)
-        {
-            btn_error.BackColor = value ? Color.Red : System.Drawing.SystemColors.MenuBar;
-
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -64,6 +57,21 @@ namespace new_inspection
 
             Main_control.status_update += new Main_control.percent(percent_IU);
             Insp_process.Insp_initail();
+
+            timer1.Interval = 100;
+            timer1.Enabled = true;
+            timer1.Start();
+
+        }
+
+        private void errbtn_color(bool value)
+        {
+            this.Invoke(new MethodInvoker(delegate () { write_errbtn(value); }));
+        }
+
+        private void write_errbtn(bool value)
+        {
+            btn_error.BackColor = value ? Color.Red : System.Drawing.SystemColors.MenuBar;
 
         }
 
@@ -271,5 +279,19 @@ namespace new_inspection
             frmSetting_vrb.btn_account.Enabled = false;
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            sys_time();
+        }
+        private void sys_time()
+        {
+            DateTime date1 = DateTime.Now;
+            string fullPath = string.Format("Time: {0}", date1.ToString("yyyy-MM-dd HH:mm:ss"));
+            txt_nowtime.Text = fullPath;
+            DateTime time_end = DateTime.Now;
+            TimeSpan run_time = time_end - time_start;
+            string result2 = ((TimeSpan)(time_end - time_start)).ToString();
+            txt_uptime.Text = string.Format("{0}{1}", "run time: ", run_time.ToString(@"dd\.hh\:mm\:ss"));
+        }
     }
 }
