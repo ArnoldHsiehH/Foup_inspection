@@ -570,11 +570,14 @@ namespace new_inspection
             }
             #endregion
 
+            #region inspaction
             else if (t.Equals(typeof(MP_ins)))
             {
                 MP_ins commend = (MP_ins)now_job.commend;
                 log = (string.Format("Insp : {0}", commend.ins));
             }
+
+            #endregion
 
             #region RFID
             else if (t.Equals(typeof(MP_RFID)))
@@ -617,7 +620,8 @@ namespace new_inspection
 
             else if (t.Equals(typeof(MP_SCES)))
             {
-                log = (string.Format("SCES"));
+                MP_SCES data = (MP_SCES)now_job.commend;
+                log = (string.Format("SCES {0}", data.Commend));
             }
 
             else if (t.Equals(typeof(MP_other)))
@@ -725,6 +729,7 @@ namespace new_inspection
     }
     class MP_SCES
     {
+        public MP_SCES_commend Commend { get; set; }
     }
     class MP_other
     {
@@ -999,6 +1004,11 @@ namespace new_inspection
         RBsimple
     }
 
+    enum MP_SCES_commend
+    {
+        insp_end,
+        E84_end
+    }
     enum MP_report
     {
         conter_add,
