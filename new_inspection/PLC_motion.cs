@@ -686,6 +686,35 @@ namespace new_inspection
         #region 簡單動作
 
         #region Robot
+        public void robot_simplemotion(int motion)
+        {
+            ioSet(0x08F, 1);
+            //         simplemotion((int)motion, simplemotion_get.Rb_occupied);
+            while (true)
+            {
+                if (!ioWait_bit(0x88F, true, loadport_handshakeTime))
+                {
+                    Console.WriteLine("simplemotion fild");
+                    break;
+                }
+                if (!ioRead_Off((int)simplemotion_get.Rb_occupied))
+                {
+                    Console.WriteLine("simplemotion is occupied");
+                    break;
+                }
+                //PC trigger
+                ioSet((int)motion, 1);
+                Thread.Sleep(3);
+                //if (!ioWait_bit((int)motion + 0x800, true, loadport_handshakeTime)) { }
+                ioSet((int)motion, 0);
+                if (!ioWait_bit((int)simplemotion_get.Rb_occupied, false, loadport_handshakeTime)) { }
+                //if (!ioWait_bit((int)motion + 0x800, false, loadport_handshakeTime)) { }
+                break;
+            }
+            ioSet(0x08F, 0);
+        }
+
+
 
         public void Lp1_doorUpStart()
         {

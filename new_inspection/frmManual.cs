@@ -455,20 +455,20 @@ namespace new_inspection
 
         private void btn_set_speed_Click(object sender, EventArgs e)
         {
-            string data = "";
+            string data = "10";
             Insp_process.RB_set_speed(data);
         }
 
         private void btn_disp_Click(object sender, EventArgs e)
         {
             string data = "";
-            Insp_process.RB_set_jog_dis(data);
+           // Insp_process.RB_set_jog_dis(data);
         }
 
         private void btn_disn_Click(object sender, EventArgs e)
         {
             string data = "";
-            Insp_process.RB_set_jog_dis(data);
+           // Insp_process.RB_set_jog_dis(data);
         }
         #endregion
 

@@ -521,6 +521,8 @@ namespace new_inspection
             {
                 MP_RB_job commend = (MP_RB_job)now_job.commend;
                 log = (string.Format("RB : {0}", commend.Commend));
+                PLC.robot_simplemotion((int)commend.Commend);
+
             }
 
             #endregion
