@@ -685,6 +685,8 @@ namespace new_inspection
 
         #region 簡單動作
 
+        #region Robot
+
         public void Lp1_doorUpStart()
         {
             jogOn(simplemotion_get.L1_DoorUp, simplemotion_get.L1_occupied);
@@ -743,13 +745,41 @@ namespace new_inspection
                 break;
             }
         }
+
+        #endregion
+
+        #region Loadport
+
+        public void simplemotion(int motion, simplemotion_get occupied)
+        {
+            while (true)
+            {
+                if (!ioRead_Off((int)occupied))
+                {
+                    Console.WriteLine("simplemotion is occupied");
+                    break;
+                }
+                //PC trigger
+                ioSet(motion, 1);
+                Thread.Sleep(100);
+                // if (!ioWait_bit(motion + 0x800, true, loadport_handshakeTime)) { }
+                ioSet(motion, 0);
+                if (!ioWait_bit((int)occupied, false, loadport_handshakeTime)) { }
+                break;
+            }
+        }
+
+        #endregion
+
+
+        #endregion
+
+        #region IO 讀寫
+
         public int readw_stratus(W_statusIO IO)
         {
             return w_read((int)IO);
         }
-        #endregion
-
-        #region IO 讀寫
         public int w_set(int address, int data)
         {
             Console.WriteLine("wSet address {0} set {1}", address, data);

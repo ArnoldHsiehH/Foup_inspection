@@ -553,13 +553,15 @@ namespace new_inspection
                     {
 
                         PLC.loadport1Select();
-                        PLC.loadport1_compoundmotion((int)commend.Commend + 0x10);
+                        PLC.simplemotion((int)commend.Commend + 0x10, simplemotion_get.L1_occupied);
+                       // PLC.loadport1_compoundmotion((int)commend.Commend + 0x10);
 
                     }
                     else if (commend.port == Loadport.Loadport2)
                     {
                         PLC.loadport2Select();
-                        PLC.loadport2_compoundmotion((int)commend.Commend + 0x20);
+                        PLC.simplemotion((int)commend.Commend + 0x20, simplemotion_get.L2_occupied);
+                        //  PLC.loadport2_compoundmotion((int)commend.Commend + 0x20);
 
                     }
                 }
