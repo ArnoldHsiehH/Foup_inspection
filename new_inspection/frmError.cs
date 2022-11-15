@@ -269,7 +269,7 @@ namespace new_inspection
             LP,
             #endregion
             #region ITRI
-            ITRI,
+            INSP,
             #endregion
             RFID,
             #region other

@@ -181,8 +181,7 @@ namespace new_inspection
             Alarm,
             Operation,
             SECS,
-            Version,
-            Trace,
+            Inspection,
             Other,
             MaxCnt,
         }

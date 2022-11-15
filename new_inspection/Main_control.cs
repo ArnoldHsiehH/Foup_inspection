@@ -15,6 +15,7 @@ namespace new_inspection
         Error err_write = new Error();
         INSP_recipe insp_Recipe = new INSP_recipe();
         PLC_motion PLC = new PLC_motion();
+        ITRI_protocol camera = new ITRI_protocol();
 
         private static Thread Main_thread;
         private static Thread Motion_thread;
@@ -499,6 +500,8 @@ namespace new_inspection
             Type t = now_job.commend.GetType();
             if (t.Equals(typeof(MC_initail)))
             {
+
+               // camera.Initial();
                 log = "initail";
                 MC_initail setting = (MC_initail)now_job.commend;
                 Misubushi_IO.Initial();
@@ -506,6 +509,7 @@ namespace new_inspection
                 {
                     L1_RF.Initial(22);
                 }
+                camera.Initial();
             }
 
             #region Robot
